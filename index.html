@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Centers no Brasil: O Custo Físico da Nuvem | 7º Ano EF - CEFS</title>
+    <title>Data Centers no Brasil: O Custo Físico da Nuvem | 7º Ano EF</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -124,9 +124,9 @@
             <div>
                 <span class="font-display font-bold text-sm tracking-wide text-white flex items-center gap-1.5">
                     DataCenters<span class="text-cyan-400">.BR</span>
-                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">7º Ano EF - CEFS</span>
+                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">7º Ano EF</span>
                 </span>
-                <span class="text-[10px] text-slate-400 hidden sm:block leading-none">Feira interdisciplinar • O Custo Físico da Nuvem</span>
+                <span class="text-[10px] text-slate-400 hidden sm:block leading-none">Feira de Ciências • O Custo Físico da Nuvem</span>
             </div>
         </div>
 
@@ -323,19 +323,48 @@
                     </div>
                 </div>
 
-                <!-- Coluna Placeholder Imagem Fase 1 -->
+                <!-- Coluna de Vídeo Dinâmico Fase 1 (Autoplay, Loop e Brilho Ciano) -->
                 <div class="md:col-span-5 h-full max-h-[75vh] flex items-center justify-center">
-                    <div id="img-fase1" class="w-full h-full max-h-[380px] glass-panel rounded-2xl p-4 border border-dashed border-cyan-500/40 flex flex-col items-center justify-center text-center relative overflow-hidden group">
-                        <div class="w-16 h-16 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-2xl mb-3">
-                            <i class="fa-solid fa-network-wired"></i>
+                    <div class="w-full h-full max-h-[380px] glass-glow rounded-2xl p-2 sm:p-2.5 border border-cyan-500/40 flex flex-col relative overflow-hidden group shadow-2xl shadow-cyan-950/50">
+                        
+                        <!-- Badge Superior: Indicador de Vídeo em Loop -->
+                        <div class="absolute top-4 left-4 z-10 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-cyan-500/40 text-[10px] font-mono text-cyan-300 flex items-center gap-2 shadow-lg pointer-events-none">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                            </span>
+                            <span>Vídeo em Loop • Servidores em Operação</span>
                         </div>
-                        <span class="text-[10px] font-mono uppercase font-bold text-cyan-400 tracking-wider">Espaço Foto / Desenho</span>
-                        <h3 class="font-display font-bold text-sm text-white mt-1">Galpão de Servidores em Racks</h3>
-                        <p class="text-[11px] text-slate-400 mt-1 max-w-xs">
-                            Ideal para foto de visita técnica, maquete dos alunos ou desenho.
-                        </p>
-                        <div class="mt-3 p-2 rounded bg-slate-950/80 border border-slate-800 text-[10px] text-slate-300 font-mono text-left">
-                            &lt;img src="img/servidores.jpg" class="w-full h-full object-cover rounded-xl"&gt;
+
+                        <!-- 
+                            GUIA PARA PROFESSOR E ALUNOS:
+                            1. Para usar o vídeo próprio da turma, salve o arquivo como "video-datacenter.mp4"
+                               na mesma pasta do index.html (raiz do GitHub Pages).
+                            2. O navegador carregará o arquivo local prioritariamente. Se não encontrar,
+                               reproduzirá o fallback online de alta definição de uma sala de servidores.
+                        -->
+                        <div class="relative w-full h-full rounded-xl overflow-hidden bg-slate-950 flex items-center justify-center">
+                            <video id="datacenter-video" autoplay loop muted playsinline class="w-full h-full object-cover rounded-xl transition duration-500 group-hover:scale-105">
+                                <!-- Opção Primária: Vídeo MP4 local no repositório -->
+                                <source src="video-datacenter.mp4" type="video/mp4">
+                                <!-- Opção Secundária (Fallback Automático): Data center moderno em HD -->
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-server-room-rack-doors-opening-42931-large.mp4" type="video/mp4">
+                                Seu navegador não suporta a tag de vídeo em HTML5.
+                            </video>
+
+                            <!-- Sombra degradê inferior para destaque da legenda -->
+                            <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-slate-950/90 via-transparent to-transparent"></div>
+
+                            <!-- Barra de Instrução & Controle Rápido de Reprodução -->
+                            <div class="absolute bottom-2.5 inset-x-3 z-10 flex items-center justify-between text-[10px] text-slate-300 bg-slate-900/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-800">
+                                <span class="truncate">
+                                    <i class="fa-solid fa-video text-cyan-400 mr-1.5"></i>
+                                    Arquivo: <code class="font-mono text-cyan-300 font-semibold">video-datacenter.mp4</code>
+                                </span>
+                                <button onclick="toggleVideoPlayback()" title="Pausar / Reproduzir Vídeo" class="text-cyan-400 hover:text-cyan-200 transition ml-2 flex items-center gap-1">
+                                    <i class="fa-solid fa-pause text-xs" id="video-ctrl-icon"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -827,7 +856,12 @@
             updateFooterUI();
 
             // Gatilhos específicos por fase (ex: renderizar/redimensionar gráficos)
-            if (currentStage === 3) {
+            if (currentStage === 1) {
+                const vid = document.getElementById('datacenter-video');
+                if (vid && vid.paused) {
+                    vid.play().catch(() => {});
+                }
+            } else if (currentStage === 3) {
                 setTimeout(initChartMatriz, 60);
             } else if (currentStage === 7) {
                 setTimeout(initChartEmpregos, 60);
@@ -1017,6 +1051,22 @@
                 gainNode.gain.setValueAtTime(parseFloat(this.value), audioCtx.currentTime);
             }
         });
+
+
+        // --- CONTROLE DO VÍDEO (FASE 1) ---
+        function toggleVideoPlayback() {
+            const vid = document.getElementById('datacenter-video');
+            const icon = document.getElementById('video-ctrl-icon');
+            if (!vid) return;
+
+            if (vid.paused) {
+                vid.play();
+                if (icon) icon.className = 'fa-solid fa-pause text-xs';
+            } else {
+                vid.pause();
+                if (icon) icon.className = 'fa-solid fa-play text-xs';
+            }
+        }
 
 
         // --- GRÁFICOS CHART.JS OTIMIZADOS PARA 1 TELA ---
