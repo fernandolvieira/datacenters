@@ -81,7 +81,7 @@
 <body class="flex flex-col relative">
 
   <!-- ==========================================
-       HEADER FIXO (ATUALIZADO FREI SERÁFICO)
+       HEADER FIXO (FREI SERÁFICO)
        ========================================== -->
   <header class="h-16 glass-panel border-b border-slate-800 flex items-center justify-between px-6 shrink-0 z-50 absolute top-0 w-full">
     <div class="flex items-center gap-3">
@@ -89,7 +89,7 @@
         7º ano EFII
       </div>
       <h1 class="font-bold text-lg tracking-wide whitespace-nowrap">
-        Frei Seráfico <span class="text-cyan-400 font-normal">| Feira de Ciências: DATACENTERS</span>
+        Frei Seráfico <span class="text-cyan-400 font-normal">| Feira de Ciências</span>
       </h1>
     </div>
     <button onclick="goToMenu()" class="text-sm font-medium bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors border border-slate-700 flex items-center gap-2">
@@ -164,7 +164,7 @@
           <div>
             <span class="block text-[#14b8a6] font-bold text-xs tracking-wider mb-2">FASE 07</span>
             <h3 class="font-bold text-lg text-white mb-1">Paradoxo dos Empregos</h3>
-            <p class="text-sm text-slate-400 line-clamp-2">Gráfico de obras vs operação e conclusão dos estudantes.</p>
+            <p class="text-sm text-slate-400 line-clamp-2">Gráfico de obras vs operação e limites econômicos.</p>
           </div>
           <span class="text-2xl text-[#14b8a6]">👨‍🔧</span>
         </button>
@@ -313,7 +313,6 @@
         <div class="bg-slate-900/80 border border-slate-600 rounded-2xl p-4 flex flex-col items-center justify-between text-center relative overflow-hidden">
           <h3 class="text-sm font-bold text-amber-400 uppercase tracking-widest mb-2">Gasto Desnecessário</h3>
           
-          <!-- CAVALO COM OBJECT-CONTAIN E FUNDO ESCURO (CORRIGIDO) -->
           <div class="w-full h-36 md:h-44 rounded-xl overflow-hidden border border-slate-500 mb-2 bg-[#020617] flex items-center justify-center">
             <img src="img_cavalo.png" alt="IA Cavalo" class="w-full h-full object-contain">
           </div>
@@ -463,32 +462,54 @@
     </div>
 
     <!-- ==========================================
-         FASE 7: PARADOXO DOS EMPREGOS
+         FASE 7: PARADOXO DOS EMPREGOS (ATUALIZADA)
          ========================================== -->
     <div id="stage-7" class="hidden flex-col h-full p-8 max-w-6xl mx-auto w-full">
-      <div class="text-center mb-6 shrink-0">
-        <h2 class="text-4xl font-bold text-teal-400 mb-2">O Paradoxo dos Empregos</h2>
-        <p class="text-slate-300">Será que eles realmente resolvem o desemprego local após a inauguração?</p>
+      <div class="text-center mb-4 shrink-0">
+        <h2 class="text-4xl font-bold text-teal-400 mb-1">O Paradoxo dos Empregos</h2>
+        <p class="text-slate-300 text-sm">Eles realmente resolvem o desemprego local após a inauguração?</p>
       </div>
 
       <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-0">
+        
+        <!-- COLUNA ESQUERDA: ANÁLISE DINÂMICA DO GRUPO -->
         <div class="glass-panel p-6 rounded-2xl border border-slate-700 flex flex-col justify-center h-full">
-          <h3 class="text-xl font-bold mb-4 text-white">Conclusão do Grupo</h3>
-          <p class="text-slate-300 mb-4 text-sm leading-relaxed">
-            Muitos prefeitos comemoram a chegada de um Data Center prometendo milhares de empregos, mas a realidade é dividida em duas fases bem diferentes:
+          <h3 class="text-xl font-bold mb-3 text-white">Análise do Grupo</h3>
+          <p class="text-slate-300 mb-4 text-xs leading-relaxed">
+            Data centers movimentam a economia local, mas existe uma grande diferença entre empregos temporários e permanentes:
           </p>
-          <ul class="space-y-4 text-sm mt-2">
-            <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-amber-500">
-              <strong class="text-amber-400 block mb-1">1. A Fase de Obras (2 a 3 anos)</strong>
-              Excelente para a cidade. Gera muito emprego rápido (cerca de 1.500 vagas) para pedreiros, eletricistas, engenheiros e aquece o comércio local.
-            </li>
-            <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-teal-500">
-              <strong class="text-teal-400 block mb-1">2. A Fase de Operação (Décadas)</strong>
-              Um prédio gigante e altamente automatizado de 20.000 m² funciona perfeitamente com cerca de apenas <strong>30 a 50 funcionários diretos</strong> (técnicos de TI e seguranças) operando em turnos.
-            </li>
-          </ul>
+
+          <div class="space-y-3">
+            <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-amber-500">
+              <strong class="text-amber-400 text-sm block mb-1">🏗️ Fase de Obras (Temporários)</strong>
+              <p class="text-[11px] text-slate-300 mb-2">Existem durante a construção e acabam no fim da obra.</p>
+              <div class="flex flex-wrap gap-1 text-[10px]">
+                <span class="bg-amber-900/40 text-amber-200 px-2 py-1 rounded">Eletricistas</span>
+                <span class="bg-amber-900/40 text-amber-200 px-2 py-1 rounded">Engenheiros</span>
+                <span class="bg-amber-900/40 text-amber-200 px-2 py-1 rounded">Encanadores</span>
+                <span class="bg-amber-900/40 text-amber-200 px-2 py-1 rounded">Construção Civil</span>
+              </div>
+            </div>
+
+            <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-teal-500">
+              <strong class="text-teal-400 text-sm block mb-1">🖥️ Operação Diária (Permanentes)</strong>
+              <p class="text-[11px] text-slate-300 mb-2">Garantem o funcionamento contínuo, porém em menor número.</p>
+              <div class="flex flex-wrap gap-1 text-[10px]">
+                <span class="bg-teal-900/40 text-teal-200 px-2 py-1 rounded">Técnicos de Informática</span>
+                <span class="bg-teal-900/40 text-teal-200 px-2 py-1 rounded">Refrigeração</span>
+                <span class="bg-teal-900/40 text-teal-200 px-2 py-1 rounded">Segurança</span>
+                <span class="bg-teal-900/40 text-teal-200 px-2 py-1 rounded">Limpeza e Manutenção</span>
+              </div>
+            </div>
+
+            <div class="bg-rose-950/30 p-2 rounded-lg border-l-4 border-rose-500 mt-2">
+              <strong class="text-rose-400 text-xs block">O Limite Econômico</strong>
+              <p class="text-[10px] text-rose-200/80">Ajudam o comércio, mas exigem investimentos muito altos e oferecem menos empregos fixos após inaugurar.</p>
+            </div>
+          </div>
         </div>
         
+        <!-- COLUNA DIREITA: GRÁFICO (MANTIDO) -->
         <div class="glass-panel p-6 rounded-2xl border border-slate-700 flex flex-col items-center justify-center h-full relative min-h-[300px]">
           <h3 class="text-lg font-bold mb-2">Vagas Geradas (Média)</h3>
           <p class="text-xs text-slate-400 mb-6 text-center">Fase da Obra vs Operação Padrão</p>
@@ -496,6 +517,7 @@
             <canvas id="jobsChart"></canvas>
           </div>
         </div>
+
       </div>
     </div>
     
@@ -519,7 +541,7 @@
   </footer>
 
   <!-- ==========================================
-       JAVASCRIPT CORRIGIDO COM SOM FUNCIONANDO
+       JAVASCRIPT 
        ========================================== -->
   <script>
     const totalStages = 7;
@@ -610,7 +632,7 @@
       jobsChartInstance = new Chart(ctx.getContext('2d'), {
         type: 'bar',
         data: {
-          labels: ['Fase de Obras (2-3 Anos)', 'Operação Fixa (Décadas)'],
+          labels: ['Fase de Obras (Temporários)', 'Operação Fixa (Permanentes)'],
           datasets: [{
             label: 'Nº de Profissionais',
             data: [1500, 40],
