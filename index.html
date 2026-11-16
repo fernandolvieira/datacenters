@@ -24,7 +24,7 @@
       max-height: 100vh;
       overflow: hidden;
       font-family: 'Inter', sans-serif;
-      background-color: #0b0f19; /* Fundo escuro inspirado na sua imagem */
+      background-color: #0b0f19;
       color: #f8fafc;
     }
     
@@ -81,12 +81,16 @@
 <body class="flex flex-col relative">
 
   <!-- ==========================================
-       HEADER FIXO (MANTIDO ORIGINAL)
+       HEADER FIXO (ATUALIZADO FREI SERÁFICO)
        ========================================== -->
   <header class="h-16 glass-panel border-b border-slate-800 flex items-center justify-between px-6 shrink-0 z-50 absolute top-0 w-full">
     <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center font-bold text-slate-900">7º</div>
-      <h1 class="font-bold text-lg tracking-wide">Feira de Ciências <span class="text-cyan-400 font-normal">| Data Centers</span></h1>
+      <div class="px-3 h-8 rounded-lg bg-cyan-500 flex items-center justify-center font-bold text-slate-900 text-sm whitespace-nowrap">
+        7º ano EFII
+      </div>
+      <h1 class="font-bold text-lg tracking-wide whitespace-nowrap">
+        Frei Seráfico <span class="text-cyan-400 font-normal">| Feira de Ciências</span>
+      </h1>
     </div>
     <button onclick="goToMenu()" class="text-sm font-medium bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors border border-slate-700 flex items-center gap-2">
       🏠 Menu Principal
@@ -98,12 +102,10 @@
        ========================================== -->
   <main class="flex-1 w-full h-full pt-16 pb-16 overflow-hidden">
     
-    <!-- VIEW 0: MENU PRINCIPAL (DESIGN ATUALIZADO BASEADO NA IMAGEM) -->
+    <!-- VIEW 0: MENU PRINCIPAL -->
     <div id="stage-0" class="flex flex-col justify-center items-center h-full px-8 active-stage w-full max-w-7xl mx-auto">
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full mb-6 mt-4">
-        
-        <!-- Cartão 1 -->
         <button onclick="goToStage(1)" class="bg-[#111827] hover:bg-[#1f2937] transition-all text-left p-5 rounded-xl border border-slate-800 border-l-4 border-l-[#06b6d4] flex flex-col justify-between h-40">
           <div>
             <span class="block text-[#06b6d4] font-bold text-xs tracking-wider mb-2">FASE 01</span>
@@ -113,7 +115,6 @@
           <span class="text-2xl text-[#06b6d4]">🗄️</span>
         </button>
 
-        <!-- Cartão 2 -->
         <button onclick="goToStage(2)" class="bg-[#111827] hover:bg-[#1f2937] transition-all text-left p-5 rounded-xl border border-slate-800 border-l-4 border-l-[#fbbf24] flex flex-col justify-between h-40">
           <div>
             <span class="block text-[#fbbf24] font-bold text-xs tracking-wider mb-2">FASE 02</span>
@@ -123,7 +124,6 @@
           <span class="text-2xl text-[#fbbf24]">⚖️</span>
         </button>
 
-        <!-- Cartão 3 -->
         <button onclick="goToStage(3)" class="bg-[#111827] hover:bg-[#1f2937] transition-all text-left p-5 rounded-xl border border-slate-800 border-l-4 border-l-[#10b981] flex flex-col justify-between h-40">
           <div>
             <span class="block text-[#10b981] font-bold text-xs tracking-wider mb-2">FASE 03</span>
@@ -133,7 +133,6 @@
           <span class="text-2xl text-[#10b981]">⚡</span>
         </button>
 
-        <!-- Cartão 4 -->
         <button onclick="goToStage(4)" class="bg-[#111827] hover:bg-[#1f2937] transition-all text-left p-5 rounded-xl border border-slate-800 border-l-4 border-l-[#38bdf8] flex flex-col justify-between h-40">
           <div>
             <span class="block text-[#38bdf8] font-bold text-xs tracking-wider mb-2">FASE 04</span>
@@ -143,7 +142,6 @@
           <span class="text-2xl text-[#38bdf8]">💧</span>
         </button>
 
-        <!-- Cartão 5 -->
         <button onclick="goToStage(5)" class="bg-[#111827] hover:bg-[#1f2937] transition-all text-left p-5 rounded-xl border border-slate-800 border-l-4 border-l-[#f43f5e] flex flex-col justify-between h-40">
           <div>
             <span class="block text-[#f43f5e] font-bold text-xs tracking-wider mb-2">FASE 05</span>
@@ -153,7 +151,6 @@
           <span class="text-2xl text-[#f43f5e]">🔊</span>
         </button>
 
-        <!-- Cartão 6 -->
         <button onclick="goToStage(6)" class="bg-[#111827] hover:bg-[#1f2937] transition-all text-left p-5 rounded-xl border border-slate-800 border-l-4 border-l-[#a855f7] flex flex-col justify-between h-40">
           <div>
             <span class="block text-[#a855f7] font-bold text-xs tracking-wider mb-2">FASE 06</span>
@@ -163,7 +160,6 @@
           <span class="text-2xl text-[#a855f7]">➗</span>
         </button>
 
-        <!-- Cartão 7 -->
         <button onclick="goToStage(7)" class="bg-[#111827] hover:bg-[#1f2937] transition-all text-left p-5 rounded-xl border border-slate-800 border-l-4 border-l-[#14b8a6] flex flex-col justify-between h-40">
           <div>
             <span class="block text-[#14b8a6] font-bold text-xs tracking-wider mb-2">FASE 07</span>
@@ -177,7 +173,7 @@
     </div>
 
     <!-- ==========================================
-         FASE 1: INTRODUÇÃO (VÍDEO)
+         FASE 1: INTRODUÇÃO
          ========================================== -->
     <div id="stage-1" class="hidden flex-col h-full p-8 max-w-6xl mx-auto w-full">
       <div class="text-center mb-4 shrink-0">
@@ -198,7 +194,7 @@
     </div>
 
     <!-- ==========================================
-         FASE 2: O DILEMA (PRÓS X CONTRAS)
+         FASE 2: O DILEMA
          ========================================== -->
     <div id="stage-2" class="hidden flex-col justify-center h-full p-8 max-w-7xl mx-auto w-full">
       <div class="text-center mb-8 shrink-0">
@@ -316,10 +312,12 @@
 
         <div class="bg-slate-900/80 border border-slate-600 rounded-2xl p-4 flex flex-col items-center justify-between text-center relative overflow-hidden">
           <h3 class="text-sm font-bold text-amber-400 uppercase tracking-widest mb-2">Gasto Desnecessário</h3>
-          <!-- IMAGEM SOLICITADA NA RAIZ DO PROJETO -->
-          <div class="w-full aspect-square max-h-40 rounded-xl overflow-hidden border border-slate-500 mb-2">
-            <img src="img_cavalo.png" alt="IA Cavalo" class="w-full h-full object-cover">
+          
+          <!-- CAVALO COM OBJECT-CONTAIN E FUNDO ESCURO (CORRIGIDO) -->
+          <div class="w-full h-36 md:h-44 rounded-xl overflow-hidden border border-slate-500 mb-2 bg-[#020617] flex items-center justify-center">
+            <img src="img_cavalo.png" alt="IA Cavalo" class="w-full h-full object-contain">
           </div>
+          
           <div class="bg-slate-950 p-2 rounded-lg text-xs text-slate-300 w-full mb-2 border border-slate-800">
             Para gerar <strong>esta única imagem</strong> inútil, a IA evaporou aprox. <strong class="text-blue-400">3 Litros de Água</strong> no mundo físico.
           </div>
@@ -365,7 +363,7 @@
     </div>
 
     <!-- ==========================================
-         FASE 5: POLUIÇÃO SONORA (COM TESTE DE ÁUDIO)
+         FASE 5: POLUIÇÃO SONORA
          ========================================== -->
     <div id="stage-5" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
       <div class="text-center mb-4 shrink-0">
@@ -413,7 +411,6 @@
             </div>
           </div>
           
-          <!-- BOTÃO DE SOM MANTIDO -->
           <div class="bg-slate-900/80 border border-amber-500/30 rounded-2xl p-4 flex-1 flex flex-col justify-center items-center text-center">
             <h3 class="text-sm font-semibold text-amber-400 mb-1">Teste o Simulador</h3>
             <p class="text-[10px] text-slate-400 mb-3">Ouça o zumbido mecânico grave de 60 Hz (volume seguro).</p>
@@ -466,7 +463,7 @@
     </div>
 
     <!-- ==========================================
-         FASE 7: PARADOXO DOS EMPREGOS (GRUPO 7)
+         FASE 7: PARADOXO DOS EMPREGOS
          ========================================== -->
     <div id="stage-7" class="hidden flex-col h-full p-8 max-w-6xl mx-auto w-full">
       <div class="text-center mb-6 shrink-0">
@@ -522,10 +519,10 @@
   </footer>
 
   <!-- ==========================================
-       JAVASCRIPT CORRIGIDO
+       JAVASCRIPT CORRIGIDO COM SOM FUNCIONANDO
        ========================================== -->
   <script>
-    const totalStages = 7; // Agora com 7 fases!
+    const totalStages = 7;
     let currentStage = 0;
     
     // ===================================
@@ -539,9 +536,16 @@
       if(!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
+      
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
       if(isPlaying) {
-        oscillator.stop();
-        oscillator.disconnect();
+        if(oscillator) {
+          oscillator.stop();
+          oscillator.disconnect();
+        }
         isPlaying = false;
         btnSound.innerHTML = '<span>🔊</span> Ligar Zumbido';
         btnSound.classList.replace('bg-rose-600', 'bg-amber-600');
@@ -549,13 +553,17 @@
       } else {
         oscillator = audioCtx.createOscillator();
         gainNode = audioCtx.createGain();
-        oscillator.type = 'sine';
-        oscillator.frequency.value = 60; // 60Hz
-        gainNode.gain.value = 0.5;
+        
+        oscillator.type = 'sawtooth';
+        oscillator.frequency.value = 60; 
+        
+        gainNode.gain.value = 0.15; 
+        
         oscillator.connect(gainNode);
         gainNode.connect(audioCtx.destination);
         oscillator.start();
         isPlaying = true;
+        
         btnSound.innerHTML = '<span>🔇</span> Desligar Zumbido';
         btnSound.classList.replace('bg-amber-600', 'bg-rose-600');
         btnSound.classList.replace('hover:bg-amber-500', 'hover:bg-rose-500');
@@ -690,7 +698,6 @@
         stopSoundForcefully();
       }
 
-      // Esconder todas as fases usando classes do Tailwind seguras (hidden vs flex)
       for(let i = 0; i <= totalStages; i++) {
         const el = document.getElementById('stage-' + i);
         if(el) {
@@ -699,7 +706,6 @@
         }
       }
 
-      // Mostrar apenas a desejada
       const target = document.getElementById('stage-' + n);
       if(target) {
         target.classList.remove('hidden');
@@ -709,7 +715,6 @@
       currentStage = n;
       updateNavButtons();
 
-      // Carregar gráficos sob demanda
       if(n === 3) initEnergyChart();
       if(n === 7) initJobsChart();
     }
@@ -726,7 +731,6 @@
       goToStage(0);
     }
 
-    // Suporte ao teclado
     document.addEventListener('keydown', (e) => {
       if(currentStage > 0) {
         if(e.key === 'ArrowRight') nextStage();
@@ -735,9 +739,7 @@
       }
     });
 
-    // Inicia funções base da aplicação
     updateCalculator();
-    // Inicia no Stage 0 automaticamente (pois HTML está configurado)
   </script>
 </body>
 </html>
