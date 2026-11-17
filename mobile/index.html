@@ -77,10 +77,11 @@
     <!-- FASE 1 MOBILE -->
     <div id="stage-1" class="hidden flex-col max-w-md mx-auto w-full gap-4">
       <div class="text-center">
-        <h2 class="text-2xl font-bold mb-1">A Nuvem Tem <span class="text-cyan-400">Endereço</span></h2>
+        <h2 class="text-2xl font-bold mb-1">A Nuvem Tem <span class="text-cyan-400">Endereço?</span></h2>
         <p class="text-slate-400 text-[11px] mb-2">Pesquisa: <strong class="text-cyan-300">Grazi e Anita</strong></p>
       </div>
-      <div class="relative rounded-2xl overflow-hidden glass-glow aspect-video">
+      
+      <div class="relative rounded-2xl overflow-hidden glass-glow aspect-video mb-2">
         <div class="absolute top-2 left-2 z-10 bg-slate-900/80 backdrop-blur rounded px-2 py-1 flex items-center gap-2">
           <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div><span class="text-[10px] font-bold">Vídeo em Loop</span>
         </div>
@@ -88,6 +89,32 @@
           <source src="../video-datacenter.mp4" type="video/mp4">
           <source src="https://assets.mixkit.co/videos/preview/mixkit-server-racks-in-a-data-center-loop-42930-large.mp4" type="video/mp4">
         </video>
+      </div>
+
+      <div class="glass-panel border-cyan-500/30 rounded-xl p-4">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">☁️ O que é a Nuvem?</h3>
+        <p class="text-xs text-slate-300">Não é um lugar no céu! A "nuvem" é um local físico com computadores superpotentes (<strong>servidores</strong>). Quando salvamos no iCloud ou Drive, os arquivos são guardados fisicamente neles.</p>
+      </div>
+      
+      <div class="glass-panel border-purple-500/30 rounded-xl p-4">
+        <h3 class="text-base font-bold text-white mb-3">O que tem lá dentro?</h3>
+        <div class="space-y-2">
+          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-cyan-500 flex gap-3 items-center">
+            <span class="text-lg">🖥️</span><div><strong class="text-cyan-400 text-xs block">Servidores</strong><p class="text-[10px] text-slate-400">Guardam e processam dados.</p></div>
+          </div>
+          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-emerald-500 flex gap-3 items-center">
+            <span class="text-lg">🔌</span><div><strong class="text-emerald-400 text-xs block">Cabos de Rede</strong><p class="text-[10px] text-slate-400">Conectam tudo à internet.</p></div>
+          </div>
+          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-blue-500 flex gap-3 items-center">
+            <span class="text-lg">❄️</span><div><strong class="text-blue-400 text-xs block">Refrigeração</strong><p class="text-[10px] text-slate-400">Evitam o superaquecimento.</p></div>
+          </div>
+          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-amber-500 flex gap-3 items-center">
+            <span class="text-lg">🔋</span><div><strong class="text-amber-400 text-xs block">Geradores</strong><p class="text-[10px] text-slate-400">Energia extra se a luz acabar.</p></div>
+          </div>
+          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-rose-500 flex gap-3 items-center">
+            <span class="text-lg">🛡️</span><div><strong class="text-rose-400 text-xs block">Segurança</strong><p class="text-[10px] text-slate-400">Protege contra invasões.</p></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -112,7 +139,7 @@
         <ul class="space-y-3 text-xs">
           <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500">Gera novos empregos.</li>
           <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500">Atrai investimentos e novas empresas.</li>
-          <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500">Melhora a infraestrutura tecnológica local.</li>
+          <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500">Melhora a infraestrutura tecnológica local e movimenta o comércio.</li>
         </ul>
       </div>
 
@@ -122,7 +149,7 @@
         </div>
         <ul class="space-y-3 text-xs">
           <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-rose-500">Consome muita energia elétrica.</li>
-          <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-rose-500">Pode aumentar o consumo de água.</li>
+          <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-rose-500">Pode aumentar drasticamente o consumo de água.</li>
           <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-rose-500">Gera ruídos (poluição sonora) na vizinhança.</li>
         </ul>
       </div>
@@ -169,7 +196,7 @@
         <p class="text-xs text-slate-400 mb-4">Por que empresas vêm para o Brasil?<br>Para bater metas ecológicas!</p>
         <div class="relative w-full h-[180px] flex items-center justify-center mb-4"><canvas id="energyChartMobile"></canvas></div>
         <div class="bg-emerald-950/30 p-3 rounded-lg border border-emerald-900/50 w-full text-center">
-          <p class="text-xs text-emerald-200">~88,2% da eletricidade do Brasil vem de fontes limpas. Isso reduz muito o impacto da nuvem!</p>
+          <p class="text-xs text-emerald-200">~88,2% da eletricidade do Brasil vem de fontes limpas. Isso reduz o impacto global!</p>
         </div>
       </div>
     </div>
@@ -218,4 +245,61 @@
         </div>
         <div class="bg-indigo-950/50 p-3 rounded-lg text-left">
           <h4 class="text-xs font-bold text-indigo-300">Dependência Emocional em IAs</h4>
-          <p class="text-[10px] text-indigo-200/70 mt-1">
+          <p class="text-[10px] text-indigo-200/70 mt-1">Pessoas conversando 24h com apps como Poly IA multiplicam o gasto hídrico desnecessariamente.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 5 MOBILE -->
+    <div id="stage-5" class="hidden flex-col max-w-md mx-auto w-full gap-5">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-white mb-1">O Zumbido Invisível</h2>
+        <p class="text-slate-300 text-[11px] mb-2">Pesquisa: <strong class="text-cyan-300">Isabela e Pedro</strong></p>
+      </div>
+      
+      <div class="bg-slate-900/80 border border-amber-500/30 rounded-2xl p-6 text-center shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+        <h3 class="text-lg font-semibold text-amber-400 mb-2">Teste o Simulador</h3>
+        <p class="text-xs text-slate-400 mb-4">Ouça o zumbido mecânico grave de 60 Hz (volume seguro).</p>
+        <button id="btn-sound" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-4 px-4 rounded-xl text-base transition-all flex items-center justify-center gap-2"><span>🔊</span> Ligar Zumbido</button>
+      </div>
+
+      <div class="glass-panel border-cyan-500/30 rounded-2xl p-5">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">A Origem do Barulho</h3>
+        <ul class="text-sm text-slate-400 space-y-2">
+          <li><span class="text-cyan-500">▹</span> Servidores operando 24h</li>
+          <li><span class="text-cyan-500">▹</span> Ventiladores e chillers industriais</li>
+          <li><span class="text-cyan-500">▹</span> Geradores a diesel de emergência</li>
+        </ul>
+      </div>
+
+      <div class="glass-panel border-purple-500/30 rounded-2xl p-5">
+        <h3 class="text-base font-semibold text-purple-400 mb-3">Ciência do Som</h3>
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="bg-slate-950/50 p-3 rounded-lg"><strong class="text-purple-300 block mb-1">Hz (Hertz):</strong> Mede a frequência (grave ou agudo).</div>
+          <div class="bg-slate-950/50 p-3 rounded-lg"><strong class="text-purple-300 block mb-1">dB (Decibéis):</strong> Mede o volume daquele som.</div>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-b from-rose-950/40 to-slate-900/60 border border-rose-500/40 rounded-2xl p-6 text-center">
+        <span class="text-5xl animate-pulse mb-3 block">🤕</span>
+        <h3 class="text-xl font-bold text-rose-400 mb-3">Impacto na Saúde</h3>
+        <p class="text-slate-300 text-sm mb-4">O zumbido mecânico grave e constante atravessa tijolos e janelas causando nas casas vizinhas:</p>
+        <div class="flex flex-wrap justify-center gap-2 text-xs">
+          <span class="bg-rose-950/80 text-rose-200 px-3 py-1.5 rounded-lg">Irritação</span>
+          <span class="bg-rose-950/80 text-rose-200 px-3 py-1.5 rounded-lg">Insônia</span>
+          <span class="bg-rose-950/80 text-rose-200 px-3 py-1.5 rounded-lg">Dores de Cabeça e Ouvido</span>
+        </div>
+      </div>
+
+      <div class="glass-panel border-emerald-500/30 rounded-2xl p-5">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-3">Soluções</h3>
+        <div class="space-y-3 text-sm text-slate-300">
+          <p class="bg-slate-950/40 p-3 rounded-lg"><strong class="text-emerald-500">Isolamento:</strong> Paredes acústicas.</p>
+          <p class="bg-slate-950/40 p-3 rounded-lg"><strong class="text-emerald-500">Manutenção:</strong> Limpeza dos chillers.</p>
+          <p class="bg-slate-950/40 p-3 rounded-lg"><strong class="text-emerald-500">Distância:</strong> Equipamentos barulhentos no meio da planta.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 6 MOBILE -->
+    <div id="stage-6" class="hidden
