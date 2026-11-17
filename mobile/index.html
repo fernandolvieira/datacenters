@@ -31,12 +31,14 @@
 <body class="flex flex-col min-h-screen">
 
   <!-- HEADER MOBILE -->
-  <header class="h-16 glass-panel border-b border-slate-800 flex items-center justify-between px-4 fixed top-0 w-full z-50">
+  <header class="min-h-[4rem] glass-panel border-b border-slate-800 flex items-center justify-between px-4 fixed top-0 w-full z-50">
     <div class="flex items-center gap-2">
-      <div class="px-2 h-8 rounded bg-cyan-500 flex items-center justify-center font-bold text-slate-900 text-xs">7º ano EFII</div>
-      <h1 class="font-bold text-sm tracking-wide line-clamp-1">Frei Seráfico <span class="text-cyan-400 font-normal">| Feira</span></h1>
+      <div class="px-2 py-1 rounded bg-cyan-500 flex items-center justify-center font-bold text-slate-900 text-[10px] whitespace-nowrap">7º ano EFII</div>
+      <h1 class="font-bold text-sm tracking-wide text-white leading-tight">
+        Frei Seráfico <span class="text-cyan-400 font-normal text-[10px] drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]"><br class="block sm:hidden">| Feira de Ciências 2027: DATACENTERS</span>
+      </h1>
     </div>
-    <button onclick="goToMenu()" class="text-xs font-bold bg-slate-800 px-3 py-2 rounded-lg border border-slate-700 flex items-center gap-1">🏠 Menu</button>
+    <button onclick="goToMenu()" class="text-xs font-bold bg-slate-800 px-3 py-2 rounded-lg border border-slate-700 flex items-center gap-1 shrink-0 ml-1">🏠 Menu</button>
   </header>
 
   <!-- ÁREA CENTRAL MOBILE (Com rolagem) -->
@@ -193,7 +195,6 @@
       <div class="bg-slate-900/80 border border-slate-600 rounded-2xl p-5 text-center overflow-hidden">
         <h3 class="text-sm font-bold text-amber-400 uppercase tracking-widest mb-3">Gasto Desnecessário</h3>
         <div class="w-full h-44 rounded-xl overflow-hidden border border-slate-500 mb-3 bg-[#020617] flex items-center justify-center">
-          <!-- Busca na pasta anterior -->
           <img src="../img_cavalo.png" alt="IA Cavalo" class="w-full h-full object-contain">
         </div>
         <div class="bg-slate-950 p-3 rounded-lg text-xs text-slate-300 mb-3 border border-slate-800">
@@ -263,7 +264,6 @@
         <h2 class="text-2xl font-bold text-purple-400">A Evolução no Brasil</h2>
         <p class="text-slate-300 text-sm">Da salinha do CPD até as fazendas de supercomputação.</p>
       </div>
-      <!-- Linha vertical p/ Mobile -->
       <div class="absolute left-6 top-[100px] bottom-4 w-1 bg-slate-800 z-0"></div>
       
       <div class="flex flex-col gap-6 z-10 ml-8 relative">
@@ -286,7 +286,7 @@
           <p class="text-xs text-slate-400">Pandemia, Netflix e 5G forçam a construção de mega-galpões ("Colocation").</p>
         </div>
         <div class="glass-panel p-4 rounded-xl border border-amber-700 relative">
-          <div class="w-4 h-4 bg-amber-500 rounded-full absolute top-5 -left-11 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] animate-ping"></div>
+          <div class="w-4 h-4 bg-amber-500 rounded-full absolute top-5 -left-11 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] animate-pulse"></div>
           <span class="text-xs font-bold text-amber-400 block mb-1">2023 - 2026+</span>
           <h3 class="text-base font-bold text-white mb-2">A Corrida da IA</h3>
           <p class="text-xs text-slate-300">Treinar IA consome 10x mais energia. O Brasil vira alvo global de Supercomputação pela energia limpa.</p>
@@ -355,7 +355,6 @@
     const totalStages = 7;
     let currentStage = 0;
     
-    // SOM
     let audioCtx, oscillator, gainNode;
     let isPlaying = false;
     const btnSound = document.getElementById('btn-sound');
@@ -391,7 +390,6 @@
       }
     }
 
-    // CHARTS MOBILE
     let energyChartInstance = null;
     function initEnergyChart() {
       if(energyChartInstance) return;
@@ -416,7 +414,6 @@
       });
     }
 
-    // CALCULATOR
     function updateCalculator() {
       const iaSlider = document.getElementById('slider-ia');
       const vidSlider = document.getElementById('slider-vid');
@@ -429,7 +426,6 @@
       document.getElementById('res-energy').textContent = energyCargas.toFixed(1) + " cargas";
     }
 
-    // NAVIGATION
     function buildDots() {
       const dotContainer = document.getElementById('progress-dots');
       dotContainer.innerHTML = '';
@@ -467,7 +463,7 @@
       const target = document.getElementById('stage-' + n);
       if(target) { target.classList.remove('hidden'); target.classList.add('flex', 'active-stage'); }
       currentStage = n;
-      window.scrollTo(0,0); // Rola para o topo ao trocar de fase no celular
+      window.scrollTo(0,0); 
       updateNavButtons();
       if(n === 3) initEnergyChart();
       if(n === 7) initJobsChart();
