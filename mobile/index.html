@@ -10,13 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* VERSÃO MOBILE: Rolagem natural liberada */
     html, body {
       margin: 0; padding: 0; font-family: 'Inter', sans-serif;
       background-color: #0b0f19; color: #f8fafc; overflow-x: hidden; scroll-behavior: smooth;
     }
     h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
-
     .glass-panel { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(148, 163, 184, 0.1); }
     .glass-glow { box-shadow: 0 0 15px rgba(6, 182, 212, 0.2); border: 1px solid rgba(6, 182, 212, 0.3); }
     
@@ -26,11 +24,14 @@
 
     .active-stage { animation: fadeIn 0.3s ease-in-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body class="flex flex-col min-h-screen">
 
-  <!-- HEADER MOBILE (2026 e Nomes) -->
+  <!-- HEADER -->
   <header class="min-h-[4.5rem] glass-panel border-b border-slate-800 flex items-center justify-between px-3 fixed top-0 w-full z-50 py-2">
     <div class="flex items-center gap-2">
       <div class="px-1.5 py-1 rounded bg-cyan-500 flex items-center justify-center font-bold text-slate-900 text-[9px] whitespace-nowrap">7º ano EFII</div>
@@ -49,7 +50,7 @@
 
   <main class="flex-1 w-full pt-24 pb-24 px-4 overflow-y-auto">
     
-    <!-- MENU MOBILE -->
+    <!-- MENU PRINCIPAL -->
     <div id="stage-0" class="flex flex-col items-center active-stage w-full max-w-md mx-auto">
       <div class="grid grid-cols-1 gap-4 w-full mt-2">
         <button onclick="goToStage(1)" class="bg-[#111827] text-left p-4 rounded-xl border border-slate-800 border-l-4 border-l-[#06b6d4] flex flex-col justify-between gap-2">
@@ -99,7 +100,7 @@
             <h3 class="text-lg font-bold text-blue-400">Consumo Hídrico Global</h3>
             <p class="text-[10px] text-cyan-300 font-bold">Por: Manu e Isadora</p>
           </div>
-          <div class="relative w-full h-[200px] flex items-center justify-center"><canvas id="chart-agua-mundial"></canvas></div>
+          <div class="relative w-full h-[200px] flex items-center justify-center"><canvas id="chart-agua-mundial-bars-mobile"></canvas></div>
           <p class="text-xs text-slate-300">Os 12.000 data centers consomem de 560 a 600 bilhões de litros por ano (0,015% do consumo mundial).</p>
           <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-blue-500 text-xs text-slate-300">
             <p><strong>O que dá pra fazer com isso?</strong></p>
@@ -116,7 +117,7 @@
             <h3 class="text-lg font-bold text-blue-400">Impacto Local</h3>
             <p class="text-[10px] text-cyan-300 font-bold">Por: Pedro e Isabela</p>
           </div>
-          <div class="relative w-full h-[200px] flex items-center justify-center"><canvas id="chart-agua-local"></canvas></div>
+          <div class="relative w-full h-[200px] flex items-center justify-center"><canvas id="chart-agua-local-mobile"></canvas></div>
           <p class="text-xs text-slate-300">Em um ano, 12 mil data centers evaporam quase 11 trilhões de litros.</p>
           <div class="bg-rose-950/30 p-3 rounded-lg border border-rose-500/50 text-center">
             <h4 class="text-rose-400 font-bold text-xs mb-1">São João del-Rei</h4>
@@ -131,11 +132,11 @@
             <p class="text-[10px] text-cyan-300 font-bold">Por: Helena Lopes e Geovanna</p>
           </div>
           <div class="flex flex-col gap-4">
-             <div class="w-full relative"><h4 class="text-center text-xs font-bold text-slate-300 mb-1">Brasil (2025)</h4><div class="h-[150px]"><canvas id="chart-matriz-br"></canvas></div></div>
-             <div class="w-full relative"><h4 class="text-center text-xs font-bold text-slate-300 mb-1">Mundo (2023)</h4><div class="h-[150px]"><canvas id="chart-matriz-mundo"></canvas></div></div>
+             <div class="w-full relative"><h4 class="text-center text-xs font-bold text-slate-300 mb-1">Brasil (2025)</h4><div class="h-[180px]"><canvas id="chart-matriz-br-new-mobile"></canvas></div></div>
+             <div class="w-full relative"><h4 class="text-center text-xs font-bold text-slate-300 mb-1">Mundo (2023)</h4><div class="h-[180px]"><canvas id="chart-matriz-mundo-new-mobile"></canvas></div></div>
           </div>
           <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500 text-xs text-slate-300 text-center">
-            O Brasil usa rios, vento e cana. Isso atrai as empresas que buscam bater metas ambientais.
+            O Brasil usa rios, vento e cana. Isso atrai as empresas que buscam bater metas ambientais globais.
           </div>
         </div>
 
@@ -145,25 +146,24 @@
             <h3 class="text-lg font-bold text-amber-400">O Poder de 1 kWh</h3>
             <p class="text-[10px] text-cyan-300 font-bold">Por: Letícia e Helena I.</p>
           </div>
-          <div class="relative w-full h-[200px] flex items-center justify-center"><canvas id="chart-energia-cargas"></canvas></div>
+          <div class="relative w-full h-[200px] flex items-center justify-center"><canvas id="chart-energia-cargas-mobile"></canvas></div>
           <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-amber-500 text-xs text-slate-300 space-y-2">
             <p class="flex justify-between"><span>1 kWh =</span> <strong class="text-amber-400">55 cargas</strong></p>
             <p class="flex justify-between border-t border-slate-800 pt-1"><span>100 kWh =</span> <strong class="text-amber-400">5.500 cargas</strong></p>
-            <p class="flex justify-between border-t border-slate-800 pt-1"><span>1 Mês (Casa) =</span> <strong class="text-amber-400">9.800 cargas</strong></p>
+            <p class="flex justify-between border-t border-slate-800 pt-1"><span>Casa (178 kWh/mês) =</span> <strong class="text-amber-400">9.800 cargas</strong></p>
           </div>
         </div>
 
       </div>
     </div>
 
-
+    <!-- FASES 1 a 7 (Código contínuo para mobile igual a estrutura anterior) -->
     <!-- FASE 1 MOBILE -->
     <div id="stage-1" class="hidden flex-col max-w-md mx-auto w-full gap-4">
       <div class="text-center">
         <h2 class="text-2xl font-bold mb-1">A Nuvem Tem <span class="text-cyan-400">Endereço?</span></h2>
         <p class="text-slate-400 text-[11px] mb-2">Pesquisa: <strong class="text-cyan-300">Grazi e Anita</strong></p>
       </div>
-      
       <div class="relative rounded-2xl overflow-hidden glass-glow aspect-video mb-2">
         <div class="absolute top-2 left-2 z-10 bg-slate-900/80 backdrop-blur rounded px-2 py-1 flex items-center gap-2">
           <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div><span class="text-[10px] font-bold">Vídeo em Loop</span>
@@ -173,30 +173,18 @@
           <source src="https://assets.mixkit.co/videos/preview/mixkit-server-racks-in-a-data-center-loop-42930-large.mp4" type="video/mp4">
         </video>
       </div>
-
       <div class="glass-panel border-cyan-500/30 rounded-xl p-4">
         <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">☁️ O que é a Nuvem?</h3>
         <p class="text-xs text-slate-300">Não é um lugar no céu! A "nuvem" é um local físico com computadores superpotentes (<strong>servidores</strong>). Quando salvamos no iCloud ou Drive, os arquivos são guardados fisicamente neles.</p>
       </div>
-      
       <div class="glass-panel border-purple-500/30 rounded-xl p-4">
         <h3 class="text-base font-bold text-white mb-3">O que tem lá dentro?</h3>
         <div class="space-y-2">
-          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-cyan-500 flex gap-3 items-center">
-            <span class="text-lg">🖥️</span><div><strong class="text-cyan-400 text-xs block">Servidores</strong><p class="text-[10px] text-slate-400">Guardam e processam dados.</p></div>
-          </div>
-          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-emerald-500 flex gap-3 items-center">
-            <span class="text-lg">🔌</span><div><strong class="text-emerald-400 text-xs block">Cabos de Rede</strong><p class="text-[10px] text-slate-400">Conectam tudo à internet.</p></div>
-          </div>
-          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-blue-500 flex gap-3 items-center">
-            <span class="text-lg">❄️</span><div><strong class="text-blue-400 text-xs block">Refrigeração</strong><p class="text-[10px] text-slate-400">Evitam o superaquecimento.</p></div>
-          </div>
-          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-amber-500 flex gap-3 items-center">
-            <span class="text-lg">🔋</span><div><strong class="text-amber-400 text-xs block">Geradores</strong><p class="text-[10px] text-slate-400">Energia extra se a luz acabar.</p></div>
-          </div>
-          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-rose-500 flex gap-3 items-center">
-            <span class="text-lg">🛡️</span><div><strong class="text-rose-400 text-xs block">Segurança</strong><p class="text-[10px] text-slate-400">Protege contra invasões.</p></div>
-          </div>
+          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-cyan-500 flex gap-3 items-center"><span class="text-lg">🖥️</span><div><strong class="text-cyan-400 text-xs block">Servidores</strong><p class="text-[10px] text-slate-400">Guardam e processam dados.</p></div></div>
+          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-emerald-500 flex gap-3 items-center"><span class="text-lg">🔌</span><div><strong class="text-emerald-400 text-xs block">Cabos de Rede</strong><p class="text-[10px] text-slate-400">Conectam tudo à internet.</p></div></div>
+          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-blue-500 flex gap-3 items-center"><span class="text-lg">❄️</span><div><strong class="text-blue-400 text-xs block">Refrigeração</strong><p class="text-[10px] text-slate-400">Evitam o superaquecimento.</p></div></div>
+          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-amber-500 flex gap-3 items-center"><span class="text-lg">🔋</span><div><strong class="text-amber-400 text-xs block">Geradores</strong><p class="text-[10px] text-slate-400">Energia extra se a luz acabar.</p></div></div>
+          <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-rose-500 flex gap-3 items-center"><span class="text-lg">🛡️</span><div><strong class="text-rose-400 text-xs block">Segurança</strong><p class="text-[10px] text-slate-400">Protege contra invasões.</p></div></div>
         </div>
       </div>
     </div>
@@ -207,36 +195,28 @@
         <h2 class="text-2xl font-bold text-amber-400 mb-1">O Grande Dilema</h2>
         <p class="text-slate-300 text-[11px] mb-2">Pesquisa: <strong class="text-cyan-300">Valentina e Maju</strong></p>
       </div>
-      
       <div class="glass-panel border-amber-500/30 rounded-xl p-5">
         <h3 class="text-lg font-bold text-white mb-2">Por que o Brasil?</h3>
         <p class="text-xs text-slate-300 mb-4">O país atrai esses investimentos porque possui um grande mercado de internet, empresas de tecnologia e enorme potencial de energia limpa.</p>
         <h3 class="text-lg font-bold text-white mb-2">A Base de Tudo</h3>
         <p class="text-xs text-slate-300"><strong>Eletricidade:</strong> Mantém tudo ligado 24h.<br><strong>Internet:</strong> Envia e recebe dados rapidamente.</p>
       </div>
-
       <div class="glass-panel border-emerald-500/30 rounded-xl p-5">
-        <div class="flex items-center gap-3 mb-3 border-b border-slate-700 pb-2">
-          <span class="text-2xl">👍</span><h3 class="text-lg font-bold text-emerald-400">Prós para a Cidade</h3>
-        </div>
+        <div class="flex items-center gap-3 mb-3 border-b border-slate-700 pb-2"><span class="text-2xl">👍</span><h3 class="text-lg font-bold text-emerald-400">Prós para a Cidade</h3></div>
         <ul class="space-y-3 text-xs">
           <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500">Gera novos empregos.</li>
           <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500">Atrai investimentos e novas empresas.</li>
           <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500">Melhora a infraestrutura tecnológica local e movimenta o comércio.</li>
         </ul>
       </div>
-
       <div class="glass-panel border-rose-500/30 rounded-xl p-5">
-        <div class="flex items-center gap-3 mb-3 border-b border-slate-700 pb-2">
-          <span class="text-2xl">👎</span><h3 class="text-lg font-bold text-rose-400">Contras e Impactos</h3>
-        </div>
+        <div class="flex items-center gap-3 mb-3 border-b border-slate-700 pb-2"><span class="text-2xl">👎</span><h3 class="text-lg font-bold text-rose-400">Contras e Impactos</h3></div>
         <ul class="space-y-3 text-xs">
           <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-rose-500">Consome muita energia elétrica.</li>
           <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-rose-500">Pode aumentar drasticamente o consumo de água.</li>
           <li class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-rose-500">Gera ruídos (poluição sonora) na vizinhança.</li>
         </ul>
       </div>
-      
       <div class="glass-panel border-cyan-500/50 rounded-xl p-4 text-center shadow-[0_0_15px_rgba(34,211,238,0.15)]">
         <h4 class="text-sm font-bold text-cyan-400 mb-1">A Conclusão</h4>
         <p class="text-xs text-slate-300">Data centers podem trazer desenvolvimento, mas exigem construção de forma <strong>planejada e bem sustentável</strong>.</p>
@@ -259,4 +239,444 @@
             <strong class="text-emerald-400 text-sm block mb-1">❄️ Refrigeração</strong><p class="text-xs text-slate-300">Como esquentam muito, precisam de enormes chillers (ar-condicionados industriais) para não derreterem.</p>
           </div>
           <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-amber-500">
-            <strong class="text-amber-400 text-sm block mb-1">🔋 Baterias e Rede</strong><p class="text-xs text-slate-300">Redes de internet
+            <strong class="text-amber-400 text-sm block mb-1">🔋 Baterias e Rede</strong><p class="text-xs text-slate-300">Redes de internet gigantescas e sistemas de backup (Nobreaks) que nunca podem falhar se a luz acabar.</p>
+          </div>
+        </div>
+      </div>
+      <div class="glass-panel p-5 rounded-2xl border border-slate-700">
+        <div class="text-center mb-4">
+          <h3 class="text-xl font-bold text-amber-400 mb-2">O Consumo Global</h3>
+          <p class="text-sm text-slate-300">Segundo a IEA, os data centers consumiram cerca de <strong class="text-white text-lg">415 TWh</strong> em 2024!</p>
+        </div>
+        <div class="bg-[#1e293b] p-4 rounded-xl border border-[#334155] shadow-inner flex flex-col gap-4">
+          <div class="flex items-center gap-3 border-b border-[#334155] pb-3"><span class="text-2xl">🏠</span><div><p class="text-[10px] text-slate-400 uppercase tracking-wide">Equivale a</p><p class="text-sm font-bold text-white">194 MILHÕES de casas brasileiras</p></div></div>
+          <div class="flex items-center gap-3 border-b border-[#334155] pb-3"><span class="text-2xl">📱</span><div><p class="text-[10px] text-slate-400 uppercase tracking-wide">1 kWh equivale a</p><p class="text-sm font-bold text-white">~55 cargas de celular completas</p></div></div>
+          <div class="flex items-center gap-3"><span class="text-2xl">🔋</span><div><p class="text-[10px] text-slate-400 uppercase tracking-wide">Uma casa brasileira usa</p><p class="text-sm font-bold text-white">~178 kWh/mês (9.800 cargas)</p></div></div>
+        </div>
+      </div>
+      <div class="glass-panel p-5 rounded-2xl border border-slate-700 text-center">
+        <h3 class="text-lg font-bold mb-2">Matriz Elétrica Limpa</h3>
+        <p class="text-xs text-slate-400 mb-4">Por que empresas vêm para o Brasil?<br>Para bater metas ecológicas!</p>
+        <div class="relative w-full h-[180px] flex items-center justify-center mb-4"><canvas id="energyChartBRMobile"></canvas></div>
+        <div class="bg-emerald-950/30 p-3 rounded-lg border border-emerald-900/50 w-full text-center">
+          <p class="text-xs text-emerald-200">Mais de 51% da matriz do Brasil é Hidráulica (Limpa). Isso atrai grandes investimentos.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 4 MOBILE -->
+    <div id="stage-4" class="hidden flex-col max-w-md mx-auto w-full gap-5">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-blue-400 mb-1">Custo Hídrico & Calc</h2>
+        <p class="text-slate-300 text-[11px] mb-2">Pesquisa: <strong class="text-cyan-300">Manuella e Isadora</strong></p>
+      </div>
+      <div class="glass-panel border-cyan-500/40 rounded-2xl p-5">
+        <h3 class="text-lg font-bold text-white mb-4">Sua Pegada Diária</h3>
+        <div class="mb-4">
+          <label class="flex justify-between text-sm font-bold text-slate-300 mb-2">Perguntas p/ IA: <span id="val-ia" class="text-cyan-400">10 perguntas</span></label>
+          <input type="range" id="slider-ia" min="0" max="100" value="10" oninput="updateCalculator()">
+        </div>
+        <div class="mb-6">
+          <label class="flex justify-between text-sm font-bold text-slate-300 mb-2">Horas de Vídeo: <span id="val-vid" class="text-cyan-400">2 horas</span></label>
+          <input type="range" id="slider-vid" min="0" max="10" value="2" oninput="updateCalculator()">
+        </div>
+        <div class="bg-slate-950 rounded-xl p-3 border border-slate-800 flex flex-col justify-center">
+          <p class="text-[10px] text-slate-400 mb-2 uppercase text-center">Isso custa ao Data Center:</p>
+          <div class="flex items-center justify-center gap-4 text-center">
+            <div class="bg-blue-900/20 p-2 rounded flex-1"><span class="text-2xl block mb-1">💧</span><span id="res-water" class="block font-bold text-blue-400 text-lg">250 ml</span><span class="text-[10px] text-slate-400">água evaporada</span></div>
+            <div class="bg-amber-900/20 p-2 rounded flex-1"><span class="text-2xl block mb-1">📱</span><span id="res-energy" class="block font-bold text-amber-400 text-lg">5 cargas</span><span class="text-[10px] text-slate-400">celular completas</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="glass-panel border-blue-500/30 rounded-2xl p-5">
+        <div class="flex items-center gap-2 mb-3"><span class="text-2xl">💧</span><h3 class="text-lg font-bold text-blue-400">Resfriamento e Água</h3></div>
+        <div class="space-y-3">
+          <div class="bg-slate-950/50 p-3 rounded-lg border border-slate-700/50"><h4 class="text-sm font-bold text-blue-300">Liquid Cooling</h4><p class="text-xs text-slate-400 mt-1">Placas frias transferem calor do chip para líquido. Essencial para IAs.</p></div>
+          <div class="bg-rose-950/30 p-3 rounded-lg border border-rose-900/50"><h4 class="text-sm font-bold text-rose-300">Alerta: São João del-Rei</h4><p class="text-xs text-rose-200/80 mt-1">Se os 12.000 data centers usassem a água do Brasil, evaporariam quase 11 trilhões de Litros/ano — o bastante para abastecer São João del-Rei por mais de 1 bilhão de anos!</p></div>
+        </div>
+      </div>
+      <div class="bg-slate-900/80 border border-slate-600 rounded-2xl p-5 text-center overflow-hidden">
+        <h3 class="text-sm font-bold text-amber-400 uppercase tracking-widest mb-3">Gasto Desnecessário</h3>
+        <div class="w-full h-44 rounded-xl overflow-hidden border border-slate-500 mb-3 bg-[#020617] flex items-center justify-center"><img src="../img_cavalo.png" alt="IA Cavalo" class="w-full h-full object-contain"></div>
+        <div class="bg-slate-950 p-3 rounded-lg text-xs text-slate-300 mb-3 border border-slate-800">Para gerar <strong>esta única imagem</strong> inútil, a IA evaporou aprox. <strong class="text-blue-400">3 Litros de Água</strong> no mundo físico.</div>
+        <div class="bg-indigo-950/50 p-3 rounded-lg text-left"><h4 class="text-xs font-bold text-indigo-300">Dependência Emocional em IAs</h4><p class="text-[10px] text-indigo-200/70 mt-1">Pessoas conversando 24h com apps como Poly IA multiplicam o gasto hídrico desnecessariamente.</p></div>
+      </div>
+    </div>
+
+    <!-- FASE 5 MOBILE -->
+    <div id="stage-5" class="hidden flex-col max-w-md mx-auto w-full gap-5">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-white mb-1">O Zumbido Invisível</h2>
+        <p class="text-slate-300 text-[11px] mb-2">Pesquisa: <strong class="text-cyan-300">Isabela e Pedro</strong></p>
+      </div>
+      <div class="bg-slate-900/80 border border-amber-500/30 rounded-2xl p-6 text-center shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+        <h3 class="text-lg font-semibold text-amber-400 mb-2">Teste o Simulador</h3>
+        <p class="text-xs text-slate-400 mb-4">Ouça o zumbido mecânico grave de 60 Hz (volume seguro).</p>
+        <button id="btn-sound" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-4 px-4 rounded-xl text-base transition-all flex items-center justify-center gap-2"><span>🔊</span> Ligar Zumbido</button>
+      </div>
+      <div class="glass-panel border-cyan-500/30 rounded-2xl p-5">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">A Origem do Barulho</h3>
+        <ul class="text-sm text-slate-400 space-y-2">
+          <li><span class="text-cyan-500">▹</span> Servidores operando 24h</li>
+          <li><span class="text-cyan-500">▹</span> Ventiladores e chillers industriais</li>
+          <li><span class="text-cyan-500">▹</span> Geradores a diesel de emergência</li>
+        </ul>
+      </div>
+      <div class="glass-panel border-purple-500/30 rounded-2xl p-5">
+        <h3 class="text-base font-semibold text-purple-400 mb-3">Ciência do Som</h3>
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="bg-slate-950/50 p-3 rounded-lg"><strong class="text-purple-300 block mb-1">Hz (Hertz):</strong> Mede a frequência (grave ou agudo).</div>
+          <div class="bg-slate-950/50 p-3 rounded-lg"><strong class="text-purple-300 block mb-1">dB (Decibéis):</strong> Mede o volume daquele som.</div>
+        </div>
+      </div>
+      <div class="bg-gradient-to-b from-rose-950/40 to-slate-900/60 border border-rose-500/40 rounded-2xl p-6 text-center">
+        <span class="text-5xl animate-pulse mb-3 block">🤕</span>
+        <h3 class="text-xl font-bold text-rose-400 mb-3">Impacto na Saúde</h3>
+        <p class="text-slate-300 text-sm mb-4">O zumbido mecânico grave e constante atravessa tijolos e janelas causando nas casas vizinhas:</p>
+        <div class="flex flex-wrap justify-center gap-2 text-xs">
+          <span class="bg-rose-950/80 text-rose-200 px-3 py-1.5 rounded-lg">Irritação</span>
+          <span class="bg-rose-950/80 text-rose-200 px-3 py-1.5 rounded-lg">Insônia</span>
+          <span class="bg-rose-950/80 text-rose-200 px-3 py-1.5 rounded-lg">Dores de Cabeça e Ouvido</span>
+        </div>
+      </div>
+      <div class="glass-panel border-emerald-500/30 rounded-2xl p-5">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-3">Soluções</h3>
+        <div class="space-y-3 text-sm text-slate-300">
+          <p class="bg-slate-950/40 p-3 rounded-lg"><strong class="text-emerald-500">Isolamento:</strong> Paredes acústicas.</p>
+          <p class="bg-slate-950/40 p-3 rounded-lg"><strong class="text-emerald-500">Manutenção:</strong> Limpeza dos chillers.</p>
+          <p class="bg-slate-950/40 p-3 rounded-lg"><strong class="text-emerald-500">Distância:</strong> Equipamentos barulhentos no meio da planta.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 6 MOBILE -->
+    <div id="stage-6" class="hidden flex-col max-w-md mx-auto w-full gap-4 relative">
+      <div class="text-center mb-4">
+        <h2 class="text-2xl font-bold text-purple-400 leading-tight">A Evolução e o Futuro</h2>
+        <p class="text-slate-300 text-[10px]">Pesquisa: <strong class="text-cyan-300">Brainer, Caio, Arthur e Victor</strong></p>
+      </div>
+      <div class="relative flex flex-col gap-5 ml-4 mt-2">
+        <div class="absolute left-0 top-4 bottom-4 w-1 bg-slate-800 -translate-x-1/2"></div>
+        <div class="glass-panel p-4 rounded-xl border border-slate-700 relative ml-6">
+          <div class="w-4 h-4 bg-slate-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 -translate-x-1/2 -mt-1.5"></div>
+          <span class="text-[10px] font-bold text-slate-400 block mb-1">Anos 1990 - 2000</span><h3 class="text-sm font-bold text-white mb-1">Salas de Servidor</h3><p class="text-[10px] text-slate-400">Em 90, eram gigantes e caros. Nos anos 2000, ficaram menores e deram origem aos primeiros data centers.</p>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-cyan-700 relative ml-6">
+          <div class="w-4 h-4 bg-cyan-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 shadow-[0_0_10px_#06b6d4] -translate-x-1/2 -mt-1.5"></div>
+          <span class="text-[10px] font-bold text-cyan-400 block mb-1">A Conexão</span><h3 class="text-sm font-bold text-white mb-1">Cabos Submarinos</h3><p class="text-[10px] text-slate-400">Fibra óptica no fundo dos oceanos. O Brasil depende deles para conversar com o mundo.</p>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-emerald-700 relative ml-6">
+          <div class="w-4 h-4 bg-emerald-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 shadow-[0_0_10px_#10b981] -translate-x-1/2 -mt-1.5"></div>
+          <span class="text-[10px] font-bold text-emerald-400 block mb-1">Pandemia (2020)</span><h3 class="text-sm font-bold text-white mb-1">Streaming & Isolamento</h3><p class="text-[10px] text-slate-400">Netflix, Spotify e aulas remotas forçaram a rápida expansão da infraestrutura.</p>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-amber-700 relative ml-6">
+          <div class="w-4 h-4 bg-amber-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] animate-pulse -translate-x-1/2 -mt-1.5"></div>
+          <span class="text-[10px] font-bold text-amber-400 block mb-1">O Futuro</span><h3 class="text-sm font-bold text-white mb-1">A Era da IA</h3><p class="text-[10px] text-slate-300">A IA vai se autogerenciar, economizar refrigeração e exigir data centers ainda mais potentes.</p>
+        </div>
+      </div>
+      <div class="glass-panel border-purple-500/30 p-4 rounded-xl mt-4 text-center shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+         <h4 class="text-xs font-bold text-purple-400 mb-1">Conclusão</h4><p class="text-[10px] text-slate-300 leading-relaxed">De pequenas salas a "cidades digitais", os data centers são o coração digital do mundo.</p>
+      </div>
+    </div>
+
+    <!-- FASE 7 MOBILE -->
+    <div id="stage-7" class="hidden flex-col max-w-md mx-auto w-full gap-6">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-teal-400 leading-tight mb-1">O Paradoxo dos Empregos</h2>
+        <p class="text-slate-300 text-[11px] mb-2">Pesquisa: <strong class="text-cyan-300">Helena Lopes e Geovanna</strong></p>
+      </div>
+      <div class="glass-panel p-5 rounded-2xl border border-slate-700 flex flex-col justify-center">
+        <h3 class="text-lg font-bold mb-3 text-white">Análise do Grupo</h3>
+        <p class="text-slate-300 mb-4 text-sm leading-relaxed">Data centers movimentam a economia local, mas existe uma grande diferença entre empregos temporários e permanentes:</p>
+        <div class="space-y-4">
+          <div class="bg-slate-950/50 p-4 rounded-lg border-l-4 border-amber-500">
+            <strong class="text-amber-400 text-base block mb-1">🏗️ Fase de Obras (Temporários)</strong><p class="text-xs text-slate-300 mb-3">Existem durante a construção e acabam no fim da obra.</p>
+            <div class="flex flex-wrap gap-1 text-xs"><span class="bg-amber-900/40 text-amber-200 px-2 py-1 rounded">Eletricistas</span><span class="bg-amber-900/40 text-amber-200 px-2 py-1 rounded">Engenheiros</span><span class="bg-amber-900/40 text-amber-200 px-2 py-1 rounded">Encanadores</span><span class="bg-amber-900/40 text-amber-200 px-2 py-1 rounded">Construção Civil</span></div>
+          </div>
+          <div class="bg-slate-950/50 p-4 rounded-lg border-l-4 border-teal-500">
+            <strong class="text-teal-400 text-base block mb-1">🖥️ Operação Diária (Permanentes)</strong><p class="text-xs text-slate-300 mb-3">Garantem o funcionamento contínuo, porém em menor número.</p>
+            <div class="flex flex-wrap gap-1 text-xs"><span class="bg-teal-900/40 text-teal-200 px-2 py-1 rounded">Técnicos de Informática</span><span class="bg-teal-900/40 text-teal-200 px-2 py-1 rounded">Refrigeração</span><span class="bg-teal-900/40 text-teal-200 px-2 py-1 rounded">Segurança</span><span class="bg-teal-900/40 text-teal-200 px-2 py-1 rounded">Limpeza e Manutenção</span></div>
+          </div>
+          <div class="bg-rose-950/30 p-3 rounded-lg border-l-4 border-rose-500 mt-2">
+            <strong class="text-rose-400 text-sm block mb-1">O Limite Econômico</strong><p class="text-xs text-rose-200/80">Ajudam o comércio, mas exigem investimentos muito altos e oferecem menos empregos fixos após inaugurar.</p>
+          </div>
+        </div>
+      </div>
+      <div class="glass-panel p-5 rounded-2xl border border-slate-700 text-center mb-4">
+        <h3 class="text-base font-bold mb-2">Vagas Geradas (Média)</h3><p class="text-xs text-slate-400 mb-4">Fase da Obra vs Operação Padrão</p>
+        <div class="relative w-full h-[200px]"><canvas id="jobsChartMobile"></canvas></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER MOBILE -->
+  <footer class="h-16 glass-panel border-t border-slate-800 flex items-center justify-between px-4 fixed bottom-0 w-full z-50">
+    <button onclick="prevStage()" id="btn-prev" class="hidden bg-slate-800 px-3 py-2 rounded-lg font-bold text-xs border border-slate-700">← Voltar</button>
+    <div class="flex items-center gap-1.5 mx-auto" id="progress-dots"></div>
+    <button onclick="nextStage()" id="btn-next" class="hidden bg-cyan-600 px-4 py-2 rounded-lg font-bold text-xs">Avançar →</button>
+  </footer>
+
+  <!-- SCRIPTS MOBILE -->
+  <script>
+    const totalStages = 7;
+    let currentStage = 0;
+    
+    // SOM
+    let audioCtx, oscillator, gainNode;
+    let isPlaying = false;
+    const btnSound = document.getElementById('btn-sound');
+    
+    btnSound.addEventListener('click', () => {
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      if(isPlaying) {
+        if(oscillator) { oscillator.stop(); oscillator.disconnect(); }
+        isPlaying = false;
+        btnSound.innerHTML = '<span>🔊</span> Ligar Zumbido';
+        btnSound.classList.replace('bg-rose-600', 'bg-amber-600');
+      } else {
+        oscillator = audioCtx.createOscillator();
+        gainNode = audioCtx.createGain();
+        oscillator.type = 'sawtooth';
+        oscillator.frequency.value = 60; 
+        gainNode.gain.value = 0.15; 
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.start();
+        isPlaying = true;
+        btnSound.innerHTML = '<span>🔇</span> Desligar Zumbido';
+        btnSound.classList.replace('bg-amber-600', 'bg-rose-600');
+      }
+    });
+
+    function stopSoundForcefully() {
+      if(isPlaying && oscillator) {
+        oscillator.stop(); oscillator.disconnect(); isPlaying = false;
+        btnSound.innerHTML = '<span>🔊</span> Ligar Zumbido';
+        btnSound.classList.replace('bg-rose-600', 'bg-amber-600');
+      }
+    }
+
+    // CHARTS GERAIS MOBILE
+    let energyChartInstance = null;
+    let jobsChartInstance = null;
+    function initGeneralCharts() {
+        if(!energyChartInstance) {
+            const ctxE = document.getElementById('energyChartBRMobile');
+            if(ctxE) {
+                energyChartInstance = new Chart(ctxE.getContext('2d'), {
+                    type: 'doughnut',
+                    data: { labels: ['Hidráulica', 'Eólica', 'Biomassa', 'Solar', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 8.4, 11.4, 7.5, 6.6], backgroundColor: ['#38bdf8', '#0ea5e9', '#22c55e', '#eab308', '#475569', '#1e293b'], borderWidth: 0 }] },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 10} } } } }
+                });
+            }
+        }
+        if(!jobsChartInstance) {
+            const ctxJ = document.getElementById('jobsChartMobile');
+            if(ctxJ) {
+                jobsChartInstance = new Chart(ctxJ.getContext('2d'), {
+                    type: 'bar',
+                    data: { labels: ['Obras (Temp.)', 'Operação (Fixo)'], datasets: [{ data: [1500, 40], backgroundColor: ['#fbbf24', '#14b8a6'], borderRadius: 4 }] },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0', font: {size: 10} }, grid: { display: false } } } }
+                });
+            }
+        }
+    }
+
+    // CHARTS DADOS MOBILE
+    let chartAguaMundial = null;
+    let chartAguaLocal = null;
+    let chartMatrizBR = null;
+    let chartMatrizMundo = null;
+    let chartEnergiaCargas = null;
+
+    function initDataCharts() {
+        if(!chartAguaMundial) {
+            chartAguaMundial = new Chart(document.getElementById('chart-agua-mundial-bars-mobile'), {
+                type: 'bar',
+                data: {
+                    labels: ['Banhos (10m)', 'Piscinas Olím.', 'Carne (Ton)', 'Arroz (Ton)'],
+                    datasets: [{
+                        data: [6000000000, 224000, 37000, 200000],
+                        backgroundColor: ['#3b82f6', '#0ea5e9', '#eab308', '#f59e0b'],
+                        borderRadius: 4
+                    }]
+                },
+                options: { 
+                    indexAxis: 'y', responsive: true, maintainAspectRatio: false, 
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c) { return c.raw.toLocaleString('pt-BR'); } } } },
+                    scales: { 
+                        x: { type: 'logarithmic', ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                        y: { ticks: { color: '#e2e8f0', font: {size:10} }, grid: { display: false } } 
+                    }
+                }
+            });
+        }
+        if(!chartAguaLocal) {
+            chartAguaLocal = new Chart(document.getElementById('chart-agua-local-mobile'), {
+                type: 'bar',
+                data: {
+                    labels: ['1 DC (Dia)', '12k DC (Ano)'],
+                    datasets: [{
+                        data: [2500000, 10950000000000],
+                        backgroundColor: ['#38bdf8', '#0284c7'],
+                        borderRadius: 4
+                    }]
+                },
+                options: { 
+                    responsive: true, maintainAspectRatio: false, 
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c) { return c.raw.toLocaleString('pt-BR') + ' Litros'; } } } },
+                    scales: { 
+                        y: { type: 'logarithmic', ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                        x: { ticks: { color: '#e2e8f0', font: {size:10} }, grid: { display: false } } 
+                    }
+                }
+            });
+        }
+        if(!chartMatrizBR) {
+            chartMatrizBR = new Chart(document.getElementById('chart-matriz-br-new-mobile'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Hidro', 'Solar', 'Eólica', 'Biomassa', 'Gás', 'Carvão', 'Outros'],
+                    datasets: [{
+                        data: [51.2, 11.4, 14.9, 8.4, 7.5, 2.2, 4.4],
+                        backgroundColor: ['#0ea5e9', '#eab308', '#fed7aa', '#f97316', '#a855f7', '#1e293b', '#991b1b'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 9} } } } }
+            });
+        }
+        if(!chartMatrizMundo) {
+            chartMatrizMundo = new Chart(document.getElementById('chart-matriz-mundo-new-mobile'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Petróleo', 'Carvão', 'Gás', 'Biocomb', 'Nuclear', 'Hidro', 'Outras'],
+                    datasets: [{
+                        data: [30.2, 27.8, 22.7, 8.8, 4.7, 2.4, 3.3],
+                        backgroundColor: ['#991b1b', '#1e293b', '#a855f7', '#84cc16', '#78350f', '#0ea5e9', '#eab308'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 9} } } } }
+            });
+        }
+        if(!chartEnergiaCargas) {
+            chartEnergiaCargas = new Chart(document.getElementById('chart-energia-cargas-mobile'), {
+                type: 'bar',
+                data: {
+                    labels: ['1 kWh', '100 kWh', 'Casa/mês'],
+                    datasets: [{
+                        data: [55, 5500, 9800],
+                        backgroundColor: '#f59e0b',
+                        borderRadius: 4
+                    }]
+                },
+                options: { 
+                    responsive: true, maintainAspectRatio: false, 
+                    plugins: { legend: { display: false } },
+                    scales: { 
+                        y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                        x: { ticks: { color: '#e2e8f0', font: {size:10} }, grid: { display: false } } 
+                    }
+                }
+            });
+        }
+    }
+
+    function showChartTab(tabId) {
+        document.querySelectorAll('.chart-tab-content').forEach(el => { el.classList.add('hidden'); el.classList.remove('flex'); });
+        document.querySelectorAll('.chart-tab-btn').forEach(btn => {
+            btn.classList.replace('bg-indigo-600', 'bg-slate-800');
+            btn.classList.replace('border-indigo-400', 'border-slate-600');
+            btn.classList.replace('text-white', 'text-slate-300');
+        });
+        const activeTab = document.getElementById(tabId);
+        activeTab.classList.remove('hidden'); activeTab.classList.add('flex');
+        const activeBtn = event.currentTarget;
+        activeBtn.classList.replace('bg-slate-800', 'bg-indigo-600');
+        activeBtn.classList.replace('border-slate-600', 'border-indigo-400');
+        activeBtn.classList.replace('text-slate-300', 'text-white');
+    }
+
+    function goToMenuDados() {
+      if(currentStage === 5) stopSoundForcefully();
+      for(let i = 0; i <= totalStages; i++) {
+        const el = document.getElementById('stage-' + i);
+        if(el) { el.classList.add('hidden'); el.classList.remove('flex', 'active-stage'); }
+      }
+      const elDados = document.getElementById('stage-dados');
+      elDados.classList.remove('hidden'); elDados.classList.add('flex', 'active-stage');
+      currentStage = 'dados';
+      window.scrollTo(0,0);
+      updateNavButtons();
+      initDataCharts();
+    }
+
+    function updateCalculator() {
+      const iaSlider = document.getElementById('slider-ia');
+      const vidSlider = document.getElementById('slider-vid');
+      if(!iaSlider || !vidSlider) return;
+      document.getElementById('val-ia').textContent = iaSlider.value + " pgtas";
+      document.getElementById('val-vid').textContent = vidSlider.value + " hrs";
+      let waterMl = (parseInt(iaSlider.value) * 25) + (parseInt(vidSlider.value) * 10);
+      let energyCargas = ((parseInt(iaSlider.value) / 20) * 1) + (parseInt(vidSlider.value) * 0.2);
+      document.getElementById('res-water').textContent = (waterMl > 1000) ? (waterMl/1000).toFixed(1) + " L" : waterMl + " ml";
+      document.getElementById('res-energy').textContent = energyCargas.toFixed(1) + " crgs";
+    }
+
+    function buildDots() {
+      const dotContainer = document.getElementById('progress-dots');
+      dotContainer.innerHTML = '';
+      if(currentStage === 0 || currentStage === 'dados') return;
+      for(let i = 1; i <= totalStages; i++) {
+        const dot = document.createElement('div');
+        dot.className = `h-1.5 rounded-full transition-all ${i === currentStage ? 'bg-cyan-400 w-5' : 'bg-slate-700 w-1.5'}`;
+        dotContainer.appendChild(dot);
+      }
+    }
+
+    function updateNavButtons() {
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      if(currentStage === 0 || currentStage === 'dados') {
+        btnPrev.classList.add('hidden'); btnNext.classList.add('hidden');
+      } else {
+        btnPrev.classList.remove('hidden'); btnNext.classList.remove('hidden');
+        btnNext.textContent = currentStage === totalStages ? '🏠 Início' : 'Avançar →';
+        if(currentStage === totalStages) {
+          btnNext.classList.replace('bg-cyan-600', 'bg-emerald-600');
+        } else {
+          btnNext.classList.replace('bg-emerald-600', 'bg-cyan-600');
+        }
+      }
+      buildDots();
+    }
+
+    function goToStage(n) {
+      if(currentStage === 5 && n !== 5) stopSoundForcefully();
+      
+      const elDados = document.getElementById('stage-dados');
+      if(elDados) { elDados.classList.add('hidden'); elDados.classList.remove('flex', 'active-stage'); }
+
+      for(let i = 0; i <= totalStages; i++) {
+        const el = document.getElementById('stage-' + i);
+        if(el) { el.classList.add('hidden'); el.classList.remove('flex', 'active-stage'); }
+      }
+      const target = document.getElementById('stage-' + n);
+      if(target) { target.classList.remove('hidden'); target.classList.add('flex', 'active-stage'); }
+      currentStage = n;
+      window.scrollTo(0,0); 
+      updateNavButtons();
+      if(n === 3 || n === 7) initGeneralCharts();
+    }
+
+    function nextStage() { if(currentStage === totalStages) goToStage(0); else goToStage(currentStage + 1); }
+    function prevStage() { if(currentStage === 1) goToStage(0); else goToStage(currentStage - 1); }
+    function goToMenu() { goToStage(0); }
+
+    updateCalculator();
+  </script>
+</body>
+</html>
