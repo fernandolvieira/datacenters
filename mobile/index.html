@@ -31,20 +31,22 @@
 <body class="flex flex-col min-h-screen">
 
   <!-- HEADER MOBILE (2026 e Nomes) -->
-  <header class="min-h-[4.5rem] glass-panel border-b border-slate-800 flex items-center justify-between px-4 fixed top-0 w-full z-50 py-2">
+  <header class="min-h-[4.5rem] glass-panel border-b border-slate-800 flex items-center justify-between px-3 fixed top-0 w-full z-50 py-2">
     <div class="flex items-center gap-2">
-      <div class="px-2 py-1 rounded bg-cyan-500 flex items-center justify-center font-bold text-slate-900 text-[10px] whitespace-nowrap">7º ano EFII</div>
+      <div class="px-1.5 py-1 rounded bg-cyan-500 flex items-center justify-center font-bold text-slate-900 text-[9px] whitespace-nowrap">7º ano EFII</div>
       <div class="flex flex-col">
-        <h1 class="font-bold text-sm tracking-wide text-white leading-tight">
-          Frei Seráfico <span class="text-cyan-400 font-normal text-[10px] drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]"><br class="block sm:hidden">| Feira de Ciências 2026: DATACENTERS</span>
+        <h1 class="font-bold text-xs tracking-wide text-white leading-tight">
+          Frei Seráfico <span class="text-cyan-400 font-normal text-[9px] drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]"><br class="block">| Feira de Ciências 2026: DATACENTERS</span>
         </h1>
-        <span class="text-[9px] text-slate-400 mt-0.5 leading-tight">Professores orientadores: Fernando (Informática) e Matheus (Matemática)</span>
+        <span class="text-[8px] text-slate-400 mt-0.5 leading-tight">Profs: Fernando (Info) e Matheus (Mat)</span>
       </div>
     </div>
-    <button onclick="goToMenu()" class="text-xs font-bold bg-slate-800 px-3 py-2 rounded-lg border border-slate-700 flex items-center gap-1 shrink-0 ml-1">🏠 Menu</button>
+    <div class="flex gap-1 shrink-0">
+        <button onclick="goToMenuDados()" class="text-[9px] font-bold bg-indigo-600 text-white px-2 py-1.5 rounded border border-indigo-500 flex items-center gap-1 shadow-[0_0_5px_rgba(79,70,229,0.5)]">📊 Dados</button>
+        <button onclick="goToMenu()" class="text-[9px] font-bold bg-slate-800 px-2 py-1.5 rounded border border-slate-700 flex items-center gap-1">🏠 Menu</button>
+    </div>
   </header>
 
-  <!-- ÁREA CENTRAL MOBILE (Com rolagem) -->
   <main class="flex-1 w-full pt-24 pb-24 px-4 overflow-y-auto">
     
     <!-- MENU MOBILE -->
@@ -73,6 +75,87 @@
         </button>
       </div>
     </div>
+
+    <!-- MENU DE DADOS (NOVA SEÇÃO MOBILE) -->
+    <div id="stage-dados" class="hidden flex-col w-full max-w-md mx-auto gap-6">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-indigo-400 mb-1">Dashboard de Dados</h2>
+        <p class="text-slate-300 text-xs">Pesquisas matemáticas pelos alunos.</p>
+      </div>
+
+      <!-- Abas Mobile (Scroll Horizontal) -->
+      <div class="flex overflow-x-auto gap-2 pb-2 scrollbar-hide shrink-0">
+        <button onclick="showChartTab('tab-agua-mundial')" class="chart-tab-btn whitespace-nowrap bg-indigo-600 border-indigo-400 text-white font-bold py-2 px-3 rounded-lg border text-xs">Água Global</button>
+        <button onclick="showChartTab('tab-agua-local')" class="chart-tab-btn whitespace-nowrap bg-slate-800 border-slate-600 text-slate-300 font-bold py-2 px-3 rounded-lg border text-xs">Água Local</button>
+        <button onclick="showChartTab('tab-matriz-energia')" class="chart-tab-btn whitespace-nowrap bg-slate-800 border-slate-600 text-slate-300 font-bold py-2 px-3 rounded-lg border text-xs">Matriz Energética</button>
+        <button onclick="showChartTab('tab-energia-cargas')" class="chart-tab-btn whitespace-nowrap bg-slate-800 border-slate-600 text-slate-300 font-bold py-2 px-3 rounded-lg border text-xs">1 kWh em Celulares</button>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-4 border-slate-700">
+        
+        <!-- TAB 1 MOBILE -->
+        <div id="tab-agua-mundial" class="chart-tab-content flex flex-col gap-4">
+          <div class="text-center">
+            <h3 class="text-lg font-bold text-blue-400">Consumo Hídrico Global</h3>
+            <p class="text-[10px] text-cyan-300 font-bold">Por: Manu e Isadora</p>
+          </div>
+          <div class="relative w-full h-[200px] flex items-center justify-center"><canvas id="chart-agua-mundial"></canvas></div>
+          <p class="text-xs text-slate-300">Os 12.000 data centers consomem de 560 a 600 bilhões de litros por ano (0,015% do consumo mundial).</p>
+          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-blue-500 text-xs text-slate-300">
+            <p><strong>O que dá pra fazer com isso?</strong></p>
+            <ul class="list-disc pl-4 text-[11px] text-slate-400 mt-1">
+              <li>Abastecer 12 milhões de pessoas/ano.</li>
+              <li>Dar 6 bilhões de banhos de 10 min.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TAB 2 MOBILE -->
+        <div id="tab-agua-local" class="chart-tab-content hidden flex-col gap-4">
+          <div class="text-center">
+            <h3 class="text-lg font-bold text-blue-400">Impacto Local</h3>
+            <p class="text-[10px] text-cyan-300 font-bold">Por: Pedro e Isabela</p>
+          </div>
+          <div class="relative w-full h-[200px] flex items-center justify-center"><canvas id="chart-agua-local"></canvas></div>
+          <p class="text-xs text-slate-300">Em um ano, 12 mil data centers evaporam quase 11 trilhões de litros.</p>
+          <div class="bg-rose-950/30 p-3 rounded-lg border border-rose-500/50 text-center">
+            <h4 class="text-rose-400 font-bold text-xs mb-1">São João del-Rei</h4>
+            <p class="text-[11px] text-rose-200">Essa água abasteceria nossa cidade por <strong>1 bilhão e 250 milhões de anos</strong>.</p>
+          </div>
+        </div>
+
+        <!-- TAB 3 MOBILE -->
+        <div id="tab-matriz-energia" class="chart-tab-content hidden flex-col gap-4">
+          <div class="text-center">
+            <h3 class="text-lg font-bold text-emerald-400">Brasil Sustentável</h3>
+            <p class="text-[10px] text-cyan-300 font-bold">Por: Helena Lopes e Geovanna</p>
+          </div>
+          <div class="flex flex-col gap-4">
+             <div class="w-full relative"><h4 class="text-center text-xs font-bold text-slate-300 mb-1">Brasil (2025)</h4><div class="h-[150px]"><canvas id="chart-matriz-br"></canvas></div></div>
+             <div class="w-full relative"><h4 class="text-center text-xs font-bold text-slate-300 mb-1">Mundo (2023)</h4><div class="h-[150px]"><canvas id="chart-matriz-mundo"></canvas></div></div>
+          </div>
+          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500 text-xs text-slate-300 text-center">
+            O Brasil usa rios, vento e cana. Isso atrai as empresas que buscam bater metas ambientais.
+          </div>
+        </div>
+
+        <!-- TAB 4 MOBILE -->
+        <div id="tab-energia-cargas" class="chart-tab-content hidden flex-col gap-4">
+          <div class="text-center">
+            <h3 class="text-lg font-bold text-amber-400">O Poder de 1 kWh</h3>
+            <p class="text-[10px] text-cyan-300 font-bold">Por: Letícia e Helena I.</p>
+          </div>
+          <div class="relative w-full h-[200px] flex items-center justify-center"><canvas id="chart-energia-cargas"></canvas></div>
+          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-amber-500 text-xs text-slate-300 space-y-2">
+            <p class="flex justify-between"><span>1 kWh =</span> <strong class="text-amber-400">55 cargas</strong></p>
+            <p class="flex justify-between border-t border-slate-800 pt-1"><span>100 kWh =</span> <strong class="text-amber-400">5.500 cargas</strong></p>
+            <p class="flex justify-between border-t border-slate-800 pt-1"><span>1 Mês (Casa) =</span> <strong class="text-amber-400">9.800 cargas</strong></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
 
     <!-- FASE 1 MOBILE -->
     <div id="stage-1" class="hidden flex-col max-w-md mx-auto w-full gap-4">
@@ -176,130 +259,4 @@
             <strong class="text-emerald-400 text-sm block mb-1">❄️ Refrigeração</strong><p class="text-xs text-slate-300">Como esquentam muito, precisam de enormes chillers (ar-condicionados industriais) para não derreterem.</p>
           </div>
           <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-amber-500">
-            <strong class="text-amber-400 text-sm block mb-1">🔋 Baterias e Rede</strong><p class="text-xs text-slate-300">Redes de internet gigantescas e sistemas de backup (Nobreaks) que nunca podem falhar se a luz acabar.</p>
-          </div>
-        </div>
-      </div>
-      <div class="glass-panel p-5 rounded-2xl border border-slate-700">
-        <div class="text-center mb-4">
-          <h3 class="text-xl font-bold text-amber-400 mb-2">O Consumo Global</h3>
-          <p class="text-sm text-slate-300">Segundo a IEA, os data centers consumiram cerca de <strong class="text-white text-lg">415 TWh</strong> em 2024!</p>
-        </div>
-        <div class="bg-[#1e293b] p-4 rounded-xl border border-[#334155] shadow-inner flex flex-col gap-4">
-          <div class="flex items-center gap-3 border-b border-[#334155] pb-3"><span class="text-2xl">🏠</span><div><p class="text-[10px] text-slate-400 uppercase tracking-wide">Equivale a</p><p class="text-sm font-bold text-white">194 MILHÕES de casas brasileiras</p></div></div>
-          <div class="flex items-center gap-3 border-b border-[#334155] pb-3"><span class="text-2xl">📱</span><div><p class="text-[10px] text-slate-400 uppercase tracking-wide">1 kWh equivale a</p><p class="text-sm font-bold text-white">~55 cargas de celular completas</p></div></div>
-          <div class="flex items-center gap-3"><span class="text-2xl">🔋</span><div><p class="text-[10px] text-slate-400 uppercase tracking-wide">Uma casa brasileira usa</p><p class="text-sm font-bold text-white">~178 kWh/mês (9.800 cargas)</p></div></div>
-        </div>
-      </div>
-      <div class="glass-panel p-5 rounded-2xl border border-slate-700 text-center">
-        <h3 class="text-lg font-bold mb-2">Matriz Elétrica Limpa</h3>
-        <p class="text-xs text-slate-400 mb-4">Por que empresas vêm para o Brasil?<br>Para bater metas ecológicas!</p>
-        <div class="relative w-full h-[180px] flex items-center justify-center mb-4"><canvas id="energyChartMobile"></canvas></div>
-        <div class="bg-emerald-950/30 p-3 rounded-lg border border-emerald-900/50 w-full text-center">
-          <p class="text-xs text-emerald-200">~88,2% da eletricidade do Brasil vem de fontes limpas. Isso reduz o impacto global!</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- FASE 4 MOBILE -->
-    <div id="stage-4" class="hidden flex-col max-w-md mx-auto w-full gap-5">
-      <div class="text-center">
-        <h2 class="text-2xl font-bold text-blue-400 mb-1">Custo Hídrico & Calc</h2>
-        <p class="text-slate-300 text-[11px] mb-2">Pesquisa: <strong class="text-cyan-300">Manuella e Isadora</strong></p>
-      </div>
-      
-      <div class="glass-panel border-cyan-500/40 rounded-2xl p-5">
-        <h3 class="text-lg font-bold text-white mb-4">Sua Pegada Diária</h3>
-        <div class="mb-4">
-          <label class="flex justify-between text-sm font-bold text-slate-300 mb-2">Perguntas p/ IA: <span id="val-ia" class="text-cyan-400">10 perguntas</span></label>
-          <input type="range" id="slider-ia" min="0" max="100" value="10" oninput="updateCalculator()">
-        </div>
-        <div class="mb-6">
-          <label class="flex justify-between text-sm font-bold text-slate-300 mb-2">Horas de Vídeo: <span id="val-vid" class="text-cyan-400">2 horas</span></label>
-          <input type="range" id="slider-vid" min="0" max="10" value="2" oninput="updateCalculator()">
-        </div>
-        <div class="bg-slate-950 rounded-xl p-3 border border-slate-800 flex flex-col justify-center">
-          <p class="text-[10px] text-slate-400 mb-2 uppercase text-center">Isso custa ao Data Center:</p>
-          <div class="flex items-center justify-center gap-4 text-center">
-            <div class="bg-blue-900/20 p-2 rounded flex-1"><span class="text-2xl block mb-1">💧</span><span id="res-water" class="block font-bold text-blue-400 text-lg">250 ml</span><span class="text-[10px] text-slate-400">água evaporada</span></div>
-            <div class="bg-amber-900/20 p-2 rounded flex-1"><span class="text-2xl block mb-1">📱</span><span id="res-energy" class="block font-bold text-amber-400 text-lg">5 cargas</span><span class="text-[10px] text-slate-400">celular completas</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="glass-panel border-blue-500/30 rounded-2xl p-5">
-        <div class="flex items-center gap-2 mb-3"><span class="text-2xl">💧</span><h3 class="text-lg font-bold text-blue-400">Resfriamento e Água</h3></div>
-        <div class="space-y-3">
-          <div class="bg-slate-950/50 p-3 rounded-lg border border-slate-700/50"><h4 class="text-sm font-bold text-blue-300">Liquid Cooling</h4><p class="text-xs text-slate-400 mt-1">Placas frias transferem calor do chip para líquido. Essencial para IAs.</p></div>
-          <div class="bg-rose-950/30 p-3 rounded-lg border border-rose-900/50"><h4 class="text-sm font-bold text-rose-300">Alerta: São João del-Rei</h4><p class="text-xs text-rose-200/80 mt-1">Se os 12.000 data centers usassem a água do Brasil, consumiriam 10,9 trilhões de Litros/ano — o bastante para abastecer São João del-Rei por 939 anos!</p></div>
-        </div>
-      </div>
-
-      <div class="bg-slate-900/80 border border-slate-600 rounded-2xl p-5 text-center overflow-hidden">
-        <h3 class="text-sm font-bold text-amber-400 uppercase tracking-widest mb-3">Gasto Desnecessário</h3>
-        <div class="w-full h-44 rounded-xl overflow-hidden border border-slate-500 mb-3 bg-[#020617] flex items-center justify-center">
-          <img src="../img_cavalo.png" alt="IA Cavalo" class="w-full h-full object-contain">
-        </div>
-        <div class="bg-slate-950 p-3 rounded-lg text-xs text-slate-300 mb-3 border border-slate-800">
-          Para gerar <strong>esta única imagem</strong> inútil, a IA evaporou aprox. <strong class="text-blue-400">3 Litros de Água</strong> no mundo físico.
-        </div>
-        <div class="bg-indigo-950/50 p-3 rounded-lg text-left">
-          <h4 class="text-xs font-bold text-indigo-300">Dependência Emocional em IAs</h4>
-          <p class="text-[10px] text-indigo-200/70 mt-1">Pessoas conversando 24h com apps como Poly IA multiplicam o gasto hídrico desnecessariamente.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- FASE 5 MOBILE -->
-    <div id="stage-5" class="hidden flex-col max-w-md mx-auto w-full gap-5">
-      <div class="text-center">
-        <h2 class="text-2xl font-bold text-white mb-1">O Zumbido Invisível</h2>
-        <p class="text-slate-300 text-[11px] mb-2">Pesquisa: <strong class="text-cyan-300">Isabela e Pedro</strong></p>
-      </div>
-      
-      <div class="bg-slate-900/80 border border-amber-500/30 rounded-2xl p-6 text-center shadow-[0_0_20px_rgba(245,158,11,0.2)]">
-        <h3 class="text-lg font-semibold text-amber-400 mb-2">Teste o Simulador</h3>
-        <p class="text-xs text-slate-400 mb-4">Ouça o zumbido mecânico grave de 60 Hz (volume seguro).</p>
-        <button id="btn-sound" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-4 px-4 rounded-xl text-base transition-all flex items-center justify-center gap-2"><span>🔊</span> Ligar Zumbido</button>
-      </div>
-
-      <div class="glass-panel border-cyan-500/30 rounded-2xl p-5">
-        <h3 class="text-lg font-semibold text-cyan-400 mb-3">A Origem do Barulho</h3>
-        <ul class="text-sm text-slate-400 space-y-2">
-          <li><span class="text-cyan-500">▹</span> Servidores operando 24h</li>
-          <li><span class="text-cyan-500">▹</span> Ventiladores e chillers industriais</li>
-          <li><span class="text-cyan-500">▹</span> Geradores a diesel de emergência</li>
-        </ul>
-      </div>
-
-      <div class="glass-panel border-purple-500/30 rounded-2xl p-5">
-        <h3 class="text-base font-semibold text-purple-400 mb-3">Ciência do Som</h3>
-        <div class="grid grid-cols-2 gap-3 text-xs">
-          <div class="bg-slate-950/50 p-3 rounded-lg"><strong class="text-purple-300 block mb-1">Hz (Hertz):</strong> Mede a frequência (grave ou agudo).</div>
-          <div class="bg-slate-950/50 p-3 rounded-lg"><strong class="text-purple-300 block mb-1">dB (Decibéis):</strong> Mede o volume daquele som.</div>
-        </div>
-      </div>
-
-      <div class="bg-gradient-to-b from-rose-950/40 to-slate-900/60 border border-rose-500/40 rounded-2xl p-6 text-center">
-        <span class="text-5xl animate-pulse mb-3 block">🤕</span>
-        <h3 class="text-xl font-bold text-rose-400 mb-3">Impacto na Saúde</h3>
-        <p class="text-slate-300 text-sm mb-4">O zumbido mecânico grave e constante atravessa tijolos e janelas causando nas casas vizinhas:</p>
-        <div class="flex flex-wrap justify-center gap-2 text-xs">
-          <span class="bg-rose-950/80 text-rose-200 px-3 py-1.5 rounded-lg">Irritação</span>
-          <span class="bg-rose-950/80 text-rose-200 px-3 py-1.5 rounded-lg">Insônia</span>
-          <span class="bg-rose-950/80 text-rose-200 px-3 py-1.5 rounded-lg">Dores de Cabeça e Ouvido</span>
-        </div>
-      </div>
-
-      <div class="glass-panel border-emerald-500/30 rounded-2xl p-5">
-        <h3 class="text-lg font-semibold text-emerald-400 mb-3">Soluções</h3>
-        <div class="space-y-3 text-sm text-slate-300">
-          <p class="bg-slate-950/40 p-3 rounded-lg"><strong class="text-emerald-500">Isolamento:</strong> Paredes acústicas.</p>
-          <p class="bg-slate-950/40 p-3 rounded-lg"><strong class="text-emerald-500">Manutenção:</strong> Limpeza dos chillers.</p>
-          <p class="bg-slate-950/40 p-3 rounded-lg"><strong class="text-emerald-500">Distância:</strong> Equipamentos barulhentos no meio da planta.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- FASE 6 MOBILE -->
-    <div id="stage-6" class="hidden
+            <strong class="text-amber-400 text-sm block mb-1">🔋 Baterias e Rede</strong><p class="text-xs text-slate-300">Redes de internet
