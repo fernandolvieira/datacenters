@@ -247,41 +247,84 @@
     </div>
 
     <!-- ==========================================
-         FASE 3: ENERGIA
+         FASE 3: ENERGIA (ATUALIZADA)
          ========================================== -->
-    <div id="stage-3" class="hidden flex-col h-full p-8 max-w-6xl mx-auto w-full">
+    <div id="stage-3" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
       <div class="text-center mb-6 shrink-0">
         <h2 class="text-4xl font-bold text-emerald-400 mb-2">O Selo Verde e a Fome Elétrica</h2>
-        <p class="text-slate-300">Por que o Brasil é o alvo principal das Big Techs no momento?</p>
+        <p class="text-slate-300 text-sm">Os data centers precisam de energia 24h por dia. Entenda o impacto.</p>
       </div>
 
-      <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-0">
-        <div class="glass-panel p-6 rounded-2xl border border-slate-700 h-full flex flex-col justify-center">
-          <h3 class="text-xl font-bold mb-4 text-cyan-300">1 Data Center = 1 Cidade</h3>
-          <p class="text-slate-300 mb-4 text-sm leading-relaxed">
-            Um único complexo moderno precisa de 30 a 100 Megawatts. O equivalente a uma cidade de 100 mil habitantes!
-          </p>
-          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 mb-4">
-            <h4 class="text-amber-400 font-bold text-sm mb-2">A Métrica PUE (Eficiência)</h4>
-            <p class="text-xs text-slate-400">
-              Para cada 100 Watts que os servidores usam, o prédio gasta outros 40 a 60 Watts só com o ar-condicionado.
-            </p>
+      <div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6 items-start min-h-0">
+        
+        <!-- COLUNA 1: EQUIPAMENTOS -->
+        <div class="glass-panel p-4 rounded-2xl border border-slate-700 flex flex-col h-full gap-3 overflow-y-auto">
+          <h3 class="text-lg font-bold text-white mb-2 sticky top-0 bg-[#0f172a]/90 backdrop-blur pb-2 z-10">O Que Consome Energia?</h3>
+          
+          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-cyan-500">
+            <strong class="text-cyan-400 text-sm block mb-1">🖥️ Servidores e Armazenamento</strong>
+            <p class="text-xs text-slate-300">São computadores hiperpotentes. Quando você envia um WhatsApp ou salva uma foto no Google Fotos, eles usam energia para processar e guardar isso.</p>
           </div>
-          <div class="bg-emerald-950/30 p-4 rounded-xl border border-emerald-900">
-            <h4 class="text-emerald-400 font-bold text-sm mb-2">A Vantagem Brasileira</h4>
-            <p class="text-xs text-emerald-200/70">
-              As gigantes vêm ao Brasil porque nossa matriz elétrica baseada em rios, sol e vento maquia o alto consumo delas com um "Selo Verde" sustentável.
-            </p>
+          
+          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500">
+            <strong class="text-emerald-400 text-sm block mb-1">❄️ Refrigeração</strong>
+            <p class="text-xs text-slate-300">Como esquentam muito, precisam de enormes chillers (ar-condicionados industriais) para não derreterem.</p>
+          </div>
+          
+          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-amber-500">
+            <strong class="text-amber-400 text-sm block mb-1">🔋 Baterias e Rede</strong>
+            <p class="text-xs text-slate-300">Redes de internet gigantescas e sistemas de backup (Nobreaks) que nunca podem falhar se a luz acabar.</p>
+          </div>
+        </div>
+
+        <!-- COLUNA 2: O CUSTO (COMPARATIVO) -->
+        <div class="glass-panel p-4 rounded-2xl border border-slate-700 flex flex-col justify-center h-full relative">
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-bold text-amber-400 mb-2">O Consumo Global</h3>
+            <p class="text-sm text-slate-300">Segundo a IEA (Agência Internacional de Energia), os data centers consumiram cerca de <strong class="text-white text-lg">415 TWh</strong> em 2024!</p>
+          </div>
+          
+          <div class="bg-[#1e293b] p-4 rounded-xl border border-[#334155] shadow-inner flex flex-col gap-4">
+            <div class="flex items-center gap-3 border-b border-[#334155] pb-3">
+              <span class="text-3xl">🏠</span>
+              <div>
+                <p class="text-xs text-slate-400 uppercase tracking-wide">Equivale a</p>
+                <p class="text-sm font-bold text-white">194 MILHÕES de casas brasileiras</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-3 border-b border-[#334155] pb-3">
+              <span class="text-3xl">📱</span>
+              <div>
+                <p class="text-xs text-slate-400 uppercase tracking-wide">1 kWh equivale a</p>
+                <p class="text-sm font-bold text-white">~55 cargas de celular completas</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🔋</span>
+              <div>
+                <p class="text-xs text-slate-400 uppercase tracking-wide">Uma casa brasileira usa</p>
+                <p class="text-sm font-bold text-white">~178 kWh por mês (9.800 cargas)</p>
+              </div>
+            </div>
           </div>
         </div>
         
-        <div class="glass-panel p-6 rounded-2xl border border-slate-700 flex flex-col items-center justify-center h-full relative min-h-[300px]">
+        <!-- COLUNA 3: A VANTAGEM BRASILEIRA (GRÁFICO) -->
+        <div class="glass-panel p-4 rounded-2xl border border-slate-700 flex flex-col items-center justify-center h-full relative">
           <h3 class="text-lg font-bold mb-2">Matriz Elétrica Limpa</h3>
-          <p class="text-xs text-slate-400 mb-6 text-center">Brasil x Média Global</p>
-          <div class="relative w-full h-full max-h-[300px] flex items-center justify-center">
+          <p class="text-[11px] text-slate-400 mb-4 text-center">Por que empresas vêm para o Brasil?<br>Para bater metas ecológicas!</p>
+          
+          <div class="relative w-full h-[180px] flex items-center justify-center mb-4">
             <canvas id="energyChart"></canvas>
           </div>
+          
+          <div class="bg-emerald-950/30 p-3 rounded-lg border border-emerald-900/50 w-full text-center">
+            <p class="text-[11px] text-emerald-200">~88,2% da eletricidade do Brasil vem de fontes limpas (EPE, 2024). Isso reduz muito o impacto da nuvem!</p>
+          </div>
         </div>
+
       </div>
     </div>
 
@@ -462,7 +505,7 @@
     </div>
 
     <!-- ==========================================
-         FASE 7: PARADOXO DOS EMPREGOS (ATUALIZADA)
+         FASE 7: PARADOXO DOS EMPREGOS
          ========================================== -->
     <div id="stage-7" class="hidden flex-col h-full p-8 max-w-6xl mx-auto w-full">
       <div class="text-center mb-4 shrink-0">
@@ -472,7 +515,6 @@
 
       <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-0">
         
-        <!-- COLUNA ESQUERDA: ANÁLISE DINÂMICA DO GRUPO -->
         <div class="glass-panel p-6 rounded-2xl border border-slate-700 flex flex-col justify-center h-full">
           <h3 class="text-xl font-bold mb-3 text-white">Análise do Grupo</h3>
           <p class="text-slate-300 mb-4 text-xs leading-relaxed">
@@ -509,7 +551,6 @@
           </div>
         </div>
         
-        <!-- COLUNA DIREITA: GRÁFICO (MANTIDO) -->
         <div class="glass-panel p-6 rounded-2xl border border-slate-700 flex flex-col items-center justify-center h-full relative min-h-[300px]">
           <h3 class="text-lg font-bold mb-2">Vagas Geradas (Média)</h3>
           <p class="text-xs text-slate-400 mb-6 text-center">Fase da Obra vs Operação Padrão</p>
@@ -614,10 +655,9 @@
       energyChartInstance = new Chart(ctx.getContext('2d'), {
         type: 'doughnut',
         data: {
-          labels: ['Renovável', 'Fóssil'],
+          labels: ['Renovável', 'Não Renovável'], // Atualizado da pesquisa
           datasets: [
-            { label: 'Brasil', data: [85, 15], backgroundColor: ['#10b981', '#334155'], borderWidth: 0 },
-            { label: 'Mundo', data: [30, 70], backgroundColor: ['#047857', '#0f172a'], borderWidth: 0 }
+            { label: 'Brasil (EPE 2024)', data: [88.2, 11.8], backgroundColor: ['#10b981', '#334155'], borderWidth: 0 } // Atualizado da pesquisa
           ]
         },
         options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1' } } } }
