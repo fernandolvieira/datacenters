@@ -69,24 +69,64 @@
       </div>
     </div>
 
-    <!-- FASE 1 -->
-    <div id="stage-1" class="hidden flex-col h-full p-8 max-w-6xl mx-auto w-full">
-      <div class="text-center mb-4 shrink-0">
-        <h2 class="text-4xl font-bold mb-2">A Nuvem Tem <span class="text-cyan-400">Endereço</span></h2>
+    <!-- FASE 1 (ATUALIZADA: GRAZI E ANITA) -->
+    <div id="stage-1" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
+      <div class="text-center mb-6 shrink-0">
+        <h2 class="text-4xl font-bold mb-2">A Nuvem Tem <span class="text-cyan-400">Endereço?</span></h2>
         <p class="text-slate-400 text-sm">Pesquisa e desenvolvimento: <strong class="text-cyan-300">Grazi e Anita</strong></p>
       </div>
-      <div class="flex-1 relative rounded-2xl overflow-hidden glass-glow min-h-0 mt-4">
-        <div class="absolute top-4 left-4 z-10 bg-slate-900/80 backdrop-blur border border-cyan-500/50 rounded-full px-4 py-2 flex items-center gap-2">
-          <div class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div><span class="text-xs font-bold text-cyan-100">Vídeo em Loop • Interior do Data Center</span>
+      
+      <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 min-h-0">
+        
+        <!-- COLUNA DE TEXTO -->
+        <div class="flex flex-col gap-5 h-full overflow-y-auto pr-2 pb-4">
+          <div class="glass-panel border-cyan-500/30 rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">☁️ O que é a Nuvem?</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">A nuvem não é um lugar no céu! Ela é uma tecnologia que permite guardar e acessar arquivos pela internet. Quando salvamos algo no Google Drive, iCloud ou OneDrive, nossos arquivos são gravados fisicamente em computadores potentes dentro de <strong>Data Centers</strong> espalhados pelo mundo.</p>
+          </div>
+          
+          <div class="glass-panel border-purple-500/30 rounded-2xl p-6 flex-1">
+            <h3 class="text-lg font-bold text-white mb-4">O que existe dentro de um Data Center?</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4 bg-slate-950/50 p-3 rounded-lg border border-slate-800/50">
+                <span class="text-2xl mt-0.5">🖥️</span>
+                <div><strong class="text-cyan-400 text-sm block">Servidores</strong><p class="text-xs text-slate-400 mt-1">Computadores enormes que guardam e processam informações.</p></div>
+              </div>
+              <div class="flex items-start gap-4 bg-slate-950/50 p-3 rounded-lg border border-slate-800/50">
+                <span class="text-2xl mt-0.5">🔌</span>
+                <div><strong class="text-emerald-400 text-sm block">Cabos e Equipamentos de Rede</strong><p class="text-xs text-slate-400 mt-1">Conectam os servidores à internet global de forma ultra-rápida.</p></div>
+              </div>
+              <div class="flex items-start gap-4 bg-slate-950/50 p-3 rounded-lg border border-slate-800/50">
+                <span class="text-2xl mt-0.5">❄️</span>
+                <div><strong class="text-blue-400 text-sm block">Sistemas de Refrigeração</strong><p class="text-xs text-slate-400 mt-1">Evitam que os equipamentos esquentem demais e derretam.</p></div>
+              </div>
+              <div class="flex items-start gap-4 bg-slate-950/50 p-3 rounded-lg border border-slate-800/50">
+                <span class="text-2xl mt-0.5">🔋</span>
+                <div><strong class="text-amber-400 text-sm block">Geradores e Baterias</strong><p class="text-xs text-slate-400 mt-1">Ajudam a manter tudo funcionando caso acabe a energia do bairro.</p></div>
+              </div>
+              <div class="flex items-start gap-4 bg-slate-950/50 p-3 rounded-lg border border-slate-800/50">
+                <span class="text-2xl mt-0.5">🛡️</span>
+                <div><strong class="text-rose-400 text-sm block">Sistemas de Segurança</strong><p class="text-xs text-slate-400 mt-1">Protegem os equipamentos físicos e as informações de hackers.</p></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-          <source src="video-datacenter.mp4" type="video/mp4">
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-server-racks-in-a-data-center-loop-42930-large.mp4" type="video/mp4">
-        </video>
+
+        <!-- COLUNA DE VÍDEO -->
+        <div class="relative rounded-2xl overflow-hidden glass-glow h-full min-h-[300px]">
+          <div class="absolute top-4 left-4 z-10 bg-slate-900/80 backdrop-blur border border-cyan-500/50 rounded-full px-4 py-2 flex items-center gap-2">
+            <div class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div><span class="text-xs font-bold text-cyan-100">Vídeo em Loop • Interior do Data Center</span>
+          </div>
+          <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+            <source src="video-datacenter.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-server-racks-in-a-data-center-loop-42930-large.mp4" type="video/mp4">
+          </video>
+        </div>
+        
       </div>
     </div>
 
-    <!-- FASE 2 (ATUALIZADA: VALENTINA E MAJU) -->
+    <!-- FASE 2 -->
     <div id="stage-2" class="hidden flex-col justify-center h-full p-8 max-w-7xl mx-auto w-full">
       <div class="text-center mb-6 shrink-0">
         <h2 class="text-4xl font-bold text-amber-400 mb-2">O Grande Dilema</h2>
@@ -273,39 +313,55 @@
 
     <!-- FASE 6 -->
     <div id="stage-6" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
-      <div class="text-center mb-6 shrink-0">
+      <div class="text-center shrink-0">
         <h2 class="text-4xl font-bold text-purple-400 mb-1">A Evolução e o Futuro</h2>
         <p class="text-slate-300 text-sm">Pesquisa e desenvolvimento: <strong class="text-cyan-300">Caio, Arthur, Victor e Brainer</strong></p>
       </div>
+      
       <div class="flex-1 flex flex-col justify-center relative min-h-0 pb-6">
-        <div class="absolute top-[40%] left-0 w-full h-1 bg-slate-800 -translate-y-1/2 z-0 hidden md:block"></div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 z-10">
-          <div class="glass-panel p-4 rounded-xl border border-slate-700 relative flex flex-col h-full">
-            <div class="w-4 h-4 bg-slate-500 rounded-full absolute -top-2 left-1/2 -translate-x-1/2 md:-top-10 border-4 border-slate-950"></div>
-            <span class="text-[11px] font-bold text-slate-400 block mb-1">Anos 1990 - 2000</span>
-            <h3 class="text-lg font-bold text-white mb-2">Salas de Servidores</h3>
-            <p class="text-xs text-slate-400 flex-1">Na década de 90, os servidores eram grandes, muito caros e limitados, guardados em salas de empresas. Nos anos 2000, ficaram menores e mais potentes, dando origem aos data centers.</p>
-          </div>
-          <div class="glass-panel p-4 rounded-xl border border-cyan-700 relative flex flex-col h-full">
-            <div class="w-4 h-4 bg-cyan-500 rounded-full absolute -top-2 left-1/2 -translate-x-1/2 md:-top-10 border-4 border-slate-950 shadow-[0_0_10px_#06b6d4]"></div>
-            <span class="text-[11px] font-bold text-cyan-400 block mb-1">A Conexão</span>
-            <h3 class="text-lg font-bold text-white mb-2">Cabos Submarinos</h3>
-            <p class="text-xs text-slate-400 flex-1">Fios de fibra óptica instalados no fundo dos oceanos. Sem eles, o Brasil não conseguiria se comunicar rapidamente com outros países.</p>
-          </div>
-          <div class="glass-panel p-4 rounded-xl border border-emerald-700 relative flex flex-col h-full">
-            <div class="w-4 h-4 bg-emerald-500 rounded-full absolute -top-2 left-1/2 -translate-x-1/2 md:-top-10 border-4 border-slate-950 shadow-[0_0_10px_#10b981]"></div>
-            <span class="text-[11px] font-bold text-emerald-400 block mb-1">Pandemia (2020)</span>
-            <h3 class="text-lg font-bold text-white mb-2">Streaming & Isolamento</h3>
-            <p class="text-xs text-slate-400 flex-1">A ascensão da Netflix, Spotify, aulas online e trabalho remoto exigiram que a infraestrutura de dados crescesse rapidamente.</p>
-          </div>
-          <div class="glass-panel p-4 rounded-xl border border-amber-700 relative scale-105 shadow-[0_0_20px_rgba(245,158,11,0.2)] flex flex-col h-full">
-            <div class="w-4 h-4 bg-amber-500 rounded-full absolute -top-2 left-1/2 -translate-x-1/2 md:-top-10 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] animate-ping"></div>
-            <span class="text-[11px] font-bold text-amber-400 block mb-1">O Futuro</span>
-            <h3 class="text-lg font-bold text-white mb-2">A Era da IA</h3>
-            <p class="text-xs text-slate-300 flex-1">A Inteligência Artificial vai autogerenciar os sistemas, economizar refrigeração e exigir processadores ultra-rápidos para funcionar.</p>
+        <div class="relative w-full mt-10 md:mt-16">
+          <div class="absolute top-0 left-0 w-full h-1 bg-slate-800 hidden md:block -translate-y-1/2"></div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8 z-10">
+            <div class="glass-panel p-4 rounded-xl border border-slate-700 relative flex flex-col h-full">
+              <div class="w-4 h-4 bg-slate-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 hidden md:block z-20"></div>
+              <div class="w-4 h-4 bg-slate-500 rounded-full absolute -top-2 left-1/2 -translate-x-1/2 border-4 border-slate-950 md:hidden z-20"></div>
+              
+              <span class="text-[11px] font-bold text-slate-400 block mb-1">Anos 1990 - 2000</span>
+              <h3 class="text-lg font-bold text-white mb-2">Salas de Servidores</h3>
+              <p class="text-xs text-slate-400 flex-1">Na década de 90, os servidores eram grandes, muito caros e limitados, guardados em salas de empresas. Nos anos 2000, ficaram menores e mais potentes, dando origem aos data centers.</p>
+            </div>
+            
+            <div class="glass-panel p-4 rounded-xl border border-cyan-700 relative flex flex-col h-full">
+              <div class="w-4 h-4 bg-cyan-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_10px_#06b6d4] hidden md:block z-20"></div>
+              <div class="w-4 h-4 bg-cyan-500 rounded-full absolute -top-2 left-1/2 -translate-x-1/2 border-4 border-slate-950 shadow-[0_0_10px_#06b6d4] md:hidden z-20"></div>
+              <span class="text-[11px] font-bold text-cyan-400 block mb-1">A Conexão</span>
+              <h3 class="text-lg font-bold text-white mb-2">Cabos Submarinos</h3>
+              <p class="text-xs text-slate-400 flex-1">Fios de fibra óptica instalados no fundo dos oceanos. Sem eles, o Brasil não conseguiria se comunicar rapidamente com outros países.</p>
+            </div>
+            
+            <div class="glass-panel p-4 rounded-xl border border-emerald-700 relative flex flex-col h-full">
+              <div class="w-4 h-4 bg-emerald-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_10px_#10b981] hidden md:block z-20"></div>
+              <div class="w-4 h-4 bg-emerald-500 rounded-full absolute -top-2 left-1/2 -translate-x-1/2 border-4 border-slate-950 shadow-[0_0_10px_#10b981] md:hidden z-20"></div>
+              <span class="text-[11px] font-bold text-emerald-400 block mb-1">Pandemia (2020)</span>
+              <h3 class="text-lg font-bold text-white mb-2">Streaming & Isolamento</h3>
+              <p class="text-xs text-slate-400 flex-1">A ascensão da Netflix, Spotify, aulas online e trabalho remoto exigiram que a infraestrutura de dados crescesse rapidamente.</p>
+            </div>
+            
+            <div class="glass-panel p-4 rounded-xl border-2 border-amber-500 relative shadow-[0_0_20px_rgba(245,158,11,0.25)] flex flex-col h-full mt-2 md:mt-0">
+              <div class="w-4 h-4 bg-amber-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] animate-ping hidden md:block z-20"></div>
+              <div class="w-4 h-4 bg-amber-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] hidden md:block z-30"></div>
+              <div class="w-4 h-4 bg-amber-500 rounded-full absolute -top-2 left-1/2 -translate-x-1/2 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] animate-ping md:hidden z-20"></div>
+              <div class="w-4 h-4 bg-amber-500 rounded-full absolute -top-2 left-1/2 -translate-x-1/2 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] md:hidden z-30"></div>
+              
+              <span class="text-[11px] font-bold text-amber-400 block mb-1">O Futuro</span>
+              <h3 class="text-lg font-bold text-white mb-2">A Era da IA</h3>
+              <p class="text-xs text-slate-300 flex-1">A Inteligência Artificial vai autogerenciar os sistemas, economizar refrigeração e exigir processadores ultra-rápidos para funcionar.</p>
+            </div>
           </div>
         </div>
-        <div class="mt-8 bg-slate-900/80 border border-purple-500/50 p-4 rounded-xl text-center w-full max-w-4xl mx-auto shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+
+        <div class="mt-8 bg-slate-900/80 border border-purple-500/50 p-4 rounded-xl text-center w-full max-w-4xl mx-auto shadow-[0_0_15px_rgba(168,85,247,0.1)] shrink-0">
            <h4 class="text-sm font-bold text-purple-400 mb-1">Conclusão</h4>
            <p class="text-sm text-slate-300">Os data centers evoluíram de salas com poucos computadores para "cidades digitais". O futuro é digital, e eles são o coração de tudo isso!</p>
         </div>
