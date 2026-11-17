@@ -45,7 +45,7 @@
 
   <main class="flex-1 w-full h-full pt-16 pb-16 overflow-hidden">
     
-    <!-- MENU PRINCIPAL (ESTÁGIOS) -->
+    <!-- MENU PRINCIPAL -->
     <div id="stage-0" class="flex flex-col justify-center items-center h-full px-8 active-stage w-full max-w-7xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full mb-6 mt-4">
         <button onclick="goToStage(1)" class="bg-[#111827] hover:bg-[#1f2937] transition-all text-left p-5 rounded-xl border border-slate-800 border-l-4 border-l-[#06b6d4] flex flex-col justify-between h-40">
@@ -72,7 +72,7 @@
       </div>
     </div>
 
-    <!-- MENU DE DADOS (NOVA SEÇÃO) -->
+    <!-- MENU DE DADOS -->
     <div id="stage-dados" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
       <div class="text-center mb-6 shrink-0">
         <h2 class="text-4xl font-bold text-indigo-400 mb-2">Dashboard de Dados</h2>
@@ -80,7 +80,7 @@
       </div>
 
       <div class="flex-1 flex flex-col min-h-0">
-        <!-- Abas de Navegação -->
+        <!-- Abas -->
         <div class="flex justify-center gap-4 mb-6 shrink-0">
           <button onclick="showChartTab('tab-agua-mundial')" class="chart-tab-btn bg-indigo-600 border-indigo-400 text-white font-bold py-2 px-4 rounded-lg border">Gasto Hídrico Mundial</button>
           <button onclick="showChartTab('tab-agua-local')" class="chart-tab-btn bg-slate-800 border-slate-600 hover:bg-slate-700 text-slate-300 font-bold py-2 px-4 rounded-lg border">Água: Impacto Local</button>
@@ -88,24 +88,24 @@
           <button onclick="showChartTab('tab-energia-cargas')" class="chart-tab-btn bg-slate-800 border-slate-600 hover:bg-slate-700 text-slate-300 font-bold py-2 px-4 rounded-lg border">O Peso de 1 kWh</button>
         </div>
 
-        <!-- Conteúdo das Abas -->
         <div class="flex-1 relative glass-panel rounded-2xl p-6 border-slate-700 overflow-hidden">
           
-          <!-- TAB 1: ÁGUA MUNDIAL (Manu e Isadora) -->
+          <!-- TAB 1: ÁGUA MUNDIAL (Manu e Isadora) - REFORMULADO -->
           <div id="tab-agua-mundial" class="chart-tab-content flex w-full h-full gap-6">
             <div class="flex-1 flex flex-col justify-center h-full min-h-[300px] relative">
-              <canvas id="chart-agua-mundial"></canvas>
+              <canvas id="chart-agua-mundial-bars"></canvas>
             </div>
             <div class="w-1/3 flex flex-col justify-center">
               <h3 class="text-2xl font-bold text-blue-400 mb-2">O Consumo Hídrico</h3>
               <p class="text-xs text-cyan-300 mb-4 font-bold">Por: Manu e Isadora</p>
-              <p class="text-sm text-slate-300 mb-4 leading-relaxed">Os ~12.000 data centers do mundo consomem entre <strong>560 a 600 bilhões de litros de água</strong> por ano. Embora isso represente apenas 0,015% do consumo mundial, o impacto é gigante.</p>
-              <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-blue-500 text-sm text-slate-300 space-y-2">
-                <p>O que faríamos com essa água?</p>
-                <ul class="list-disc pl-4 text-xs text-slate-400">
-                  <li>Abastecer 12 milhões de pessoas (quase SP inteira) por 1 ano.</li>
-                  <li>Tomar 6 bilhões de banhos de 10 min.</li>
-                  <li>Produzir 37 mil toneladas de carne.</li>
+              <p class="text-sm text-slate-300 mb-4 leading-relaxed">Os ~12.000 data centers do mundo consomem cerca de <strong>560 a 600 bilhões de litros de água</strong> por ano. Embora seja "só" 0,015% do consumo mundial, o impacto local é destrutivo, podendo consumir até 25% da água de uma cidade sede.</p>
+              <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-blue-500 text-sm text-slate-300">
+                <p>O que faríamos com 560 bi de litros?</p>
+                <ul class="list-disc pl-4 text-xs text-slate-400 mt-2 space-y-1">
+                  <li><strong>Abastecer:</strong> 12 milhões de pessoas/ano.</li>
+                  <li><strong>Banhos:</strong> 6 bilhões de banhos (10 min).</li>
+                  <li><strong>Piscinas:</strong> Encher 224.000 piscinas olímpicas.</li>
+                  <li><strong>Alimento:</strong> 37 mil toneladas de carne ou 200 mil tons de arroz.</li>
                 </ul>
               </div>
             </div>
@@ -127,29 +127,29 @@
             </div>
           </div>
 
-          <!-- TAB 3: MATRIZ ENERGÉTICA (Helena e Geovanna) -->
+          <!-- TAB 3: MATRIZ ENERGÉTICA (Helena e Geovanna) - CORRIGIDA -->
           <div id="tab-matriz-energia" class="chart-tab-content hidden w-full h-full gap-6">
             <div class="flex-1 flex items-center justify-center gap-4 h-full min-h-[300px] relative">
                <div class="w-1/2 h-full relative flex flex-col items-center justify-center">
-                   <h4 class="text-center font-bold text-sm text-slate-300 mb-2">Matriz do Brasil (2025)</h4>
-                   <canvas id="chart-matriz-br"></canvas>
+                   <h4 class="text-center font-bold text-sm text-slate-300 mb-2">Matriz Elétrica Brasileira (2025)</h4>
+                   <canvas id="chart-matriz-br-new"></canvas>
                </div>
                <div class="w-1/2 h-full relative flex flex-col items-center justify-center">
-                   <h4 class="text-center font-bold text-sm text-slate-300 mb-2">Matriz Mundial (2023)</h4>
-                   <canvas id="chart-matriz-mundo"></canvas>
+                   <h4 class="text-center font-bold text-sm text-slate-300 mb-2">Matriz Energética Mundial (2023)</h4>
+                   <canvas id="chart-matriz-mundo-new"></canvas>
                </div>
             </div>
             <div class="w-1/3 flex flex-col justify-center">
               <h3 class="text-2xl font-bold text-emerald-400 mb-2">Brasil Sustentável</h3>
               <p class="text-xs text-cyan-300 mb-4 font-bold">Por: Helena Lopes e Geovanna</p>
-              <p class="text-sm text-slate-300 mb-4 leading-relaxed">A maior parte da energia do mundo vem de fontes poluidoras (petróleo, carvão e gás). O Brasil é uma exceção mundial.</p>
+              <p class="text-sm text-slate-300 mb-4 leading-relaxed">A maior parte da energia do mundo vem de fontes poluidoras (petróleo, carvão e gás). O Brasil é uma exceção mundial em sua matriz elétrica.</p>
               <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500 text-sm text-slate-300">
-                <p class="text-xs">Nossa energia é movida a rios (hidráulica), vento, sol e derivados da cana-de-açúcar. Isso explica a corrida das gigantes da tecnologia para instalarem data centers aqui: energia limpa para bater metas ambientais globais.</p>
+                <p class="text-xs">Mais de 51% da nossa eletricidade é hidráulica, seguida por eólica, solar e biomassa. Isso atrai as gigantes da tecnologia: elas usam nossa infraestrutura limpa para bater metas ambientais em relatórios globais.</p>
               </div>
             </div>
           </div>
 
-          <!-- TAB 4: ENERGIA E CELULARES (Letícia e Helena I.) -->
+          <!-- TAB 4: ENERGIA E CELULARES -->
           <div id="tab-energia-cargas" class="chart-tab-content hidden w-full h-full gap-6">
             <div class="flex-1 flex flex-col justify-center h-full min-h-[300px] relative">
               <canvas id="chart-energia-cargas"></canvas>
@@ -170,7 +170,7 @@
       </div>
     </div>
 
-    <!-- FASES 1 a 7 (Mantidas exatamente iguais, cortadas aqui para poupar espaço mas presentes no arquivo) -->
+    <!-- FASES 1 a 7 (Mantidas idênticas e simplificadas visualmente aqui no código para poupar espaço) -->
     <!-- FASE 1 -->
     <div id="stage-1" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
       <div class="text-center mb-6 shrink-0">
@@ -214,9 +214,9 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 min-h-0">
         <div class="glass-panel border-amber-500/30 rounded-2xl p-6 flex flex-col justify-center h-full">
           <h3 class="text-xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Por que o Brasil?</h3>
-          <p class="text-sm text-slate-300 mb-4">O país atrai esses investimentos porque possui um grande mercado de internet, muitas empresas de tecnologia e um gigantesco potencial de produzir energia limpa (fontes renováveis).</p>
+          <p class="text-sm text-slate-300 mb-4">O país atrai investimentos porque possui um grande mercado de internet, muitas empresas de tecnologia e um gigantesco potencial de energia limpa.</p>
           <h3 class="text-xl font-bold text-white mb-2 border-b border-slate-700 pb-2">A Base de Tudo</h3>
-          <p class="text-sm text-slate-300"><strong>Eletricidade:</strong> Essencial para manter tudo ligado 24h.<br><strong>Internet:</strong> Permite que dados sejam enviados e recebidos rapidamente.</p>
+          <p class="text-sm text-slate-300"><strong>Eletricidade:</strong> Essencial para manter tudo ligado 24h.<br><strong>Internet:</strong> Permite que dados sejam enviados e recebidos.</p>
         </div>
         <div class="col-span-2 grid grid-cols-2 gap-4">
           <div class="glass-panel border-emerald-500/30 rounded-2xl p-5 flex flex-col gap-3">
@@ -225,25 +225,25 @@
               <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-emerald-500">Gera novos empregos.</li>
               <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-emerald-500">Atrai investimentos e novas empresas.</li>
               <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-emerald-500">Melhora a infraestrutura tecnológica local.</li>
-              <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-emerald-500">Movimenta o comércio e facilita o armazenamento de dados.</li>
+              <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-emerald-500">Movimenta o comércio e facilita o armazenamento.</li>
             </ul>
           </div>
           <div class="glass-panel border-rose-500/30 rounded-2xl p-5 flex flex-col gap-3">
             <div class="text-center pb-3 border-b border-slate-700"><span class="text-4xl block mb-2">👎</span><h3 class="text-xl font-bold text-rose-400">Contras e Impactos</h3></div>
             <ul class="space-y-3 text-xs mt-2">
               <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-rose-500">Consome muita energia elétrica.</li>
-              <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-rose-500">Pode aumentar drasticamente o consumo de água.</li>
-              <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-rose-500">Exige altos investimentos para construção.</li>
-              <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-rose-500">Gera ruídos (poluição sonora) que prejudicam os moradores.</li>
+              <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-rose-500">Aumenta drasticamente o consumo de água local.</li>
+              <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-rose-500">Exige altos investimentos e isenções fiscais.</li>
+              <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-rose-500">Gera ruídos (poluição sonora) que prejudicam vizinhos.</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="mt-4 glass-panel border-cyan-500/50 rounded-xl p-4 text-center max-w-4xl mx-auto shadow-[0_0_15px_rgba(34,211,238,0.15)] shrink-0">
-        <h4 class="text-sm font-bold text-cyan-400 mb-1">A Conclusão</h4><p class="text-xs text-slate-300">Data centers podem trazer desenvolvimento para o Brasil, mas os riscos ambientais exigem que sejam construídos de forma <strong>planejada e bem sustentável</strong>.</p>
+        <h4 class="text-sm font-bold text-cyan-400 mb-1">A Conclusão</h4><p class="text-xs text-slate-300">Data centers podem trazer desenvolvimento, mas os riscos ambientais exigem construção <strong>planejada e sustentável</strong>.</p>
       </div>
     </div>
-    <!-- FASE 3 -->
+    <!-- FASE 3 (Atualizada Matriz) -->
     <div id="stage-3" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
       <div class="text-center mb-6 shrink-0">
         <h2 class="text-4xl font-bold text-emerald-400 mb-1">Fome Elétrica</h2>
@@ -252,24 +252,24 @@
       <div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6 items-start min-h-0">
         <div class="glass-panel p-4 rounded-2xl border border-slate-700 flex flex-col h-full gap-3 overflow-y-auto">
           <h3 class="text-lg font-bold text-white mb-2 sticky top-0 bg-[#0f172a]/90 backdrop-blur pb-2 z-10">O Que Consome Energia?</h3>
-          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-cyan-500"><strong class="text-cyan-400 text-sm block mb-1">🖥️ Servidores e Armazenamento</strong><p class="text-xs text-slate-300">São computadores hiperpotentes. Quando você envia um WhatsApp ou salva uma foto no Google Fotos, eles usam energia para processar e guardar isso.</p></div>
-          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500"><strong class="text-emerald-400 text-sm block mb-1">❄️ Refrigeração</strong><p class="text-xs text-slate-300">Como esquentam muito, precisam de enormes chillers (ar-condicionados industriais) para não derreterem.</p></div>
-          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-amber-500"><strong class="text-amber-400 text-sm block mb-1">🔋 Baterias e Rede</strong><p class="text-xs text-slate-300">Redes de internet gigantescas e sistemas de backup (Nobreaks) que nunca podem falhar se a luz acabar.</p></div>
+          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-cyan-500"><strong class="text-cyan-400 text-sm block mb-1">🖥️ Servidores e Armazenamento</strong><p class="text-xs text-slate-300">Computadores hiperpotentes que processam e guardam informações.</p></div>
+          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-emerald-500"><strong class="text-emerald-400 text-sm block mb-1">❄️ Refrigeração</strong><p class="text-xs text-slate-300">Chillers industriais que impedem os servidores de derreterem.</p></div>
+          <div class="bg-slate-950/50 p-3 rounded-lg border-l-4 border-amber-500"><strong class="text-amber-400 text-sm block mb-1">🔋 Baterias e Rede</strong><p class="text-xs text-slate-300">Nobreaks e cabos de rede de alta capacidade.</p></div>
         </div>
         <div class="glass-panel p-4 rounded-2xl border border-slate-700 flex flex-col justify-center h-full relative">
           <div class="text-center mb-6">
-            <h3 class="text-xl font-bold text-amber-400 mb-2">O Consumo Global</h3><p class="text-sm text-slate-300">Segundo a IEA, os data centers consumiram cerca de <strong class="text-white text-lg">415 TWh</strong> em 2024!</p>
+            <h3 class="text-xl font-bold text-amber-400 mb-2">O Consumo Global</h3><p class="text-sm text-slate-300">Os data centers consumiram cerca de <strong class="text-white text-lg">415 TWh</strong> em 2024!</p>
           </div>
           <div class="bg-[#1e293b] p-4 rounded-xl border border-[#334155] shadow-inner flex flex-col gap-4">
             <div class="flex items-center gap-3 border-b border-[#334155] pb-3"><span class="text-3xl">🏠</span><div><p class="text-xs text-slate-400 uppercase tracking-wide">Equivale a</p><p class="text-sm font-bold text-white">194 MILHÕES de casas brasileiras</p></div></div>
             <div class="flex items-center gap-3 border-b border-[#334155] pb-3"><span class="text-3xl">📱</span><div><p class="text-xs text-slate-400 uppercase tracking-wide">1 kWh equivale a</p><p class="text-sm font-bold text-white">~55 cargas de celular completas</p></div></div>
-            <div class="flex items-center gap-3"><span class="text-3xl">🔋</span><div><p class="text-xs text-slate-400 uppercase tracking-wide">Uma casa brasileira usa</p><p class="text-sm font-bold text-white">~178 kWh por mês (9.800 cargas)</p></div></div>
+            <div class="flex items-center gap-3"><span class="text-3xl">🔋</span><div><p class="text-xs text-slate-400 uppercase tracking-wide">Uma casa comum usa</p><p class="text-sm font-bold text-white">~178 kWh/mês (9.800 cargas)</p></div></div>
           </div>
         </div>
         <div class="glass-panel p-4 rounded-2xl border border-slate-700 flex flex-col items-center justify-center h-full relative">
-          <h3 class="text-lg font-bold mb-2">Matriz Elétrica Limpa</h3><p class="text-[11px] text-slate-400 mb-4 text-center">Por que empresas vêm para o Brasil?<br>Para bater metas ecológicas!</p>
-          <div class="relative w-full h-[180px] flex items-center justify-center mb-4"><canvas id="energyChart"></canvas></div>
-          <div class="bg-emerald-950/30 p-3 rounded-lg border border-emerald-900/50 w-full text-center"><p class="text-[11px] text-emerald-200">~88,2% da eletricidade do Brasil vem de fontes limpas. Isso reduz o impacto global!</p></div>
+          <h3 class="text-lg font-bold mb-2">Por que o Brasil?</h3><p class="text-[11px] text-slate-400 mb-4 text-center">Temos infraestrutura hidráulica e eólica massiva.</p>
+          <div class="relative w-full h-[180px] flex items-center justify-center mb-4"><canvas id="energyChartBR"></canvas></div>
+          <div class="bg-emerald-950/30 p-3 rounded-lg border border-emerald-900/50 w-full text-center"><p class="text-[11px] text-emerald-200">Mais de 51% da matriz elétrica do Brasil é Hidráulica (Água). Fonte limpa atrai big techs!</p></div>
         </div>
       </div>
     </div>
@@ -283,7 +283,7 @@
         <div class="glass-panel border-blue-500/30 rounded-2xl p-4 flex flex-col justify-center gap-3">
           <div class="flex items-center gap-2 mb-1"><span class="text-2xl">💧</span><h3 class="text-lg font-bold text-blue-400">Resfriamento e Água</h3></div>
           <div class="bg-slate-950/50 p-2 rounded-lg border border-slate-700/50"><h4 class="text-sm font-bold text-blue-300">Liquid Cooling</h4><p class="text-xs text-slate-400 mt-1">Placas frias transferem calor do chip para líquido. Essencial para IAs.</p></div>
-          <div class="bg-rose-950/30 p-2 rounded-lg border border-rose-900/50 mt-1"><h4 class="text-sm font-bold text-rose-300">Alerta: São João del-Rei</h4><p class="text-xs text-rose-200/80 mt-1">Se os 12.000 data centers usassem a água do Brasil, consumiriam 10,9 trilhões de Litros/ano — o bastante para abastecer São João del-Rei por 939 anos!</p></div>
+          <div class="bg-rose-950/30 p-2 rounded-lg border border-rose-900/50 mt-1"><h4 class="text-sm font-bold text-rose-300">Alerta: São João del-Rei</h4><p class="text-xs text-rose-200/80 mt-1">Se os 12.000 data centers usassem a água do Brasil, evaporariam quase 11 trilhões de Litros/ano — o bastante para abastecer São João del-Rei por mais de 1 bilhão de anos!</p></div>
         </div>
         <div class="bg-slate-900/80 border border-slate-600 rounded-2xl p-4 flex flex-col items-center justify-between text-center relative overflow-hidden">
           <h3 class="text-sm font-bold text-amber-400 uppercase tracking-widest mb-2">Gasto Desnecessário</h3>
@@ -363,28 +363,28 @@
             <div class="glass-panel p-4 rounded-xl border border-slate-700 relative flex flex-col h-full">
               <div class="w-4 h-4 bg-slate-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 hidden md:block z-20"></div>
               <span class="text-[11px] font-bold text-slate-400 block mb-1">Anos 1990 - 2000</span><h3 class="text-lg font-bold text-white mb-2">Salas de Servidores</h3>
-              <p class="text-xs text-slate-400 flex-1">Na década de 90, os servidores eram grandes, muito caros e limitados, guardados em salas de empresas. Nos anos 2000, ficaram menores e mais potentes, dando origem aos data centers.</p>
+              <p class="text-xs text-slate-400 flex-1">Na década de 90, os servidores eram grandes e caros. Nos anos 2000, ficaram menores e mais potentes, dando origem aos data centers.</p>
             </div>
             <div class="glass-panel p-4 rounded-xl border border-cyan-700 relative flex flex-col h-full">
               <div class="w-4 h-4 bg-cyan-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_10px_#06b6d4] hidden md:block z-20"></div>
               <span class="text-[11px] font-bold text-cyan-400 block mb-1">A Conexão</span><h3 class="text-lg font-bold text-white mb-2">Cabos Submarinos</h3>
-              <p class="text-xs text-slate-400 flex-1">Fios de fibra óptica instalados no fundo dos oceanos. Sem eles, o Brasil não conseguiria se comunicar rapidamente com outros países.</p>
+              <p class="text-xs text-slate-400 flex-1">Fios de fibra óptica no fundo dos oceanos. Sem eles, o Brasil não conseguiria se comunicar rapidamente com outros países.</p>
             </div>
             <div class="glass-panel p-4 rounded-xl border border-emerald-700 relative flex flex-col h-full">
               <div class="w-4 h-4 bg-emerald-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_10px_#10b981] hidden md:block z-20"></div>
               <span class="text-[11px] font-bold text-emerald-400 block mb-1">Pandemia (2020)</span><h3 class="text-lg font-bold text-white mb-2">Streaming & Isolamento</h3>
-              <p class="text-xs text-slate-400 flex-1">A ascensão da Netflix, Spotify, aulas online e trabalho remoto exigiram que a infraestrutura de dados crescesse rapidamente.</p>
+              <p class="text-xs text-slate-400 flex-1">A ascensão da Netflix, Spotify e trabalho remoto exigiram que a infraestrutura de dados crescesse rapidamente.</p>
             </div>
             <div class="glass-panel p-4 rounded-xl border-2 border-amber-500 relative shadow-[0_0_20px_rgba(245,158,11,0.25)] flex flex-col h-full mt-2 md:mt-0">
               <div class="w-4 h-4 bg-amber-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] animate-ping hidden md:block z-20"></div>
               <div class="w-4 h-4 bg-amber-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] hidden md:block z-30"></div>
               <span class="text-[11px] font-bold text-amber-400 block mb-1">O Futuro</span><h3 class="text-lg font-bold text-white mb-2">A Era da IA</h3>
-              <p class="text-xs text-slate-300 flex-1">A Inteligência Artificial vai autogerenciar os sistemas, economizar refrigeração e exigir processadores ultra-rápidos para funcionar.</p>
+              <p class="text-xs text-slate-300 flex-1">A Inteligência Artificial vai autogerenciar os sistemas, economizar refrigeração e exigir processadores ultra-rápidos.</p>
             </div>
           </div>
         </div>
         <div class="mt-8 bg-slate-900/80 border border-purple-500/50 p-4 rounded-xl text-center w-full max-w-4xl mx-auto shadow-[0_0_15px_rgba(168,85,247,0.1)] shrink-0">
-           <h4 class="text-sm font-bold text-purple-400 mb-1">Conclusão</h4><p class="text-sm text-slate-300">Os data centers evoluíram de salas com poucos computadores para "cidades digitais". O futuro é digital, e eles são o coração de tudo isso!</p>
+           <h4 class="text-sm font-bold text-purple-400 mb-1">Conclusão</h4><p class="text-sm text-slate-300">Os data centers evoluíram para "cidades digitais". O futuro é digital, e eles são o coração de tudo isso!</p>
         </div>
       </div>
     </div>
@@ -432,7 +432,6 @@
     const totalStages = 7;
     let currentStage = 0;
     
-    // SOM
     let audioCtx, oscillator, gainNode;
     let isPlaying = false;
     const btnSound = document.getElementById('btn-sound');
@@ -471,62 +470,68 @@
       }
     }
 
-    // CHARTS GERAIS (Estande normal)
+    // GRAFICOS GERAIS DAS FASES
     let energyChartInstance = null;
     let jobsChartInstance = null;
     
-    // CHARTS DOS DADOS (Matemática)
+    function initGeneralCharts() {
+        if(!energyChartInstance) {
+            const ctxE = document.getElementById('energyChartBR');
+            if(ctxE) {
+                energyChartInstance = new Chart(ctxE.getContext('2d'), {
+                    type: 'doughnut',
+                    data: { labels: ['Hidráulica', 'Eólica', 'Biomassa', 'Solar', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 8.4, 11.4, 7.5, 6.6], backgroundColor: ['#38bdf8', '#0ea5e9', '#22c55e', '#eab308', '#475569', '#1e293b'], borderWidth: 0 }] },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 10} } } } }
+                });
+            }
+        }
+        if(!jobsChartInstance) {
+            const ctxJ = document.getElementById('jobsChart');
+            if(ctxJ) {
+                jobsChartInstance = new Chart(ctxJ.getContext('2d'), {
+                    type: 'bar',
+                    data: { labels: ['Fase de Obras', 'Operação Fixa'], datasets: [{ label: 'Nº de Profissionais', data: [1500, 40], backgroundColor: ['#fbbf24', '#14b8a6'], borderRadius: 6 }] },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0' }, grid: { display: false } } } }
+                });
+            }
+        }
+    }
+
+    // GRAFICOS DO MENU DE DADOS
     let chartAguaMundial = null;
     let chartAguaLocal = null;
     let chartMatrizBR = null;
     let chartMatrizMundo = null;
     let chartEnergiaCargas = null;
 
-    function initGeneralCharts() {
-      if(!energyChartInstance) {
-          const ctxE = document.getElementById('energyChart');
-          if(ctxE) {
-              energyChartInstance = new Chart(ctxE.getContext('2d'), {
-                type: 'doughnut',
-                data: { labels: ['Renovável', 'Não Renovável'], datasets: [{ label: 'Brasil (EPE 2024)', data: [88.2, 11.8], backgroundColor: ['#10b981', '#334155'], borderWidth: 0 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1' } } } }
-              });
-          }
-      }
-      if(!jobsChartInstance) {
-          const ctxJ = document.getElementById('jobsChart');
-          if(ctxJ) {
-              jobsChartInstance = new Chart(ctxJ.getContext('2d'), {
-                type: 'bar',
-                data: { labels: ['Fase de Obras', 'Operação Fixa'], datasets: [{ label: 'Nº de Profissionais', data: [1500, 40], backgroundColor: ['#fbbf24', '#14b8a6'], borderRadius: 6 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0' }, grid: { display: false } } } }
-              });
-          }
-      }
-    }
-
     function initDataCharts() {
-        // Tab 1: Agua Mundial (Manu e Isadora)
         if(!chartAguaMundial) {
-            chartAguaMundial = new Chart(document.getElementById('chart-agua-mundial'), {
-                type: 'pie',
+            chartAguaMundial = new Chart(document.getElementById('chart-agua-mundial-bars'), {
+                type: 'bar',
                 data: {
-                    labels: ['Consumo de Água Restante no Mundo', 'Consumo de 12.000 Data Centers'],
+                    labels: ['Banhos de 10 min', 'Piscinas Olímpicas', 'Carne (Ton)', 'Arroz (Ton)'],
                     datasets: [{
-                        data: [99.985, 0.015],
-                        backgroundColor: ['#1e293b', '#3b82f6'],
-                        borderWidth: 1, borderColor: '#0f172a'
+                        label: 'O que dá pra fazer com a água de 12k Data Centers?',
+                        data: [6000000000, 224000, 37000, 200000],
+                        backgroundColor: ['#3b82f6', '#0ea5e9', '#eab308', '#f59e0b'],
+                        borderRadius: 4
                     }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1' } } } }
+                options: { 
+                    indexAxis: 'y', responsive: true, maintainAspectRatio: false, 
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c) { return c.raw.toLocaleString('pt-BR'); } } } },
+                    scales: { 
+                        x: { type: 'logarithmic', ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                        y: { ticks: { color: '#e2e8f0' }, grid: { display: false } } 
+                    }
+                }
             });
         }
-        // Tab 2: Agua Local (Pedro e Isabela)
         if(!chartAguaLocal) {
             chartAguaLocal = new Chart(document.getElementById('chart-agua-local'), {
                 type: 'bar',
                 data: {
-                    labels: ['1 Data Center (Dia)', '12.000 Data Centers (Ano)'],
+                    labels: ['1 DC (Dia)', '12.000 DCs (Ano)'],
                     datasets: [{
                         label: 'Consumo (Litros)',
                         data: [2500000, 10950000000000],
@@ -536,7 +541,7 @@
                 },
                 options: { 
                     responsive: true, maintainAspectRatio: false, 
-                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(context) { return context.raw.toLocaleString('pt-BR') + ' Litros'; } } } },
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c) { return c.raw.toLocaleString('pt-BR') + ' Litros'; } } } },
                     scales: { 
                         y: { type: 'logarithmic', ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
                         x: { ticks: { color: '#e2e8f0' }, grid: { display: false } } 
@@ -544,43 +549,41 @@
                 }
             });
         }
-        // Tab 3: Matrizes Energéticas (Helena e Geovanna)
         if(!chartMatrizBR) {
-            chartMatrizBR = new Chart(document.getElementById('chart-matriz-br'), {
+            chartMatrizBR = new Chart(document.getElementById('chart-matriz-br-new'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['Petróleo/Derivados', 'Cana-de-açúcar', 'Hidráulica', 'Gás natural', 'Lenha/Carvão Veg', 'Carvão Mineral', 'Eólica', 'Solar', 'Nuclear', 'Outras não renováveis'],
+                    labels: ['Hidráulica', 'Solar', 'Eólica', 'Biomassa', 'Gás Nat.', 'Carvão', 'Nuclear', 'Petróleo', 'Imp.'],
                     datasets: [{
-                        data: [33.7, 15.9, 10.7, 10.3, 8.3, 4.3, 3.1, 2.7, 1.3, 0.8],
-                        backgroundColor: ['#334155', '#22c55e', '#3b82f6', '#475569', '#16a34a', '#1e293b', '#0ea5e9', '#eab308', '#8b5cf6', '#0f172a'],
+                        data: [51.2, 11.4, 14.9, 8.4, 7.5, 2.2, 2.0, 1.5, 0.9],
+                        backgroundColor: ['#0ea5e9', '#eab308', '#fed7aa', '#f97316', '#a855f7', '#1e293b', '#6b7280', '#991b1b', '#38bdf8'],
                         borderWidth: 0
                     }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 10} } } } }
             });
         }
         if(!chartMatrizMundo) {
-            chartMatrizMundo = new Chart(document.getElementById('chart-matriz-mundo'), {
+            chartMatrizMundo = new Chart(document.getElementById('chart-matriz-mundo-new'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['Não Renováveis', 'Renováveis'],
+                    labels: ['Petróleo', 'Carvão', 'Gás Nat.', 'Biocomb', 'Nuclear', 'Outras Ren.', 'Hidráulica'],
                     datasets: [{
-                        data: [81.1, 18.9], // Simplificado da base do trabalho para contraste (combustíveis fósseis vs limpa)
-                        backgroundColor: ['#334155', '#10b981'],
+                        data: [30.2, 27.8, 22.7, 8.8, 4.7, 3.3, 2.4],
+                        backgroundColor: ['#991b1b', '#1e293b', '#a855f7', '#84cc16', '#78350f', '#eab308', '#0ea5e9'],
                         borderWidth: 0
                     }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 10} } } } }
             });
         }
-        // Tab 4: Cargas de Celular (Leticia e Helena I.)
         if(!chartEnergiaCargas) {
             chartEnergiaCargas = new Chart(document.getElementById('chart-energia-cargas'), {
                 type: 'bar',
                 data: {
-                    labels: ['1 kWh', '100 kWh', '178,4 kWh (Casa)'],
+                    labels: ['1 kWh', '100 kWh', '178,4 kWh (Casa/Mês)'],
                     datasets: [{
-                        label: 'Número de cargas completas de celular',
+                        label: 'Número de cargas de celular',
                         data: [55, 5500, 9800],
                         backgroundColor: '#f59e0b',
                         borderRadius: 6
@@ -598,26 +601,15 @@
         }
     }
 
-    // NAVEGAÇÃO DE ABAS DE DADOS
     function showChartTab(tabId) {
-        // Esconder todos os conteúdos
-        document.querySelectorAll('.chart-tab-content').forEach(el => {
-            el.classList.add('hidden');
-            el.classList.remove('flex');
-        });
-        // Resetar estilos dos botões
+        document.querySelectorAll('.chart-tab-content').forEach(el => { el.classList.add('hidden'); el.classList.remove('flex'); });
         document.querySelectorAll('.chart-tab-btn').forEach(btn => {
             btn.classList.replace('bg-indigo-600', 'bg-slate-800');
             btn.classList.replace('border-indigo-400', 'border-slate-600');
             btn.classList.replace('text-white', 'text-slate-300');
         });
-
-        // Mostrar tab ativa
         const activeTab = document.getElementById(tabId);
-        activeTab.classList.remove('hidden');
-        activeTab.classList.add('flex');
-
-        // Ativar estilo do botão clicado
+        activeTab.classList.remove('hidden'); activeTab.classList.add('flex');
         const activeBtn = event.currentTarget;
         activeBtn.classList.replace('bg-slate-800', 'bg-indigo-600');
         activeBtn.classList.replace('border-slate-600', 'border-indigo-400');
@@ -671,12 +663,10 @@
 
     function goToMenuDados() {
       if(currentStage === 5) stopSoundForcefully();
-      // Esconder tudo
       for(let i = 0; i <= totalStages; i++) {
         const el = document.getElementById('stage-' + i);
         if(el) { el.classList.add('hidden'); el.classList.remove('flex', 'active-stage'); }
       }
-      // Mostrar dados
       const elDados = document.getElementById('stage-dados');
       elDados.classList.remove('hidden'); elDados.classList.add('flex', 'active-stage');
       
@@ -688,7 +678,6 @@
     function goToStage(n) {
       if(currentStage === 5 && n !== 5) stopSoundForcefully();
       
-      // Esconder menu de dados e tudo mais
       const elDados = document.getElementById('stage-dados');
       if(elDados) { elDados.classList.add('hidden'); elDados.classList.remove('flex', 'active-stage'); }
 
