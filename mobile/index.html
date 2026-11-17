@@ -31,18 +31,21 @@
 <body class="flex flex-col min-h-screen">
 
   <!-- HEADER MOBILE -->
-  <header class="min-h-[4rem] glass-panel border-b border-slate-800 flex items-center justify-between px-4 fixed top-0 w-full z-50">
+  <header class="min-h-[4rem] glass-panel border-b border-slate-800 flex items-center justify-between px-4 fixed top-0 w-full z-50 py-2">
     <div class="flex items-center gap-2">
       <div class="px-2 py-1 rounded bg-cyan-500 flex items-center justify-center font-bold text-slate-900 text-[10px] whitespace-nowrap">7º ano EFII</div>
-      <h1 class="font-bold text-sm tracking-wide text-white leading-tight">
-        Frei Seráfico <span class="text-cyan-400 font-normal text-[10px] drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]"><br class="block sm:hidden">| Feira de Ciências 2027: DATACENTERS</span>
-      </h1>
+      <div class="flex flex-col">
+        <h1 class="font-bold text-sm tracking-wide text-white leading-tight">
+          Frei Seráfico <span class="text-cyan-400 font-normal text-[10px] drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]"><br class="block sm:hidden">| Feira de Ciências 2027: DATACENTERS</span>
+        </h1>
+        <span class="text-[9px] text-slate-400 mt-0.5 leading-tight">Professores orientadores: Fernando (Informática) e Matheus (Matemática)</span>
+      </div>
     </div>
     <button onclick="goToMenu()" class="text-xs font-bold bg-slate-800 px-3 py-2 rounded-lg border border-slate-700 flex items-center gap-1 shrink-0 ml-1">🏠 Menu</button>
   </header>
 
   <!-- ÁREA CENTRAL MOBILE (Com rolagem) -->
-  <main class="flex-1 w-full pt-20 pb-24 px-4 overflow-y-auto">
+  <main class="flex-1 w-full pt-24 pb-24 px-4 overflow-y-auto">
     
     <!-- MENU MOBILE -->
     <div id="stage-0" class="flex flex-col items-center active-stage w-full max-w-md mx-auto">
@@ -355,6 +358,7 @@
     const totalStages = 7;
     let currentStage = 0;
     
+    // SOM
     let audioCtx, oscillator, gainNode;
     let isPlaying = false;
     const btnSound = document.getElementById('btn-sound');
@@ -390,6 +394,7 @@
       }
     }
 
+    // CHARTS MOBILE
     let energyChartInstance = null;
     function initEnergyChart() {
       if(energyChartInstance) return;
@@ -414,6 +419,7 @@
       });
     }
 
+    // CALCULATOR
     function updateCalculator() {
       const iaSlider = document.getElementById('slider-ia');
       const vidSlider = document.getElementById('slider-vid');
@@ -426,6 +432,7 @@
       document.getElementById('res-energy').textContent = energyCargas.toFixed(1) + " cargas";
     }
 
+    // NAVIGATION
     function buildDots() {
       const dotContainer = document.getElementById('progress-dots');
       dotContainer.innerHTML = '';
