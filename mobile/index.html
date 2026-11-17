@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Centers | Mobile</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* VERSÃO MOBILE: Rolagem liberada! Removido o 100vh fixo e overflow hidden */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0b0f19;
+      color: #f8fafc;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
+
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.8); 
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+    }
+    .glass-glow {
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+    
+    input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #06b6d4; cursor: pointer; margin-top: -10px; box-shadow: 0 0 10px rgba(6, 182, 212, 0.8); }
+    input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #334155; border-radius: 2px; }
+
+    .active-stage { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- HEADER MOBILE -->
+  <header class="h-16 glass-panel border-b border-slate-800 flex items-center justify-between px-4 fixed top-0 w-full z-50">
+    <div class="flex items-center gap-2">
+      <div class="px-2 py-1 rounded bg-cyan-500 flex items-center justify-center font-bold text-slate-900 text-xs">
+        7º EFII
+      </div>
+      <h1 class="font-bold text-sm tracking-wide line-clamp-1">
+        Frei Seráfico <span class="text-cyan-400 font-normal">| Feira</span>
+      </h1>
+    </div>
+    <button onclick="goToMenu()" class="text-xs font-bold bg-slate-800 p-2 rounded-lg border border-slate-700">
+      🏠 Menu
+    </button>
+  </header>
+
+  <!-- ÁREA CENTRAL MOBILE (Padding top e bottom para não cobrir o header e footer) -->
+  <main class="flex-1 w-full pt-20 pb-24 px-4 overflow-y-auto">
+    
+    <!-- MENU MOBILE -->
+    <div id="stage-0" class="flex flex-col items-center active-stage w-full max-w-md mx-auto">
+      <h2 class="text-2xl font-bold mb-4 text-center">Fases do Projeto</h2>
+      
+      <!-- Grids viraram 1 coluna -->
+      <div class="grid grid-cols-1 gap-4 w-full">
+        <button onclick="goToStage(1)" class="bg-[#111827] text-left p-4 rounded-xl border border-slate-800 border-l-4 border-l-[#06b6d4] flex items-center justify-between">
+          <div><span class="block text-[#06b6d4] font-bold text-xs mb-1">FASE 01</span><h3 class="font-bold text-base text-white">A Nuvem Tem Endereço</h3></div><span class="text-xl">🗄️</span>
+        </button>
+        <button onclick="goToStage(2)" class="bg-[#111827] text-left p-4 rounded-xl border border-slate-800 border-l-4 border-l-[#fbbf24] flex items-center justify-between">
+          <div><span class="block text-[#fbbf24] font-bold text-xs mb-1">FASE 02</span><h3 class="font-bold text-base text-white">O Grande Dilema</h3></div><span class="text-xl">⚖️</span>
+        </button>
+        <button onclick="goToStage(3)" class="bg-[#111827] text-left p-4 rounded-xl border border-slate-800 border-l-4 border-l-[#10b981] flex items-center justify-between">
+          <div><span class="block text-[#10b981] font-bold text-xs mb-1">FASE 03</span><h3 class="font-bold text-base text-white">Fome de Energia & IA</h3></div><span class="text-xl">⚡</span>
+        </button>
+        <button onclick="goToStage(4)" class="bg-[#111827] text-left p-4 rounded-xl border border-slate-800 border-l-4 border-l-[#38bdf8] flex items-center justify-between">
+          <div><span class="block text-[#38bdf8] font-bold text-xs mb-1">FASE 04</span><h3 class="font-bold text-base text-white">Gasto de Água & Calc</h3></div><span class="text-xl">💧</span>
+        </button>
+        <button onclick="goToStage(5)" class="bg-[#111827] text-left p-4 rounded-xl border border-slate-800 border-l-4 border-l-[#f43f5e] flex items-center justify-between">
+          <div><span class="block text-[#f43f5e] font-bold text-xs mb-1">FASE 05</span><h3 class="font-bold text-base text-white">Poluição Sonora</h3></div><span class="text-xl">🔊</span>
+        </button>
+        <button onclick="goToStage(6)" class="bg-[#111827] text-left p-4 rounded-xl border border-slate-800 border-l-4 border-l-[#a855f7] flex items-center justify-between">
+          <div><span class="block text-[#a855f7] font-bold text-xs mb-1">FASE 06</span><h3 class="font-bold text-base text-white">Linha do Tempo</h3></div><span class="text-xl">➗</span>
+        </button>
+        <button onclick="goToStage(7)" class="bg-[#111827] text-left p-4 rounded-xl border border-slate-800 border-l-4 border-l-[#14b8a6] flex items-center justify-between">
+          <div><span class="block text-[#14b8a6] font-bold text-xs mb-1">FASE 07</span><h3 class="font-bold text-base text-white">Paradoxo Empregos</h3></div><span class="text-xl">👨‍🔧</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- FASE 1 MOBILE -->
+    <div id="stage-1" class="hidden flex-col max-w-md mx-auto w-full gap-4">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold mb-2">A Nuvem Tem <span class="text-cyan-400">Endereço</span></h2>
+        <p class="text-slate-400 text-sm">A internet vive em galpões físicos gigantescos.</p>
+      </div>
+      <div class="relative rounded-2xl overflow-hidden glass-glow aspect-video">
+        <div class="absolute top-2 left-2 z-10 bg-slate-900/80 backdrop-blur rounded px-2 py-1 flex items-center gap-2">
+          <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div><span class="text-[10px] font-bold">Ao vivo</span>
+        </div>
+        <!-- Busca o vídeo na pasta anterior (../) -->
+        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+          <source src="../video-datacenter.mp4" type="video/mp4">
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-server-racks-in-a-data-center-loop-42930-large.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- FASE 2 MOBILE -->
+    <div id="stage-2" class="hidden flex-col max-w-md mx-auto w-full gap-4">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-amber-400 mb-1">O Grande Dilema</h2>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div class="glass-panel border-emerald-500/30 rounded-xl p-4">
+          <h3 class="text-lg font-bold text-emerald-400 mb-3 flex items-center gap-2">👍 Pontos Positivos</h3>
+          <ul class="space-y-3 text-xs">
+            <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-emerald-500"><strong class="text-emerald-300 block">Meio Ambiente Global</strong>Brasil atrai datacenters e reduz a pegada de carbono mundial.</li>
+            <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-emerald-500"><strong class="text-emerald-300 block">Economia</strong>Atrai bilhões de Big Techs e melhora a infra local.</li>
+          </ul>
+        </div>
+        <div class="glass-panel border-rose-500/30 rounded-xl p-4">
+          <h3 class="text-lg font-bold text-rose-400 mb-3 flex items-center gap-2">👎 Pontos Negativos</h3>
+          <ul class="space-y-3 text-xs">
+            <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-rose-500"><strong class="text-rose-300 block">Pressão Local</strong>Consomem energia de cidades e milhões de litros de água.</li>
+            <li class="bg-slate-950/50 p-2 rounded-lg border-l-4 border-rose-500"><strong class="text-rose-300 block">Isenção Fiscal</strong>Exigem pesada isenção de impostos das prefeituras.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 3 MOBILE -->
+    <div id="stage-3" class="hidden flex-col max-w-md mx-auto w-full gap-4">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-emerald-400">Fome Elétrica</h2>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div class="glass-panel p-4 rounded-xl border border-slate-700">
+          <h3 class="text-base font-bold text-white mb-2">O Que Consome Energia?</h3>
+          <div class="space-y-2">
+            <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-cyan-500"><strong class="text-cyan-400 text-xs block">🖥️ Servidores</strong><p class="text-[10px] text-slate-300">Processam e guardam arquivos.</p></div>
+            <div class="bg-slate-950/50 p-2 rounded-lg border-l-2 border-emerald-500"><strong class="text-emerald-400 text-xs block">❄️ Refrigeração</strong><p class="text-[10px] text-slate-300">Ar-condicionados industriais.</p></div>
+          </div>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-slate-700 text-center">
+          <h3 class="text-base font-bold text-amber-400 mb-1">Consumo Global (415 TWh)</h3>
+          <div class="bg-[#1e293b] p-3 rounded-lg border border-[#334155] shadow-inner mt-2 text-xs">
+            <p>Isso equivale ao consumo de</p>
+            <p class="font-bold text-white text-sm">194 MILHÕES de casas brasileiras!</p>
+          </div>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-slate-700 text-center">
+          <h3 class="text-base font-bold mb-2">Matriz Limpa do Brasil</h3>
+          <div class="relative w-full h-[150px] mb-2"><canvas id="energyChartMobile"></canvas></div>
+          <p class="text-[10px] text-emerald-200">~88,2% da eletricidade vem de fontes limpas.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 4 MOBILE -->
+    <div id="stage-4" class="hidden flex-col max-w-md mx-auto w-full gap-4">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-blue-400">Água & Calculadora</h2>
+      </div>
+      <div class="flex flex-col gap-4">
+        
+        <div class="glass-panel border-cyan-500/40 rounded-xl p-4">
+          <h3 class="text-base font-bold text-white mb-4">Sua Pegada Diária</h3>
+          <div class="mb-4">
+            <label class="flex justify-between text-xs font-bold text-slate-300 mb-2">Perguntas p/ IA: <span id="val-ia" class="text-cyan-400">10</span></label>
+            <input type="range" id="slider-ia" min="0" max="100" value="10" oninput="updateCalculator()">
+          </div>
+          <div class="mb-4">
+            <label class="flex justify-between text-xs font-bold text-slate-300 mb-2">Horas Vídeo: <span id="val-vid" class="text-cyan-400">2</span></label>
+            <input type="range" id="slider-vid" min="0" max="10" value="2" oninput="updateCalculator()">
+          </div>
+          <div class="bg-slate-950 rounded-lg p-2 flex justify-around text-center">
+            <div><span class="text-lg block">💧</span><span id="res-water" class="font-bold text-blue-400 text-sm">250 ml</span></div>
+            <div><span class="text-lg block">📱</span><span id="res-energy" class="font-bold text-amber-400 text-sm">5 cargas</span></div>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-600 rounded-xl p-4 text-center">
+          <h3 class="text-xs font-bold text-amber-400 uppercase mb-2">Gasto Desnecessário</h3>
+          <!-- Busca a imagem usando ../ -->
+          <div class="w-full h-32 rounded-lg overflow-hidden bg-[#020617] mb-2"><img src="../img_cavalo.png" alt="Cavalo IA" class="w-full h-full object-contain"></div>
+          <p class="text-[10px] text-slate-300">Para gerar esta imagem inútil, a IA evaporou <strong class="text-blue-400">3 Litros de Água</strong>.</p>
+        </div>
+
+        <div class="glass-panel border-blue-500/30 rounded-xl p-4">
+          <h4 class="text-sm font-bold text-rose-300">Alerta local:</h4>
+          <p class="text-xs text-slate-300 mt-1">Se os data centers usassem a água do Brasil, secariam São João del-Rei por 939 anos!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 5 MOBILE -->
+    <div id="stage-5" class="hidden flex-col max-w-md mx-auto w-full gap-4">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-rose-400">Poluição Sonora</h2>
+      </div>
+      <div class="flex flex-col gap-4">
+        
+        <div class="bg-slate-900/80 border border-amber-500/30 rounded-xl p-6 text-center shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+          <h3 class="text-base font-bold text-amber-400 mb-2">Teste o Simulador</h3>
+          <p class="text-xs text-slate-400 mb-4">Zumbido grave mecânico de 60 Hz</p>
+          <button id="btn-sound" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-3 px-4 rounded-lg text-sm transition-all flex items-center justify-center gap-2"><span>🔊</span> Ligar Zumbido</button>
+        </div>
+
+        <div class="glass-panel border-purple-500/30 rounded-xl p-4">
+          <h3 class="text-sm font-semibold text-purple-400 mb-2">Hz vs dB</h3>
+          <div class="grid grid-cols-2 gap-2 text-[10px]">
+            <div class="bg-slate-950/50 p-2 rounded"><strong class="text-purple-300 block">Hz:</strong> Frequência (Grave/Agudo)</div>
+            <div class="bg-slate-950/50 p-2 rounded"><strong class="text-purple-300 block">dB:</strong> Volume do som</div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-b from-rose-950/40 to-slate-900/60 border border-rose-500/40 rounded-xl p-4 text-center">
+          <span class="text-3xl mb-1 block">🤕</span>
+          <h3 class="text-sm font-bold text-rose-400 mb-2">Impacto na Saúde</h3>
+          <div class="flex flex-wrap justify-center gap-1 text-[10px]">
+            <span class="bg-rose-950/80 text-rose-200 px-2 py-1 rounded">Irritação</span>
+            <span class="bg-rose-950/80 text-rose-200 px-2 py-1 rounded">Insônia</span>
+            <span class="bg-rose-950/80 text-rose-200 px-2 py-1 rounded">Dor de Cabeça</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 6 MOBILE -->
+    <div id="stage-6" class="hidden flex-col max-w-md mx-auto w-full gap-4 relative">
+      <div class="text-center mb-2">
+        <h2 class="text-2xl font-bold text-purple-400">Linha do Tempo</h2>
+      </div>
+      <!-- Linha vertical p/ Mobile -->
+      <div class="absolute left-6 top-16 bottom-4 w-1 bg-slate-800 z-0"></div>
+      
+      <div class="flex flex-col gap-4 z-10 ml-8 relative">
+        <div class="glass-panel p-3 rounded-xl border border-slate-700 relative">
+          <div class="w-3 h-3 bg-slate-500 rounded-full absolute top-4 -left-10 border-2 border-slate-950"></div>
+          <span class="text-[10px] font-bold text-slate-400">Anos 90-2000</span><h3 class="text-sm font-bold text-white">Salas de Servidor</h3><p class="text-[10px] text-slate-400">Servidores barulhentos no canto da empresa.</p>
+        </div>
+        <div class="glass-panel p-3 rounded-xl border border-cyan-700 relative">
+          <div class="w-3 h-3 bg-cyan-500 rounded-full absolute top-4 -left-10 border-2 border-slate-950"></div>
+          <span class="text-[10px] font-bold text-cyan-400">2010 - 2018</span><h3 class="text-sm font-bold text-white">Cabos e Nuvem</h3><p class="text-[10px] text-slate-400">Cabos submarinos no CE e polos em SP.</p>
+        </div>
+        <div class="glass-panel p-3 rounded-xl border border-emerald-700 relative">
+          <div class="w-3 h-3 bg-emerald-500 rounded-full absolute top-4 -left-10 border-2 border-slate-950"></div>
+          <span class="text-[10px] font-bold text-emerald-400">2019 - 2022</span><h3 class="text-sm font-bold text-white">Boom do Streaming</h3><p class="text-[10px] text-slate-400">Pandemia forçou mega-galpões ("Colocation").</p>
+        </div>
+        <div class="glass-panel p-3 rounded-xl border border-amber-700 relative">
+          <div class="w-3 h-3 bg-amber-500 rounded-full absolute top-4 -left-10 border-2 border-slate-950 animate-pulse"></div>
+          <span class="text-[10px] font-bold text-amber-400">2023+</span><h3 class="text-sm font-bold text-white">A Corrida da IA</h3><p class="text-[10px] text-slate-400">O Brasil vira alvo global de Supercomputação.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 7 MOBILE -->
+    <div id="stage-7" class="hidden flex-col max-w-md mx-auto w-full gap-4">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-teal-400 leading-tight">Paradoxo dos Empregos</h2>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div class="glass-panel p-4 rounded-xl border border-slate-700 text-center">
+          <h3 class="text-sm font-bold mb-2">Vagas Geradas (Média)</h3>
+          <div class="relative w-full h-[180px]"><canvas id="jobsChartMobile"></canvas></div>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-slate-700">
+          <div class="space-y-3">
+            <div class="bg-slate-950/50 p-3 rounded-lg border-l-2 border-amber-500">
+              <strong class="text-amber-400 text-xs block">🏗️ Obras (Temporários)</strong><p class="text-[10px] text-slate-300">Acabam no fim da obra (Ex: Pedreiros, Eletricistas).</p>
+            </div>
+            <div class="bg-slate-950/50 p-3 rounded-lg border-l-2 border-teal-500">
+              <strong class="text-teal-400 text-xs block">🖥️ Operação (Permanentes)</strong><p class="text-[10px] text-slate-300">Funcionamento contínuo, porém menor número (Ex: TI, Limpeza).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER MOBILE -->
+  <footer class="h-16 glass-panel border-t border-slate-800 flex items-center justify-between px-4 fixed bottom-0 w-full z-50">
+    <button onclick="prevStage()" id="btn-prev" class="hidden bg-slate-800 p-2 rounded-lg font-bold text-xs border border-slate-700">← Voltar</button>
+    <div class="flex items-center gap-1" id="progress-dots"></div>
+    <button onclick="nextStage()" id="btn-next" class="hidden bg-cyan-600 px-4 py-2 rounded-lg font-bold text-xs">Avançar →</button>
+  </footer>
+
+  <!-- SCRIPTS MOBILE -->
+  <script>
+    const totalStages = 7;
+    let currentStage = 0;
+    
+    // SOM
+    let audioCtx, oscillator, gainNode;
+    let isPlaying = false;
+    const btnSound = document.getElementById('btn-sound');
+    
+    btnSound.addEventListener('click', () => {
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      if(isPlaying) {
+        if(oscillator) { oscillator.stop(); oscillator.disconnect(); }
+        isPlaying = false;
+        btnSound.innerHTML = '<span>🔊</span> Ligar Zumbido';
+        btnSound.classList.replace('bg-rose-600', 'bg-amber-600');
+      } else {
+        oscillator = audioCtx.createOscillator();
+        gainNode = audioCtx.createGain();
+        oscillator.type = 'sawtooth';
+        oscillator.frequency.value = 60; 
+        gainNode.gain.value = 0.15; 
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.start();
+        isPlaying = true;
+        btnSound.innerHTML = '<span>🔇</span> Desligar Zumbido';
+        btnSound.classList.replace('bg-amber-600', 'bg-rose-600');
+      }
+    });
+
+    function stopSoundForcefully() {
+      if(isPlaying && oscillator) {
+        oscillator.stop(); oscillator.disconnect(); isPlaying = false;
+        btnSound.innerHTML = '<span>🔊</span> Ligar Zumbido';
+        btnSound.classList.replace('bg-rose-600', 'bg-amber-600');
+      }
+    }
+
+    // CHARTS MOBILE
+    let energyChartInstance = null;
+    function initEnergyChart() {
+      if(energyChartInstance) return;
+      const ctx = document.getElementById('energyChartMobile');
+      if(!ctx) return;
+      energyChartInstance = new Chart(ctx.getContext('2d'), {
+        type: 'doughnut',
+        data: { labels: ['Renovável', 'Fóssil'], datasets: [{ data: [88.2, 11.8], backgroundColor: ['#10b981', '#334155'], borderWidth: 0 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1', font: {size: 10} } } } }
+      });
+    }
+
+    let jobsChartInstance = null;
+    function initJobsChart() {
+      if(jobsChartInstance) return;
+      const ctx = document.getElementById('jobsChartMobile');
+      if(!ctx) return;
+      jobsChartInstance = new Chart(ctx.getContext('2d'), {
+        type: 'bar',
+        data: { labels: ['Obras (Temp.)', 'Operação (Fixo)'], datasets: [{ data: [1500, 40], backgroundColor: ['#fbbf24', '#14b8a6'], borderRadius: 4 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0', font: {size: 9} }, grid: { display: false } } } }
+      });
+    }
+
+    // CALCULATOR
+    function updateCalculator() {
+      const iaSlider = document.getElementById('slider-ia');
+      const vidSlider = document.getElementById('slider-vid');
+      if(!iaSlider || !vidSlider) return;
+      document.getElementById('val-ia').textContent = iaSlider.value;
+      document.getElementById('val-vid').textContent = vidSlider.value;
+      let waterMl = (parseInt(iaSlider.value) * 25) + (parseInt(vidSlider.value) * 10);
+      let energyCargas = ((parseInt(iaSlider.value) / 20) * 1) + (parseInt(vidSlider.value) * 0.2);
+      document.getElementById('res-water').textContent = (waterMl > 1000) ? (waterMl/1000).toFixed(1) + " L" : waterMl + " ml";
+      document.getElementById('res-energy').textContent = energyCargas.toFixed(1) + " crgs";
+    }
+
+    // NAVIGATION
+    function buildDots() {
+      const dotContainer = document.getElementById('progress-dots');
+      dotContainer.innerHTML = '';
+      if(currentStage === 0) return;
+      for(let i = 1; i <= totalStages; i++) {
+        const dot = document.createElement('div');
+        dot.className = `h-1.5 rounded-full transition-all ${i === currentStage ? 'bg-cyan-400 w-4' : 'bg-slate-700 w-1.5'}`;
+        dotContainer.appendChild(dot);
+      }
+    }
+
+    function updateNavButtons() {
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      if(currentStage === 0) {
+        btnPrev.classList.add('hidden'); btnNext.classList.add('hidden');
+      } else {
+        btnPrev.classList.remove('hidden'); btnNext.classList.remove('hidden');
+        btnNext.textContent = currentStage === totalStages ? '🏠 Início' : 'Avançar →';
+        if(currentStage === totalStages) {
+          btnNext.classList.replace('bg-cyan-600', 'bg-emerald-600');
+        } else {
+          btnNext.classList.replace('bg-emerald-600', 'bg-cyan-600');
+        }
+      }
+      buildDots();
+    }
+
+    function goToStage(n) {
+      if(currentStage === 5 && n !== 5) stopSoundForcefully();
+      for(let i = 0; i <= totalStages; i++) {
+        const el = document.getElementById('stage-' + i);
+        if(el) { el.classList.add('hidden'); el.classList.remove('flex', 'active-stage'); }
+      }
+      const target = document.getElementById('stage-' + n);
+      if(target) { target.classList.remove('hidden'); target.classList.add('flex', 'active-stage'); }
+      currentStage = n;
+      window.scrollTo(0,0); // Rola para o topo ao trocar de fase no celular
+      updateNavButtons();
+      if(n === 3) initEnergyChart();
+      if(n === 7) initJobsChart();
+    }
+
+    function nextStage() { if(currentStage === totalStages) goToStage(0); else goToStage(currentStage + 1); }
+    function prevStage() { if(currentStage === 1) goToStage(0); else goToStage(currentStage - 1); }
+    function goToMenu() { goToStage(0); }
+
+    updateCalculator();
+  </script>
+</body>
+</html>
