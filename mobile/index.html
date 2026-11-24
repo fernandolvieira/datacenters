@@ -106,7 +106,7 @@
         <div id="data-g1-s1" class="data-screen flex flex-col gap-4">
           <div class="text-center">
             <h3 class="text-lg font-bold text-blue-400">Quanta Água a Nuvem Consome?</h3>
-            <p class="text-[10px] text-cyan-300 font-bold">Pedro, Isadora, Isabela e Manuela</p>
+            <p class="text-[10px] text-cyan-300 font-bold">Pedro, Isadora, Isabela e Manuella</p>
           </div>
           <div class="rounded-xl overflow-hidden bg-white aspect-video glass-glow">
             <video class="w-full h-full object-contain" autoplay loop muted playsinline><source src="../video_1.mp4" type="video/mp4"></video>
@@ -123,7 +123,7 @@
         <div id="data-g1-s2" class="data-screen hidden flex-col gap-4">
           <div class="text-center">
             <h3 class="text-lg font-bold text-cyan-400">Global vs. São João del-Rei</h3>
-            <p class="text-[10px] text-cyan-300 font-bold">Pedro, Isadora, Isabela e Manuela</p>
+            <p class="text-[10px] text-cyan-300 font-bold">Pedro, Isadora, Isabela e Manuella</p>
           </div>
           <div class="rounded-xl overflow-hidden bg-white aspect-video glass-glow">
             <video class="w-full h-full object-contain" autoplay loop muted playsinline><source src="../video_3.mp4" type="video/mp4"></video>
@@ -131,7 +131,10 @@
           <div class="bg-rose-950/30 border border-rose-500/40 p-3 rounded-xl text-xs text-rose-200">
             Os 12.000 Data Centers do mundo gastam <strong>10,95 trilhões L/ano</strong> — água suficiente para abastecer <strong>São João del-Rei por mais de 1.000 anos</strong>.
           </div>
-          <div class="h-[200px] relative"><canvas id="chart-g1-equiv"></canvas></div>
+          <div>
+            <p class="text-xs font-bold text-blue-300 text-center mb-1">Gasto de 560 bilhões de L/ano (relativo a 1.000 Data Centers):</p>
+            <div class="h-[200px] relative"><canvas id="chart-g1-equiv"></canvas></div>
+          </div>
         </div>
 
         <!-- G2 T1 -->
@@ -141,10 +144,13 @@
             <p class="text-[10px] text-cyan-300 font-bold">Victor, Arthur, Brainer e Caio</p>
           </div>
           <div class="bg-slate-950/60 p-3 rounded-xl border border-purple-500/30 text-xs">
-            <strong class="text-purple-300 block mb-1">📐 Rack 42U (0,6 m² no chão)</strong>
-            <p class="text-slate-300">60 cm largura × 1 m profundidade × 2 m altura. Abriga ~20 servidores.</p>
+            <strong class="text-purple-300 block mb-1">📐 Dimensões de 1 Rack 42U</strong>
+            <p class="text-slate-300">60 cm largura × 1 m profundidade × 2 m altura.</p>
           </div>
-          <div class="h-[200px] relative"><canvas id="chart-g2-racks"></canvas></div>
+          <div>
+            <p class="text-xs text-slate-300 text-center mb-2">Em uma área de <strong>48 m²</strong>, cabem <strong>48 servidores</strong> (capacidade real).</p>
+            <div class="h-[200px] relative"><canvas id="chart-g2-racks"></canvas></div>
+          </div>
           <div class="space-y-2 text-xs">
             <div class="bg-blue-950/40 p-2 rounded border-l-4 border-blue-400">🔵 <strong>Corredor Frio:</strong> Ar a 22 °C entra pela frente.</div>
             <div class="bg-rose-950/40 p-2 rounded border-l-4 border-rose-500">🔴 <strong>Corredor Quente:</strong> Ar quente sai por trás.</div>
@@ -292,7 +298,7 @@
       <div class="glass-panel p-5 rounded-2xl border border-slate-700 text-center">
         <h3 class="text-lg font-bold mb-2">Matriz Elétrica Limpa</h3>
         <div class="relative w-full h-[180px] flex items-center justify-center mb-4"><canvas id="energyChartBRMobile"></canvas></div>
-        <p class="text-xs text-emerald-200">Mais de 51% da matriz do Brasil é Hidráulica (Limpa).</p>
+        <p class="text-xs text-emerald-200">Mais de 51% da matriz do Brasil é Hidrelétrica (Limpa).</p>
       </div>
     </div>
 
@@ -352,7 +358,14 @@
       <div class="relative flex flex-col gap-5 ml-4 mt-2">
         <div class="absolute left-0 top-4 bottom-4 w-1 bg-slate-800 -translate-x-1/2"></div>
         <div class="glass-panel p-4 rounded-xl border border-slate-700 relative ml-6"><div class="w-4 h-4 bg-slate-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 -translate-x-1/2 -mt-1.5"></div><span class="text-[10px] font-bold text-slate-400 block">Anos 1990 - 2000</span><h3 class="text-sm font-bold text-white">Salas de Servidor</h3></div>
-        <div class="glass-panel p-4 rounded-xl border border-cyan-700 relative ml-6"><div class="w-4 h-4 bg-cyan-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 -translate-x-1/2 -mt-1.5"></div><span class="text-[10px] font-bold text-cyan-400 block">A Conexão</span><h3 class="text-sm font-bold text-white">Cabos Submarinos</h3></div>
+        <div class="glass-panel p-4 rounded-xl border border-cyan-700 relative ml-6">
+          <div class="w-4 h-4 bg-cyan-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 -translate-x-1/2 -mt-1.5"></div>
+          <span class="text-[10px] font-bold text-cyan-400 block">A Conexão</span>
+          <h3 class="text-sm font-bold text-white mb-2">Cabos Submarinos</h3>
+          <div class="w-full h-28 rounded-lg overflow-hidden border border-cyan-500/40 bg-white">
+            <img src="../cbos.jpeg" alt="Mapa de Cabos Submarinos" class="w-full h-full object-cover">
+          </div>
+        </div>
         <div class="glass-panel p-4 rounded-xl border border-emerald-700 relative ml-6"><div class="w-4 h-4 bg-emerald-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 -translate-x-1/2 -mt-1.5"></div><span class="text-[10px] font-bold text-emerald-400 block">Pandemia (2020)</span><h3 class="text-sm font-bold text-white">Streaming & Isolamento</h3></div>
         <div class="glass-panel p-4 rounded-xl border border-amber-700 relative ml-6"><div class="w-4 h-4 bg-amber-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 -translate-x-1/2 -mt-1.5"></div><span class="text-[10px] font-bold text-amber-400 block">O Futuro</span><h3 class="text-sm font-bold text-white">A Era da IA</h3></div>
       </div>
@@ -411,7 +424,7 @@
     function initGeneralCharts() {
       if(!energyChartInstance) {
         const ctxE = document.getElementById('energyChartBRMobile');
-        if(ctxE) energyChartInstance = new Chart(ctxE.getContext('2d'), { type: 'doughnut', data: { labels: ['Hidráulica', 'Eólica', 'Solar', 'Biomassa', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 6.6], backgroundColor: ['#38bdf8', '#0ea5e9', '#eab308', '#22c55e', '#475569', '#1e293b'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 10} } } } } });
+        if(ctxE) energyChartInstance = new Chart(ctxE.getContext('2d'), { type: 'doughnut', data: { labels: ['Hidrelétrica', 'Eólica', 'Solar', 'Biomassa', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 6.6], backgroundColor: ['#38bdf8', '#0ea5e9', '#eab308', '#22c55e', '#475569', '#1e293b'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 10} } } } } });
       }
       if(!jobsChartInstance) {
         const ctxJ = document.getElementById('jobsChartMobile');
@@ -429,13 +442,13 @@
         dataCharts.g1s2 = new Chart(document.getElementById('chart-g1-equiv'), { type: 'bar', data: { labels: ['Banhos', 'Arroz (kg)', 'Carne (kg)', 'Piscinas'], datasets: [{ data: [6000000000, 200000000, 37000000, 224000], backgroundColor: ['#38bdf8', '#22c55e', '#f59e0b', '#6366f1'], borderRadius: 4 }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { type: 'logarithmic', ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, y: { ticks: { color: '#e2e8f0', font: {size: 10} }, grid: { display: false } } } } });
       }
       if (g === 2 && s === 1 && !dataCharts.g2s1) {
-        dataCharts.g2s1 = new Chart(document.getElementById('chart-g2-racks'), { type: 'bar', data: { labels: ['Teórica (80)', 'Real (48)'], datasets: [{ data: [80, 48], backgroundColor: ['#a855f7', '#06b6d4'], borderRadius: 6 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0' }, grid: { display: false } } } } });
+        dataCharts.g2s1 = new Chart(document.getElementById('chart-g2-racks'), { type: 'bar', data: { labels: ['Teórica (80)', 'Real (48)'], datasets: [{ label: 'Servidores em 48 m²', data: [80, 48], backgroundColor: ['#a855f7', '#06b6d4'], borderRadius: 6 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0' }, grid: { display: false } } } } });
       }
       if (g === 2 && s === 2 && !dataCharts.g2s2) {
         dataCharts.g2s2 = new Chart(document.getElementById('chart-g2-angulos'), { type: 'pie', data: { labels: ['Fóssil (144°)', 'Renovável (126°)', 'Outros (90°)'], datasets: [{ data: [40, 35, 25], backgroundColor: ['#1e3a8a', '#22c55e', '#38bdf8'], borderWidth: 2, borderColor: '#0b0f19' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#e2e8f0', font: {size: 10} } } } } });
       }
       if (g === 3 && s === 1 && !dataCharts.g3s1) {
-        dataCharts.g3s1 = new Chart(document.getElementById('chart-g3-br'), { type: 'doughnut', data: { labels: ['Hidro', 'Eólica', 'Solar', 'Biom.', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 6.6], backgroundColor: ['#0ea5e9', '#fed7aa', '#eab308', '#f97316', '#a855f7', '#991b1b'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 9} } } } } });
+        dataCharts.g3s1 = new Chart(document.getElementById('chart-g3-br'), { type: 'doughnut', data: { labels: ['Hidrelétrica', 'Eólica', 'Solar', 'Biom.', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 6.6], backgroundColor: ['#0ea5e9', '#fed7aa', '#eab308', '#f97316', '#a855f7', '#991b1b'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 9} } } } } });
         dataCharts.g3s1b = new Chart(document.getElementById('chart-g3-mundo'), { type: 'doughnut', data: { labels: ['Petróleo', 'Carvão', 'Gás', 'Biocomb.', 'Nuclear', 'Renov.'], datasets: [{ data: [30.2, 27.8, 22.7, 8.8, 4.7, 5.7], backgroundColor: ['#991b1b', '#1e3a8a', '#a855f7', '#84cc16', '#78350f', '#0ea5e9'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 9} } } } } });
       }
       if (g === 3 && s === 2 && !dataCharts.g3s2) {
