@@ -79,7 +79,7 @@
       <!-- Barra Superior de Grupos + Sub-telas -->
       <div class="flex flex-wrap items-center justify-between gap-3 mb-3 shrink-0">
         <div class="flex gap-2">
-          <button onclick="selectDataGroup(1)" id="btn-grp-1" class="data-grp-btn bg-blue-600 border-blue-400 text-white font-bold py-2 px-3 rounded-lg border text-xs transition-all">💧 Água (Pedro, Isadora, Isabela, Manu)</button>
+          <button onclick="selectDataGroup(1)" id="btn-grp-1" class="data-grp-btn bg-blue-600 border-blue-400 text-white font-bold py-2 px-3 rounded-lg border text-xs transition-all">💧 Água (Pedro, Isadora, Isabela, Manuella)</button>
           <button onclick="selectDataGroup(2)" id="btn-grp-2" class="data-grp-btn bg-slate-800 border-slate-700 hover:bg-slate-700 text-slate-300 font-bold py-2 px-3 rounded-lg border text-xs transition-all">📐 Espaço Físico (Victor, Arthur, Brainer, Caio)</button>
           <button onclick="selectDataGroup(3)" id="btn-grp-3" class="data-grp-btn bg-slate-800 border-slate-700 hover:bg-slate-700 text-slate-300 font-bold py-2 px-3 rounded-lg border text-xs transition-all">🌍 Matrizes (Geovanna e Helena L.)</button>
           <button onclick="selectDataGroup(4)" id="btn-grp-4" class="data-grp-btn bg-slate-800 border-slate-700 hover:bg-slate-700 text-slate-300 font-bold py-2 px-3 rounded-lg border text-xs transition-all">⚡ Energia (Helena I., Letícia, Grazi, Maju, Anita, Val)</button>
@@ -99,7 +99,7 @@
           <div class="flex justify-between items-center border-b border-slate-800 pb-2 shrink-0">
             <div>
               <h2 class="text-2xl font-bold text-blue-400">Quanta Água a "Nuvem" Consome?</h2>
-              <p class="text-xs text-slate-400">Grupo: <strong class="text-cyan-300">Pedro, Isadora, Isabela e Manuela</strong> • Tela 1/2</p>
+              <p class="text-xs text-slate-400">Grupo: <strong class="text-cyan-300">Pedro, Isadora, Isabela e Manuella</strong> • Tela 1/2</p>
             </div>
             <span class="bg-blue-950/60 border border-blue-500/40 text-blue-300 text-xs font-bold px-3 py-1 rounded-full">1 Data Center = 2,5 milhões L / dia</span>
           </div>
@@ -141,7 +141,7 @@
           <div class="flex justify-between items-center border-b border-slate-800 pb-2 shrink-0">
             <div>
               <h2 class="text-2xl font-bold text-cyan-400">Impacto Global vs. Realidade Local</h2>
-              <p class="text-xs text-slate-400">Grupo: <strong class="text-cyan-300">Pedro, Isadora, Isabela e Manuela</strong> • Tela 2/2</p>
+              <p class="text-xs text-slate-400">Grupo: <strong class="text-cyan-300">Pedro, Isadora, Isabela e Manuella</strong> • Tela 2/2</p>
             </div>
             <span class="bg-rose-950/60 border border-rose-500/40 text-rose-300 text-xs font-bold px-3 py-1 rounded-full">Até 25% da água de cidades-sede</span>
           </div>
@@ -158,8 +158,8 @@
             </div>
             <div class="col-span-6 flex flex-col justify-between bg-slate-950/50 rounded-xl p-4 border border-slate-800 min-h-0">
               <div>
-                <h3 class="text-sm font-bold text-blue-300">O que fazer com 560 bilhões de L/ano?</h3>
-                <p class="text-[11px] text-slate-400 mb-2">Estimativa global de consumo direto (0,015% da água doce mundial):</p>
+                <h3 class="text-sm font-bold text-blue-300">O que fazer com 560 bilhões de L/ano (1.000 Data Centers)?</h3>
+                <p class="text-[11px] text-slate-400 mb-2">Gasto de 560 bilhões de litros relativo a 1.000 Data Centers:</p>
               </div>
               <div class="flex-1 relative min-h-0"><canvas id="chart-g1-equiv"></canvas></div>
               <div class="grid grid-cols-2 gap-2 mt-2 text-[11px]">
@@ -183,12 +183,11 @@
             <div class="col-span-5 flex flex-col justify-between gap-3 min-h-0">
               <div class="bg-slate-950/60 p-4 rounded-xl border border-purple-500/30">
                 <h3 class="text-sm font-bold text-purple-300 mb-2">📐 Dimensões de 1 Rack 42U</h3>
-                <div class="grid grid-cols-3 gap-2 text-center text-xs mb-2">
+                <div class="grid grid-cols-3 gap-2 text-center text-xs">
                   <div class="bg-slate-900 p-2 rounded"><strong class="text-white block">60 cm</strong><span class="text-[10px] text-slate-400">Largura</span></div>
                   <div class="bg-slate-900 p-2 rounded"><strong class="text-white block">1 m</strong><span class="text-[10px] text-slate-400">Profund.</span></div>
                   <div class="bg-slate-900 p-2 rounded"><strong class="text-white block">2 m</strong><span class="text-[10px] text-slate-400">Altura</span></div>
                 </div>
-                <p class="text-[11px] text-slate-300">Área no chão: <strong>0,6 m²</strong> • 42 espaços ("gavetas") de 4,45 cm • Abriga ~<strong>20 servidores</strong>.</p>
               </div>
               <div class="bg-slate-950/60 p-4 rounded-xl border border-cyan-500/30 flex-1 flex flex-col justify-center">
                 <h3 class="text-sm font-bold text-cyan-300 mb-2">❄️ Fluxo de Ar (22 °C)</h3>
@@ -204,13 +203,13 @@
             </div>
             <div class="col-span-7 flex flex-col justify-between bg-slate-950/50 rounded-xl p-4 border border-slate-800 min-h-0">
               <div>
-                <h3 class="text-sm font-bold text-white">Quantos Racks cabem em uma Sala de Aula (48 m²)?</h3>
-                <p class="text-[11px] text-slate-400">Comparação entre capacidade máxima teórica (48 ÷ 0,6) e capacidade real (descontando 40% para corredores).</p>
+                <h3 class="text-sm font-bold text-white">Quantos servidores cabem em uma área de 48 m²?</h3>
+                <p class="text-[11px] text-slate-400">Em uma área de <strong>48 m²</strong>, cabem <strong>48 servidores</strong> na capacidade real (descontando 40% para corredores) contra 80 na capacidade máxima teórica.</p>
               </div>
               <div class="flex-1 relative min-h-0 my-2"><canvas id="chart-g2-racks"></canvas></div>
               <div class="flex justify-between text-xs bg-slate-900 p-2.5 rounded-lg border border-slate-800">
-                <span>Teórica: <strong class="text-purple-400">80 racks</strong> (~1.600 servidores)</span>
-                <span>Real: <strong class="text-cyan-400">48 racks</strong> (~960 servidores)</span>
+                <span>Teórica (48 m²): <strong class="text-purple-400">80 servidores</strong></span>
+                <span>Real (48 m²): <strong class="text-cyan-400">48 servidores</strong></span>
               </div>
             </div>
           </div>
@@ -265,7 +264,7 @@
           <div class="flex-1 grid grid-cols-2 gap-6 min-h-0">
             <div class="bg-slate-950/50 rounded-xl p-4 border border-emerald-500/30 flex flex-col min-h-0">
               <h3 class="text-sm font-bold text-center text-emerald-300 mb-1">Matriz Elétrica Brasileira (2025)</h3>
-              <p class="text-[10px] text-center text-slate-400 mb-2">Predomínio de Hidráulica (51,2%), Eólica (14,9%) e Solar (11,4%)</p>
+              <p class="text-[10px] text-center text-slate-400 mb-2">Predomínio de Hidrelétrica (51,2%), Eólica (14,9%) e Solar (11,4%)</p>
               <div class="flex-1 relative min-h-0"><canvas id="chart-g3-br"></canvas></div>
             </div>
             <div class="bg-slate-950/50 rounded-xl p-4 border border-rose-500/30 flex flex-col min-h-0">
@@ -469,9 +468,9 @@
           </div>
         </div>
         <div class="glass-panel p-4 rounded-2xl border border-slate-700 flex flex-col items-center justify-center h-full relative">
-          <h3 class="text-lg font-bold mb-2">Por que o Brasil?</h3><p class="text-[11px] text-slate-400 mb-4 text-center">Temos infraestrutura hidráulica e eólica massiva.</p>
+          <h3 class="text-lg font-bold mb-2">Por que o Brasil?</h3><p class="text-[11px] text-slate-400 mb-4 text-center">Temos infraestrutura hidrelétrica e eólica massiva.</p>
           <div class="relative w-full h-[180px] flex items-center justify-center mb-4"><canvas id="energyChartBR"></canvas></div>
-          <div class="bg-emerald-950/30 p-3 rounded-lg border border-emerald-900/50 w-full text-center"><p class="text-[11px] text-emerald-200">Mais de 51% da matriz elétrica do Brasil é Hidráulica (Água). Fonte limpa atrai big techs!</p></div>
+          <div class="bg-emerald-950/30 p-3 rounded-lg border border-emerald-900/50 w-full text-center"><p class="text-[11px] text-emerald-200">Mais de 51% da matriz elétrica do Brasil é Hidrelétrica (Água). Fonte limpa atrai big techs!</p></div>
         </div>
       </div>
     </div>
@@ -573,6 +572,9 @@
             <div class="glass-panel p-4 rounded-xl border border-cyan-700 relative flex flex-col h-full">
               <div class="w-4 h-4 bg-cyan-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_10px_#06b6d4] hidden md:block z-20"></div>
               <span class="text-[11px] font-bold text-cyan-400 block mb-1">A Conexão</span><h3 class="text-lg font-bold text-white mb-2">Cabos Submarinos</h3>
+              <div class="w-full h-24 rounded-lg overflow-hidden border border-cyan-500/40 mb-2 bg-white">
+                <img src="cbos.jpeg" alt="Mapa de Cabos Submarinos" class="w-full h-full object-cover">
+              </div>
               <p class="text-xs text-slate-400 flex-1">Fios de fibra óptica no fundo dos oceanos. Sem eles, o Brasil não conseguiria se comunicar rapidamente com outros países.</p>
             </div>
             <div class="glass-panel p-4 rounded-xl border border-emerald-700 relative flex flex-col h-full">
@@ -681,7 +683,7 @@
         if(ctxE) {
           energyChartInstance = new Chart(ctxE.getContext('2d'), {
             type: 'doughnut',
-            data: { labels: ['Hidráulica', 'Eólica', 'Solar', 'Biomassa', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 6.6], backgroundColor: ['#38bdf8', '#0ea5e9', '#eab308', '#22c55e', '#475569', '#1e293b'], borderWidth: 0 }] },
+            data: { labels: ['Hidrelétrica', 'Eólica', 'Solar', 'Biomassa', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 6.6], backgroundColor: ['#38bdf8', '#0ea5e9', '#eab308', '#22c55e', '#475569', '#1e293b'], borderWidth: 0 }] },
             options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 10} } } } }
           });
         }
@@ -726,7 +728,7 @@
           type: 'bar',
           data: {
             labels: ['Capacidade Teórica (Sem corredores)', 'Capacidade Real (-40% circulação)'],
-            datasets: [{ label: 'Racks 42U', data: [80, 48], backgroundColor: ['#a855f7', '#06b6d4'], borderRadius: 8 }]
+            datasets: [{ label: 'Servidores em 48 m²', data: [80, 48], backgroundColor: ['#a855f7', '#06b6d4'], borderRadius: 8 }]
           },
           options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0' }, grid: { display: false } } } }
         });
@@ -745,7 +747,7 @@
         dataCharts.g3s1 = new Chart(document.getElementById('chart-g3-br'), {
           type: 'doughnut',
           data: {
-            labels: ['Hidráulica', 'Eólica', 'Solar', 'Biomassa', 'Gás Nat.', 'Carvão', 'Nuclear', 'Petróleo', 'Imp.'],
+            labels: ['Hidrelétrica', 'Eólica', 'Solar', 'Biomassa', 'Gás Nat.', 'Carvão', 'Nuclear', 'Petróleo', 'Imp.'],
             datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 2.2, 2.0, 1.5, 0.9], backgroundColor: ['#0ea5e9', '#fed7aa', '#eab308', '#f97316', '#a855f7', '#334155', '#6b7280', '#991b1b', '#38bdf8'], borderWidth: 0 }]
           },
           options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 10} } } } }
@@ -753,7 +755,7 @@
         dataCharts.g3s1b = new Chart(document.getElementById('chart-g3-mundo'), {
           type: 'doughnut',
           data: {
-            labels: ['Petróleo', 'Carvão', 'Gás Nat.', 'Biocomb.', 'Nuclear', 'Outras Ren.', 'Hidráulica'],
+            labels: ['Petróleo', 'Carvão', 'Gás Nat.', 'Biocomb.', 'Nuclear', 'Outras Ren.', 'Hidrelétrica'],
             datasets: [{ data: [30.2, 27.8, 22.7, 8.8, 4.7, 3.3, 2.4], backgroundColor: ['#991b1b', '#1e3a8a', '#a855f7', '#84cc16', '#78350f', '#eab308', '#0ea5e9'], borderWidth: 0 }]
           },
           options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 10} } } } }
@@ -797,13 +799,11 @@
       const target = document.getElementById(`data-g${activeDataGroup}-s${activeDataScreen}`);
       if(target) { target.classList.remove('hidden'); target.classList.add('flex', 'active-stage'); }
 
-      // Atualiza botões de grupo
       const groupColors = { 1: ['bg-blue-600','border-blue-400'], 2: ['bg-purple-600','border-purple-400'], 3: ['bg-emerald-600','border-emerald-400'], 4: ['bg-amber-600','border-amber-400'] };
       for(let i = 1; i <= 4; i++) {
         const b = document.getElementById('btn-grp-' + i);
         b.className = 'data-grp-btn font-bold py-2 px-3 rounded-lg border text-xs transition-all ' + (i === activeDataGroup ? `${groupColors[i][0]} ${groupColors[i][1]} text-white` : 'bg-slate-800 border-slate-700 hover:bg-slate-700 text-slate-300');
       }
-      // Atualiza botões Tela 1 / Tela 2
       document.getElementById('btn-scr-1').className = 'px-3 py-1 rounded text-xs font-bold transition-all ' + (activeDataScreen === 1 ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-white');
       document.getElementById('btn-scr-2').className = 'px-3 py-1 rounded text-xs font-bold transition-all ' + (activeDataScreen === 2 ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-white');
 
