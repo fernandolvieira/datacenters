@@ -76,16 +76,13 @@
       </div>
     </div>
 
-    <!-- ==========================================
-         MENU DE DADOS MOBILE (4 GRUPOS x 2 TELAS)
-         ========================================== -->
+    <!-- MENU DE DADOS MOBILE -->
     <div id="stage-dados" class="hidden flex-col w-full max-w-md mx-auto gap-4">
       <div class="text-center">
         <h2 class="text-2xl font-bold text-indigo-400">Menu de Dados</h2>
         <p class="text-slate-400 text-xs">Selecione o grupo e alterne entre Tela 1 e Tela 2.</p>
       </div>
 
-      <!-- Abas de Grupos -->
       <div class="flex overflow-x-auto gap-2 pb-1 scrollbar-hide">
         <button onclick="selectDataGroup(1)" id="btn-grp-1" class="whitespace-nowrap bg-blue-600 border-blue-400 text-white font-bold py-2 px-3 rounded-lg border text-xs">💧 Água</button>
         <button onclick="selectDataGroup(2)" id="btn-grp-2" class="whitespace-nowrap bg-slate-800 border-slate-700 text-slate-300 font-bold py-2 px-3 rounded-lg border text-xs">📐 Espaço Físico</button>
@@ -93,15 +90,12 @@
         <button onclick="selectDataGroup(4)" id="btn-grp-4" class="whitespace-nowrap bg-slate-800 border-slate-700 text-slate-300 font-bold py-2 px-3 rounded-lg border text-xs">⚡ Energia</button>
       </div>
 
-      <!-- Toggle Tela 1 / Tela 2 -->
       <div class="grid grid-cols-2 gap-2 bg-slate-900 p-1 rounded-xl border border-slate-700">
         <button onclick="selectDataScreen(1)" id="btn-scr-1" class="py-1.5 rounded-lg text-xs font-bold bg-cyan-600 text-white">Tela 1</button>
         <button onclick="selectDataScreen(2)" id="btn-scr-2" class="py-1.5 rounded-lg text-xs font-bold text-slate-400">Tela 2</button>
       </div>
 
-      <!-- Conteúdo das 8 Telas -->
       <div class="glass-panel rounded-2xl p-4 border-slate-700">
-
         <!-- G1 T1 -->
         <div id="data-g1-s1" class="data-screen flex flex-col gap-4">
           <div class="text-center">
@@ -219,7 +213,6 @@
           <div class="h-[190px] relative"><canvas id="chart-g4-cargas"></canvas></div>
           <div class="h-[170px] relative"><canvas id="chart-g4-renov"></canvas></div>
         </div>
-
       </div>
     </div>
 
@@ -362,8 +355,8 @@
           <div class="w-4 h-4 bg-cyan-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 -translate-x-1/2 -mt-1.5"></div>
           <span class="text-[10px] font-bold text-cyan-400 block">A Conexão</span>
           <h3 class="text-sm font-bold text-white mb-2">Cabos Submarinos</h3>
-          <div class="w-full h-28 rounded-lg overflow-hidden border border-cyan-500/40 bg-white">
-            <img src="../cbos.jpeg" alt="Mapa de Cabos Submarinos" class="w-full h-full object-cover">
+          <div class="w-full h-36 rounded-lg overflow-hidden border border-cyan-500/40 bg-white">
+            <img src="../cbos.jpeg" alt="Mapa de Cabos Submarinos" class="w-full h-full object-contain">
           </div>
         </div>
         <div class="glass-panel p-4 rounded-xl border border-emerald-700 relative ml-6"><div class="w-4 h-4 bg-emerald-500 rounded-full absolute top-5 -left-6 border-4 border-slate-950 -translate-x-1/2 -mt-1.5"></div><span class="text-[10px] font-bold text-emerald-400 block">Pandemia (2020)</span><h3 class="text-sm font-bold text-white">Streaming & Isolamento</h3></div>
@@ -399,7 +392,6 @@
     let activeDataGroup = 1;
     let activeDataScreen = 1;
 
-    // SOM
     let audioCtx, oscillator, gainNode, isPlaying = false;
     const btnSound = document.getElementById('btn-sound');
     btnSound.addEventListener('click', () => {
@@ -412,135 +404,4 @@
         oscillator = audioCtx.createOscillator(); gainNode = audioCtx.createGain();
         oscillator.type = 'sawtooth'; oscillator.frequency.value = 60; gainNode.gain.value = 0.15;
         oscillator.connect(gainNode); gainNode.connect(audioCtx.destination); oscillator.start();
-        isPlaying = true; btnSound.innerHTML = '<span>🔇</span> Desligar Zumbido'; btnSound.classList.replace('bg-amber-600', 'bg-rose-600');
-      }
-    });
-    function stopSoundForcefully() {
-      if(isPlaying && oscillator) { oscillator.stop(); oscillator.disconnect(); isPlaying = false; btnSound.innerHTML = '<span>🔊</span> Ligar Zumbido'; btnSound.classList.replace('bg-rose-600', 'bg-amber-600'); }
-    }
-
-    // GRÁFICOS GERAIS MOBILE
-    let energyChartInstance = null, jobsChartInstance = null;
-    function initGeneralCharts() {
-      if(!energyChartInstance) {
-        const ctxE = document.getElementById('energyChartBRMobile');
-        if(ctxE) energyChartInstance = new Chart(ctxE.getContext('2d'), { type: 'doughnut', data: { labels: ['Hidrelétrica', 'Eólica', 'Solar', 'Biomassa', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 6.6], backgroundColor: ['#38bdf8', '#0ea5e9', '#eab308', '#22c55e', '#475569', '#1e293b'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 10} } } } } });
-      }
-      if(!jobsChartInstance) {
-        const ctxJ = document.getElementById('jobsChartMobile');
-        if(ctxJ) jobsChartInstance = new Chart(ctxJ.getContext('2d'), { type: 'bar', data: { labels: ['Obras (Temp.)', 'Operação (Fixo)'], datasets: [{ data: [1500, 40], backgroundColor: ['#fbbf24', '#14b8a6'], borderRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0', font: {size: 10} }, grid: { display: false } } } } });
-      }
-    }
-
-    // GRÁFICOS MENU DE DADOS MOBILE
-    const dataCharts = {};
-    function initDataChartsFor(g, s) {
-      if (g === 1 && s === 1 && !dataCharts.g1s1) {
-        dataCharts.g1s1 = new Chart(document.getElementById('chart-g1-escala'), { type: 'bar', data: { labels: ['1 Dia', '30 Dias', '1 Ano', 'Mundo'], datasets: [{ data: [2500000, 75000000, 912500000, 10950000000000], backgroundColor: ['#67e8f9', '#38bdf8', '#2563eb', '#1e3a8a'], borderRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { type: 'logarithmic', ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0', font: {size: 10} }, grid: { display: false } } } } });
-      }
-      if (g === 1 && s === 2 && !dataCharts.g1s2) {
-        dataCharts.g1s2 = new Chart(document.getElementById('chart-g1-equiv'), { type: 'bar', data: { labels: ['Banhos', 'Arroz (kg)', 'Carne (kg)', 'Piscinas'], datasets: [{ data: [6000000000, 200000000, 37000000, 224000], backgroundColor: ['#38bdf8', '#22c55e', '#f59e0b', '#6366f1'], borderRadius: 4 }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { type: 'logarithmic', ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, y: { ticks: { color: '#e2e8f0', font: {size: 10} }, grid: { display: false } } } } });
-      }
-      if (g === 2 && s === 1 && !dataCharts.g2s1) {
-        dataCharts.g2s1 = new Chart(document.getElementById('chart-g2-racks'), { type: 'bar', data: { labels: ['Teórica (80)', 'Real (48)'], datasets: [{ label: 'Servidores em 48 m²', data: [80, 48], backgroundColor: ['#a855f7', '#06b6d4'], borderRadius: 6 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0' }, grid: { display: false } } } } });
-      }
-      if (g === 2 && s === 2 && !dataCharts.g2s2) {
-        dataCharts.g2s2 = new Chart(document.getElementById('chart-g2-angulos'), { type: 'pie', data: { labels: ['Fóssil (144°)', 'Renovável (126°)', 'Outros (90°)'], datasets: [{ data: [40, 35, 25], backgroundColor: ['#1e3a8a', '#22c55e', '#38bdf8'], borderWidth: 2, borderColor: '#0b0f19' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#e2e8f0', font: {size: 10} } } } } });
-      }
-      if (g === 3 && s === 1 && !dataCharts.g3s1) {
-        dataCharts.g3s1 = new Chart(document.getElementById('chart-g3-br'), { type: 'doughnut', data: { labels: ['Hidrelétrica', 'Eólica', 'Solar', 'Biom.', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 6.6], backgroundColor: ['#0ea5e9', '#fed7aa', '#eab308', '#f97316', '#a855f7', '#991b1b'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 9} } } } } });
-        dataCharts.g3s1b = new Chart(document.getElementById('chart-g3-mundo'), { type: 'doughnut', data: { labels: ['Petróleo', 'Carvão', 'Gás', 'Biocomb.', 'Nuclear', 'Renov.'], datasets: [{ data: [30.2, 27.8, 22.7, 8.8, 4.7, 5.7], backgroundColor: ['#991b1b', '#1e3a8a', '#a855f7', '#84cc16', '#78350f', '#0ea5e9'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: {size: 9} } } } } });
-      }
-      if (g === 3 && s === 2 && !dataCharts.g3s2) {
-        dataCharts.g3s2 = new Chart(document.getElementById('chart-g3-comp'), { type: 'bar', data: { labels: ['Brasil', 'Mundo'], datasets: [{ label: 'Renováveis (%)', data: [85.9, 14.5], backgroundColor: '#10b981', borderRadius: 4 }, { label: 'Não Renov. (%)', data: [14.1, 85.5], backgroundColor: '#ef4444', borderRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#e2e8f0', font: {size: 10} } } }, scales: { y: { max: 100, ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0' }, grid: { display: false } } } } });
-      }
-      if (g === 4 && s === 2 && !dataCharts.g4s2) {
-        dataCharts.g4s2 = new Chart(document.getElementById('chart-g4-cargas'), { type: 'bar', data: { labels: ['1 kWh', '100 kWh', 'Casa/Mês'], datasets: [{ data: [55, 5500, 9800], backgroundColor: ['#fbbf24', '#f59e0b', '#d97706'], borderRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#e2e8f0', font: {size: 10} }, grid: { display: false } } } } });
-        dataCharts.g4s2b = new Chart(document.getElementById('chart-g4-renov'), { type: 'doughnut', data: { labels: ['Renovável (88%)', 'Não Renovável (12%)'], datasets: [{ data: [88, 12], backgroundColor: ['#10b981', '#6366f1'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1', font: {size: 10} } } } } });
-      }
-    }
-
-    function renderDataView() {
-      document.querySelectorAll('.data-screen').forEach(el => { el.classList.add('hidden'); el.classList.remove('flex', 'active-stage'); });
-      const target = document.getElementById(`data-g${activeDataGroup}-s${activeDataScreen}`);
-      if(target) { target.classList.remove('hidden'); target.classList.add('flex', 'active-stage'); }
-
-      const groupColors = { 1: ['bg-blue-600','border-blue-400'], 2: ['bg-purple-600','border-purple-400'], 3: ['bg-emerald-600','border-emerald-400'], 4: ['bg-amber-600','border-amber-400'] };
-      for(let i = 1; i <= 4; i++) {
-        const b = document.getElementById('btn-grp-' + i);
-        b.className = 'whitespace-nowrap font-bold py-2 px-3 rounded-lg border text-xs ' + (i === activeDataGroup ? `${groupColors[i][0]} ${groupColors[i][1]} text-white` : 'bg-slate-800 border-slate-700 text-slate-300');
-      }
-      document.getElementById('btn-scr-1').className = 'py-1.5 rounded-lg text-xs font-bold ' + (activeDataScreen === 1 ? 'bg-cyan-600 text-white' : 'text-slate-400');
-      document.getElementById('btn-scr-2').className = 'py-1.5 rounded-lg text-xs font-bold ' + (activeDataScreen === 2 ? 'bg-cyan-600 text-white' : 'text-slate-400');
-      initDataChartsFor(activeDataGroup, activeDataScreen);
-    }
-
-    function selectDataGroup(g) { activeDataGroup = g; activeDataScreen = 1; renderDataView(); }
-    function selectDataScreen(s) { activeDataScreen = s; renderDataView(); }
-
-    function updateCalculator() {
-      const iaSlider = document.getElementById('slider-ia'), vidSlider = document.getElementById('slider-vid');
-      if(!iaSlider || !vidSlider) return;
-      document.getElementById('val-ia').textContent = iaSlider.value + " pgtas";
-      document.getElementById('val-vid').textContent = vidSlider.value + " hrs";
-      let waterMl = (parseInt(iaSlider.value) * 25) + (parseInt(vidSlider.value) * 10);
-      let energyCargas = ((parseInt(iaSlider.value) / 20) * 1) + (parseInt(vidSlider.value) * 0.2);
-      document.getElementById('res-water').textContent = (waterMl > 1000) ? (waterMl/1000).toFixed(1) + " L" : waterMl + " ml";
-      document.getElementById('res-energy').textContent = energyCargas.toFixed(1) + " crgs";
-    }
-
-    function buildDots() {
-      const dotContainer = document.getElementById('progress-dots');
-      dotContainer.innerHTML = '';
-      if(currentStage === 0 || currentStage === 'dados') return;
-      for(let i = 1; i <= totalStages; i++) {
-        const dot = document.createElement('div');
-        dot.className = `h-1.5 rounded-full transition-all ${i === currentStage ? 'bg-cyan-400 w-5' : 'bg-slate-700 w-1.5'}`;
-        dotContainer.appendChild(dot);
-      }
-    }
-
-    function updateNavButtons() {
-      const btnPrev = document.getElementById('btn-prev'), btnNext = document.getElementById('btn-next');
-      if(currentStage === 0 || currentStage === 'dados') {
-        btnPrev.classList.add('hidden'); btnNext.classList.add('hidden');
-      } else {
-        btnPrev.classList.remove('hidden'); btnNext.classList.remove('hidden');
-        btnNext.textContent = currentStage === totalStages ? '🏠 Início' : 'Avançar →';
-      }
-      buildDots();
-    }
-
-    function goToMenuDados() {
-      if(currentStage === 5) stopSoundForcefully();
-      for(let i = 0; i <= totalStages; i++) {
-        const el = document.getElementById('stage-' + i);
-        if(el) { el.classList.add('hidden'); el.classList.remove('flex', 'active-stage'); }
-      }
-      const elDados = document.getElementById('stage-dados');
-      elDados.classList.remove('hidden'); elDados.classList.add('flex', 'active-stage');
-      currentStage = 'dados'; window.scrollTo(0,0); updateNavButtons(); renderDataView();
-    }
-
-    function goToStage(n) {
-      if(currentStage === 5 && n !== 5) stopSoundForcefully();
-      const elDados = document.getElementById('stage-dados');
-      if(elDados) { elDados.classList.add('hidden'); elDados.classList.remove('flex', 'active-stage'); }
-      for(let i = 0; i <= totalStages; i++) {
-        const el = document.getElementById('stage-' + i);
-        if(el) { el.classList.add('hidden'); el.classList.remove('flex', 'active-stage'); }
-      }
-      const target = document.getElementById('stage-' + n);
-      if(target) { target.classList.remove('hidden'); target.classList.add('flex', 'active-stage'); }
-      currentStage = n; window.scrollTo(0,0); updateNavButtons();
-      if(n === 3 || n === 7) initGeneralCharts();
-    }
-
-    function nextStage() { if(currentStage === totalStages) goToStage(0); else goToStage(currentStage + 1); }
-    function prevStage() { if(currentStage === 1) goToStage(0); else goToStage(currentStage - 1); }
-    function goToMenu() { goToStage(0); }
-
-    updateCalculator();
-  </script>
-</body>
-</html>
+        isPlaying = true; btnSound.innerHTML = '<span>🔇</span> Desligar Zumbido'; btnSound.classList.replace('bg-amber-600', 'bg-rose-60
