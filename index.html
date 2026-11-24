@@ -76,7 +76,6 @@
          MENU DE DADOS (4 GRUPOS x 2 TELAS CADA)
          ========================================== -->
     <div id="stage-dados" class="hidden flex-col h-full px-8 py-4 max-w-7xl mx-auto w-full">
-      <!-- Barra Superior de Grupos + Sub-telas -->
       <div class="flex flex-wrap items-center justify-between gap-3 mb-3 shrink-0">
         <div class="flex gap-2">
           <button onclick="selectDataGroup(1)" id="btn-grp-1" class="data-grp-btn bg-blue-600 border-blue-400 text-white font-bold py-2 px-3 rounded-lg border text-xs transition-all">💧 Água (Pedro, Isadora, Isabela, Manuella)</button>
@@ -84,17 +83,15 @@
           <button onclick="selectDataGroup(3)" id="btn-grp-3" class="data-grp-btn bg-slate-800 border-slate-700 hover:bg-slate-700 text-slate-300 font-bold py-2 px-3 rounded-lg border text-xs transition-all">🌍 Matrizes (Geovanna e Helena L.)</button>
           <button onclick="selectDataGroup(4)" id="btn-grp-4" class="data-grp-btn bg-slate-800 border-slate-700 hover:bg-slate-700 text-slate-300 font-bold py-2 px-3 rounded-lg border text-xs transition-all">⚡ Energia (Helena I., Letícia, Grazi, Maju, Anita, Val)</button>
         </div>
-        <!-- Seletor de Tela 1 / Tela 2 do Grupo -->
         <div class="flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-slate-700">
           <button onclick="selectDataScreen(1)" id="btn-scr-1" class="px-3 py-1 rounded text-xs font-bold bg-cyan-600 text-white transition-all">Tela 1</button>
           <button onclick="selectDataScreen(2)" id="btn-scr-2" class="px-3 py-1 rounded text-xs font-bold text-slate-400 hover:text-white transition-all">Tela 2</button>
         </div>
       </div>
 
-      <!-- Container das 8 Telas -->
       <div class="flex-1 glass-panel rounded-2xl p-5 border-slate-700 overflow-hidden relative min-h-0">
 
-        <!-- GRUPO 1 - TELA 1: Escala de Água + Vídeo 1 -->
+        <!-- GRUPO 1 - TELA 1 -->
         <div id="data-g1-s1" class="data-screen flex flex-col w-full h-full gap-4">
           <div class="flex justify-between items-center border-b border-slate-800 pb-2 shrink-0">
             <div>
@@ -136,7 +133,7 @@
           </div>
         </div>
 
-        <!-- GRUPO 1 - TELA 2: Impacto Global vs SJDR + Vídeo 3 -->
+        <!-- GRUPO 1 - TELA 2 -->
         <div id="data-g1-s2" class="data-screen hidden flex-col w-full h-full gap-4">
           <div class="flex justify-between items-center border-b border-slate-800 pb-2 shrink-0">
             <div>
@@ -170,7 +167,7 @@
           </div>
         </div>
 
-        <!-- GRUPO 2 - TELA 1: Espaço Físico, Escala 1:100 e Rack 42U -->
+        <!-- GRUPO 2 - TELA 1 -->
         <div id="data-g2-s1" class="data-screen hidden flex-col w-full h-full gap-4">
           <div class="flex justify-between items-center border-b border-slate-800 pb-2 shrink-0">
             <div>
@@ -215,7 +212,7 @@
           </div>
         </div>
 
-        <!-- GRUPO 2 - TELA 2: Cálculo de Ângulos (Gráfico de Setores) -->
+        <!-- GRUPO 2 - TELA 2 -->
         <div id="data-g2-s2" class="data-screen hidden flex-col w-full h-full gap-4">
           <div class="flex justify-between items-center border-b border-slate-800 pb-2 shrink-0">
             <div>
@@ -252,7 +249,7 @@
           </div>
         </div>
 
-        <!-- GRUPO 3 - TELA 1: Matriz Elétrica BR vs Mundial -->
+        <!-- GRUPO 3 - TELA 1 -->
         <div id="data-g3-s1" class="data-screen hidden flex-col w-full h-full gap-4">
           <div class="flex justify-between items-center border-b border-slate-800 pb-2 shrink-0">
             <div>
@@ -275,7 +272,7 @@
           </div>
         </div>
 
-        <!-- GRUPO 3 - TELA 2: Comparativo Renováveis vs Não Renováveis -->
+        <!-- GRUPO 3 - TELA 2 -->
         <div id="data-g3-s2" class="data-screen hidden flex-col w-full h-full gap-4">
           <div class="flex justify-between items-center border-b border-slate-800 pb-2 shrink-0">
             <div>
@@ -302,7 +299,7 @@
           </div>
         </div>
 
-        <!-- GRUPO 4 - TELA 1: Casa vs Data Center (5 MW) + Vídeo 2 -->
+        <!-- GRUPO 4 - TELA 1 -->
         <div id="data-g4-s1" class="data-screen hidden flex-col w-full h-full gap-4">
           <div class="flex justify-between items-center border-b border-slate-800 pb-2 shrink-0">
             <div>
@@ -342,7 +339,7 @@
           </div>
         </div>
 
-        <!-- GRUPO 4 - TELA 2: O Peso de 1 kWh em Cargas de Celular -->
+        <!-- GRUPO 4 - TELA 2 -->
         <div id="data-g4-s2" class="data-screen hidden flex-col w-full h-full gap-4">
           <div class="flex justify-between items-center border-b border-slate-800 pb-2 shrink-0">
             <div>
@@ -554,45 +551,114 @@
       </div>
     </div>
 
-    <!-- FASE 6 -->
-    <div id="stage-6" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
-      <div class="text-center shrink-0">
-        <h2 class="text-4xl font-bold text-purple-400 mb-1">A Evolução e o Futuro</h2>
-        <p class="text-slate-300 text-sm">Pesquisa e desenvolvimento: <strong class="text-cyan-300">Caio, Arthur, Victor e Brainer</strong></p>
+    <!-- ==========================================
+         FASE 6: 4 CARDS GRANDES EM CARROSSEL
+         ========================================== -->
+    <div id="stage-6" class="hidden flex-col h-full px-8 py-4 max-w-7xl mx-auto w-full">
+      <div class="flex items-center justify-between mb-3 shrink-0">
+        <div>
+          <h2 class="text-3xl font-bold text-purple-400 leading-tight">A Evolução e o Futuro</h2>
+          <p class="text-slate-300 text-xs">Pesquisa e desenvolvimento: <strong class="text-cyan-300">Caio, Arthur, Victor e Brainer</strong></p>
+        </div>
+        <!-- Seletor dos 4 Cards -->
+        <div class="flex items-center gap-2">
+          <button onclick="selectEvoCard(1)" id="evo-btn-1" class="px-3 py-2 rounded-lg text-xs font-bold border bg-purple-600 border-purple-400 text-white transition-all">1. Anos 1990-2000</button>
+          <button onclick="selectEvoCard(2)" id="evo-btn-2" class="px-3 py-2 rounded-lg text-xs font-bold border bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700 transition-all">2. Cabos Submarinos</button>
+          <button onclick="selectEvoCard(3)" id="evo-btn-3" class="px-3 py-2 rounded-lg text-xs font-bold border bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700 transition-all">3. Pandemia (2020)</button>
+          <button onclick="selectEvoCard(4)" id="evo-btn-4" class="px-3 py-2 rounded-lg text-xs font-bold border bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700 transition-all">4. A Era da IA</button>
+        </div>
       </div>
-      <div class="flex-1 flex flex-col justify-center relative min-h-0 pb-6">
-        <div class="relative w-full mt-10 md:mt-16">
-          <div class="absolute top-0 left-0 w-full h-1 bg-slate-800 hidden md:block -translate-y-1/2"></div>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8 z-10">
-            <div class="glass-panel p-4 rounded-xl border border-slate-700 relative flex flex-col h-full">
-              <div class="w-4 h-4 bg-slate-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 hidden md:block z-20"></div>
-              <span class="text-[11px] font-bold text-slate-400 block mb-1">Anos 1990 - 2000</span><h3 class="text-lg font-bold text-white mb-2">Salas de Servidores</h3>
-              <p class="text-xs text-slate-400 flex-1">Na década de 90, os servidores eram grandes e caros. Nos anos 2000, ficaram menores e mais potentes, dando origem aos data centers.</p>
+
+      <!-- Área Principal do Card Grande -->
+      <div class="flex-1 glass-panel rounded-2xl p-6 border-slate-700 relative overflow-hidden flex flex-col justify-between min-h-0">
+
+        <!-- CARD 1: ANOS 1990 - 2000 -->
+        <div id="evo-card-1" class="evo-card flex-1 grid grid-cols-2 gap-8 items-center min-h-0">
+          <div class="bg-slate-950/60 border border-slate-700 rounded-2xl p-8 h-full flex flex-col justify-center">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Década de 1990</span>
+            <h3 class="text-3xl font-bold text-white mb-4">🖥️ Salas de Servidores</h3>
+            <p class="text-base text-slate-300 leading-relaxed">Os servidores eram computadores grandes, muito caros e potentes, mas limitados em capacidade. Ficavam em salas especiais e eram usados principalmente por empresas grandes, com conexões bem lentas comparadas às de hoje.</p>
+          </div>
+          <div class="bg-slate-950/60 border border-purple-500/40 rounded-2xl p-8 h-full flex flex-col justify-center">
+            <span class="text-xs font-bold text-purple-400 uppercase tracking-widest mb-2">Década de 2000</span>
+            <h3 class="text-3xl font-bold text-white mb-4">🏢 Os Primeiros Data Centers</h3>
+            <p class="text-base text-slate-300 leading-relaxed">Os servidores ficaram menores, mais baratos e mais potentes. Começaram a surgir os primeiros data centers maiores, reunindo muitos servidores juntos em um mesmo lugar para atender à expansão rápida da internet.</p>
+          </div>
+        </div>
+
+        <!-- CARD 2: CABOS SUBMARINOS (MAPA GRANDE) -->
+        <div id="evo-card-2" class="evo-card hidden flex-1 grid grid-cols-12 gap-6 items-center min-h-0">
+          <div class="col-span-8 h-full rounded-xl overflow-hidden border-2 border-cyan-500/50 bg-white flex items-center justify-center shadow-[0_0_25px_rgba(6,182,212,0.2)]">
+            <img src="cbos.jpeg" alt="Mapa de Cabos Submarinos" class="w-full h-full object-contain">
+          </div>
+          <div class="col-span-4 flex flex-col justify-center gap-4 h-full">
+            <div>
+              <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">A Conexão Global</span>
+              <h3 class="text-3xl font-bold text-white mt-1 mb-3">🌊 Cabos Submarinos</h3>
+              <p class="text-sm text-slate-300 leading-relaxed">São fios de fibra óptica instalados no fundo dos oceanos que ligam os continentes entre si, enviando dados na forma de sinais que viajam muito rápido.</p>
             </div>
-            <div class="glass-panel p-4 rounded-xl border border-cyan-700 relative flex flex-col h-full">
-              <div class="w-4 h-4 bg-cyan-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_10px_#06b6d4] hidden md:block z-20"></div>
-              <span class="text-[11px] font-bold text-cyan-400 block mb-1">A Conexão</span><h3 class="text-lg font-bold text-white mb-2">Cabos Submarinos</h3>
-              <div class="w-full h-24 rounded-lg overflow-hidden border border-cyan-500/40 mb-2 bg-white">
-                <img src="cbos.jpeg" alt="Mapa de Cabos Submarinos" class="w-full h-full object-cover">
-              </div>
-              <p class="text-xs text-slate-400 flex-1">Fios de fibra óptica no fundo dos oceanos. Sem eles, o Brasil não conseguiria se comunicar rapidamente com outros países.</p>
-            </div>
-            <div class="glass-panel p-4 rounded-xl border border-emerald-700 relative flex flex-col h-full">
-              <div class="w-4 h-4 bg-emerald-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_10px_#10b981] hidden md:block z-20"></div>
-              <span class="text-[11px] font-bold text-emerald-400 block mb-1">Pandemia (2020)</span><h3 class="text-lg font-bold text-white mb-2">Streaming & Isolamento</h3>
-              <p class="text-xs text-slate-400 flex-1">A ascensão da Netflix, Spotify e trabalho remoto exigiram que a infraestrutura de dados crescesse rapidamente.</p>
-            </div>
-            <div class="glass-panel p-4 rounded-xl border-2 border-amber-500 relative shadow-[0_0_20px_rgba(245,158,11,0.25)] flex flex-col h-full mt-2 md:mt-0">
-              <div class="w-4 h-4 bg-amber-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] animate-ping hidden md:block z-20"></div>
-              <div class="w-4 h-4 bg-amber-500 rounded-full absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-slate-950 shadow-[0_0_15px_#f59e0b] hidden md:block z-30"></div>
-              <span class="text-[11px] font-bold text-amber-400 block mb-1">O Futuro</span><h3 class="text-lg font-bold text-white mb-2">A Era da IA</h3>
-              <p class="text-xs text-slate-300 flex-1">A Inteligência Artificial vai autogerenciar os sistemas, economizar refrigeração e exigir processadores ultra-rápidos.</p>
+            <div class="bg-cyan-950/40 border-l-4 border-cyan-400 p-4 rounded-xl">
+              <p class="text-sm text-cyan-100 leading-relaxed">O Brasil é conectado ao mundo por vários cabos submarinos. Sem eles, não conseguiríamos conversar ou acessar serviços de outros países.</p>
             </div>
           </div>
         </div>
-        <div class="mt-8 bg-slate-900/80 border border-purple-500/50 p-4 rounded-xl text-center w-full max-w-4xl mx-auto shadow-[0_0_15px_rgba(168,85,247,0.1)] shrink-0">
-           <h4 class="text-sm font-bold text-purple-400 mb-1">Conclusão</h4><p class="text-sm text-slate-300">Os data centers evoluíram para "cidades digitais". O futuro é digital, e eles são o coração de tudo isso!</p>
+
+        <!-- CARD 3: PANDEMIA (2020) & STREAMING -->
+        <div id="evo-card-3" class="evo-card hidden flex-1 grid grid-cols-2 gap-8 items-center min-h-0">
+          <div class="bg-slate-950/60 border border-emerald-500/40 rounded-2xl p-8 h-full flex flex-col justify-center">
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-2">O Boom do Entretenimento</span>
+            <h3 class="text-3xl font-bold text-white mb-4">🎬 Streaming 24h</h3>
+            <p class="text-base text-slate-300 leading-relaxed mb-6">Serviços como <strong>Netflix, YouTube e Spotify</strong> fazem com que milhões de pessoas assistam ou ouçam conteúdo ao mesmo tempo, exigindo transferências massivas de dados.</p>
+            <div class="flex gap-3">
+              <span class="bg-rose-950/80 border border-rose-500/40 text-rose-200 px-4 py-2 rounded-lg text-sm font-bold">Netflix</span>
+              <span class="bg-red-950/80 border border-red-500/40 text-red-200 px-4 py-2 rounded-lg text-sm font-bold">YouTube</span>
+              <span class="bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 px-4 py-2 rounded-lg text-sm font-bold">Spotify</span>
+            </div>
+          </div>
+          <div class="bg-slate-950/60 border border-cyan-500/40 rounded-2xl p-8 h-full flex flex-col justify-center">
+            <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">Pandemia (2020)</span>
+            <h3 class="text-3xl font-bold text-white mb-4">🏠 Isolamento & Expansão</h3>
+            <p class="text-base text-slate-300 leading-relaxed">Com as pessoas ficando em casa, aumentou muito o uso da internet: <strong>aulas online, trabalho remoto, reuniões, compras e entretenimento digital</strong>. Os data centers precisaram expandir rapidamente para dar conta de tudo.</p>
+          </div>
         </div>
+
+        <!-- CARD 4: A ERA DA IA + CONCLUSÃO -->
+        <div id="evo-card-4" class="evo-card hidden flex-1 flex-col justify-between gap-4 min-h-0">
+          <div class="grid grid-cols-4 gap-4 flex-1 items-stretch">
+            <div class="bg-slate-950/60 border border-amber-500/40 rounded-xl p-5 flex flex-col justify-center">
+              <span class="text-3xl mb-2">🤖</span>
+              <h4 class="text-base font-bold text-amber-400 mb-2">Gerenciamento Automático</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">Sistemas de IA monitoram e consertam problemas sozinhos, sem precisar de pessoas o tempo todo.</p>
+            </div>
+            <div class="bg-slate-950/60 border border-emerald-500/40 rounded-xl p-5 flex flex-col justify-center">
+              <span class="text-3xl mb-2">🌡️</span>
+              <h4 class="text-base font-bold text-emerald-400 mb-2">Economia de Energia</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">A IA controla a refrigeração de forma inteligente, gastando menos eletricidade.</p>
+            </div>
+            <div class="bg-slate-950/60 border border-cyan-500/40 rounded-xl p-5 flex flex-col justify-center">
+              <span class="text-3xl mb-2">⚡</span>
+              <h4 class="text-base font-bold text-cyan-400 mb-2">Maior Velocidade</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">Processadores especiais para IA permitem análises e respostas muito mais rápidas.</p>
+            </div>
+            <div class="bg-slate-950/60 border border-purple-500/40 rounded-xl p-5 flex flex-col justify-center">
+              <span class="text-3xl mb-2">📊</span>
+              <h4 class="text-base font-bold text-purple-400 mb-2">Mais Capacidade</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">A IA precisa de muitos dados para funcionar, fazendo os data centers crescerem ainda mais.</p>
+            </div>
+          </div>
+          <div class="bg-purple-950/40 border border-purple-500/50 p-4 rounded-xl text-center shrink-0">
+            <h4 class="text-sm font-bold text-purple-300 mb-1">Conclusão do Grupo</h4>
+            <p class="text-sm text-slate-200">Os data centers evoluíram de salas com poucos computadores para verdadeiras <strong>"cidades digitais"</strong>. O futuro é digital, e os data centers são o coração que faz tudo isso funcionar!</p>
+          </div>
+        </div>
+
+        <!-- Barra Inferior de Navegação entre os 4 Cards -->
+        <div class="flex items-center justify-between pt-4 mt-4 border-t border-slate-800 shrink-0">
+          <button onclick="prevEvoCard()" id="evo-prev" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-xs font-bold border border-slate-700 disabled:opacity-40">← Card Anterior</button>
+          <span id="evo-counter" class="text-xs font-bold text-slate-400">Card 1 de 4</span>
+          <button onclick="nextEvoCard()" id="evo-next" class="bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-lg text-xs font-bold text-white disabled:opacity-40">Próximo Card →</button>
+        </div>
+
       </div>
     </div>
 
@@ -641,6 +707,30 @@
     let currentStage = 0;
     let activeDataGroup = 1;
     let activeDataScreen = 1;
+    let currentEvoCard = 1;
+
+    // CARROSSEL DA FASE 6 (EVOLUÇÃO)
+    function selectEvoCard(n) {
+      currentEvoCard = n;
+      for (let i = 1; i <= 4; i++) {
+        const card = document.getElementById('evo-card-' + i);
+        const btn = document.getElementById('evo-btn-' + i);
+        if (i === n) {
+          card.classList.remove('hidden');
+          card.classList.add(i === 4 ? 'flex' : 'grid', 'active-stage');
+          btn.className = 'px-3 py-2 rounded-lg text-xs font-bold border bg-purple-600 border-purple-400 text-white transition-all';
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('flex', 'grid', 'active-stage');
+          btn.className = 'px-3 py-2 rounded-lg text-xs font-bold border bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700 transition-all';
+        }
+      }
+      document.getElementById('evo-counter').textContent = `Card ${n} de 4`;
+      document.getElementById('evo-prev').disabled = (n === 1);
+      document.getElementById('evo-next').disabled = (n === 4);
+    }
+    function nextEvoCard() { if (currentEvoCard < 4) selectEvoCard(currentEvoCard + 1); }
+    function prevEvoCard() { if (currentEvoCard > 1) selectEvoCard(currentEvoCard - 1); }
 
     // SOM
     let audioCtx, oscillator, gainNode, isPlaying = false;
@@ -883,6 +973,7 @@
       currentStage = n;
       updateNavButtons();
       if(n === 3 || n === 7) initGeneralCharts();
+      if(n === 6) selectEvoCard(1);
     }
 
     function nextStage() { if(currentStage === totalStages) goToStage(0); else goToStage(currentStage + 1); }
