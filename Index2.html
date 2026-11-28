@@ -38,4 +38,956 @@
         <span class="text-[11px] text-slate-500 mt-0.5 leading-none">Professores orientadores: Fernando (Informática) e Matheus (Matemática)</span>
       </div>
     </div>
+    <div class="flex gap-3">
+      <button onclick="goToMenuDados()" class="text-sm font-bold bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg transition-colors border border-indigo-500 shadow-sm flex items-center gap-2">📊 Menu de Dados</button>
+      <button onclick="goToMenu()" class="text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 px-4 py-2 rounded-lg transition-colors border border-slate-300 flex items-center gap-2">🏠 Menu Principal</button>
+    </div>
+  </header>
+
+  <main class="flex-1 w-full h-full pt-16 pb-16 overflow-hidden">
     
+    <!-- MENU PRINCIPAL -->
+    <div id="stage-0" class="flex flex-col justify-center items-center h-full px-8 active-stage w-full max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full mb-6 mt-4">
+        <button onclick="goToStage(1)" class="bg-white hover:bg-slate-50 transition-all text-left p-5 rounded-xl border border-slate-200 border-l-4 border-l-[#0891b2] shadow-sm hover:shadow-md flex flex-col justify-between h-40">
+          <div><span class="block text-cyan-700 font-bold text-xs tracking-wider mb-2">FASE 01</span><h3 class="font-bold text-lg text-slate-900 mb-1">A Nuvem Tem Endereço</h3><p class="text-sm text-slate-600 line-clamp-2">O que é um data center e o caminho invisível dos dados.</p></div><span class="text-2xl">🗄️</span>
+        </button>
+        <button onclick="goToStage(2)" class="bg-white hover:bg-slate-50 transition-all text-left p-5 rounded-xl border border-slate-200 border-l-4 border-l-[#d97706] shadow-sm hover:shadow-md flex flex-col justify-between h-40">
+          <div><span class="block text-amber-600 font-bold text-xs tracking-wider mb-2">FASE 02</span><h3 class="font-bold text-lg text-slate-900 mb-1">O Grande Dilema</h3><p class="text-sm text-slate-600 line-clamp-2">A balança entre investimentos e riscos socioambientais.</p></div><span class="text-2xl">⚖️</span>
+        </button>
+        <button onclick="goToStage(3)" class="bg-white hover:bg-slate-50 transition-all text-left p-5 rounded-xl border border-slate-200 border-l-4 border-l-[#059669] shadow-sm hover:shadow-md flex flex-col justify-between h-40">
+          <div><span class="block text-emerald-600 font-bold text-xs tracking-wider mb-2">FASE 03</span><h3 class="font-bold text-lg text-slate-900 mb-1">Fome de Energia & IA</h3><p class="text-sm text-slate-600 line-clamp-2">PUE, consumo equivalente a cidades e matriz limpa do Brasil.</p></div><span class="text-2xl">⚡</span>
+        </button>
+        <button onclick="goToStage(4)" class="bg-white hover:bg-slate-50 transition-all text-left p-5 rounded-xl border border-slate-200 border-l-4 border-l-[#0284c7] shadow-sm hover:shadow-md flex flex-col justify-between h-40">
+          <div><span class="block text-sky-600 font-bold text-xs tracking-wider mb-2">FASE 04</span><h3 class="font-bold text-lg text-slate-900 mb-1">Gasto de Água & Calculadora</h3><p class="text-sm text-slate-600 line-clamp-2">Torres evaporativas e a pegada oculta de cada clique.</p></div><span class="text-2xl">💧</span>
+        </button>
+        <button onclick="goToStage(5)" class="bg-white hover:bg-slate-50 transition-all text-left p-5 rounded-xl border border-slate-200 border-l-4 border-l-[#e11d48] shadow-sm hover:shadow-md flex flex-col justify-between h-40">
+          <div><span class="block text-rose-600 font-bold text-xs tracking-wider mb-2">FASE 05</span><h3 class="font-bold text-lg text-slate-900 mb-1">Poluição Sonora & Teste</h3><p class="text-sm text-slate-600 line-clamp-2">O zumbido de 60Hz e o impacto na vizinhança com áudio.</p></div><span class="text-2xl">🔊</span>
+        </button>
+        <button onclick="goToStage(6)" class="bg-white hover:bg-slate-50 transition-all text-left p-5 rounded-xl border border-slate-200 border-l-4 border-l-[#9333ea] shadow-sm hover:shadow-md flex flex-col justify-between h-40">
+          <div><span class="block text-purple-600 font-bold text-xs tracking-wider mb-2">FASE 06</span><h3 class="font-bold text-lg text-slate-900 mb-1">A Evolução e o Futuro</h3><p class="text-sm text-slate-600 line-clamp-2">Anos 90, cabos submarinos, streaming e a era da IA.</p></div><span class="text-2xl">➗</span>
+        </button>
+        <button onclick="goToStage(7)" class="bg-white hover:bg-slate-50 transition-all text-left p-5 rounded-xl border border-slate-200 border-l-4 border-l-[#0d9488] shadow-sm hover:shadow-md flex flex-col justify-between h-40">
+          <div><span class="block text-teal-600 font-bold text-xs tracking-wider mb-2">FASE 07</span><h3 class="font-bold text-lg text-slate-900 mb-1">Paradoxo dos Empregos</h3><p class="text-sm text-slate-600 line-clamp-2">Gráfico de obras vs operação e limites econômicos.</p></div><span class="text-2xl">👨‍🔧</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         MENU DE DADOS (4 GRUPOS x 2 TELAS CADA)
+         ========================================== -->
+    <div id="stage-dados" class="hidden flex-col h-full px-8 py-4 max-w-7xl mx-auto w-full">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-3 shrink-0">
+        <div class="flex gap-2">
+          <button onclick="selectDataGroup(1)" id="btn-grp-1" class="data-grp-btn bg-blue-600 border-blue-500 text-white font-bold py-2 px-3 rounded-lg border text-xs transition-all">💧 Água (Pedro, Isadora, Isabela, Manuella)</button>
+          <button onclick="selectDataGroup(2)" id="btn-grp-2" class="data-grp-btn bg-white border-slate-300 hover:bg-slate-100 text-slate-700 font-bold py-2 px-3 rounded-lg border text-xs transition-all">📐 Espaço Físico (Victor, Arthur, Brainer, Caio)</button>
+          <button onclick="selectDataGroup(3)" id="btn-grp-3" class="data-grp-btn bg-white border-slate-300 hover:bg-slate-100 text-slate-700 font-bold py-2 px-3 rounded-lg border text-xs transition-all">🌍 Matrizes (Geovanna e Helena L.)</button>
+          <button onclick="selectDataGroup(4)" id="btn-grp-4" class="data-grp-btn bg-white border-slate-300 hover:bg-slate-100 text-slate-700 font-bold py-2 px-3 rounded-lg border text-xs transition-all">⚡ Energia (Helena I., Letícia, Grazi, Maju, Anita, Val)</button>
+        </div>
+        <div class="flex items-center gap-1 bg-slate-200 p-1 rounded-lg border border-slate-300">
+          <button onclick="selectDataScreen(1)" id="btn-scr-1" class="px-3 py-1 rounded text-xs font-bold bg-cyan-600 text-white transition-all">Tela 1</button>
+          <button onclick="selectDataScreen(2)" id="btn-scr-2" class="px-3 py-1 rounded text-xs font-bold text-slate-600 hover:text-slate-900 transition-all">Tela 2</button>
+        </div>
+      </div>
+
+      <div class="flex-1 glass-panel rounded-2xl p-5 border-slate-200 overflow-hidden relative min-h-0">
+
+        <!-- GRUPO 1 - TELA 1 -->
+        <div id="data-g1-s1" class="data-screen flex flex-col w-full h-full gap-4">
+          <div class="flex justify-between items-center border-b border-slate-200 pb-2 shrink-0">
+            <div>
+              <h2 class="text-2xl font-bold text-blue-700">Quanta Água a "Nuvem" Consome?</h2>
+              <p class="text-xs text-slate-500">Grupo: <strong class="text-cyan-700">Pedro, Isadora, Isabela e Manuella</strong> • Tela 1/2</p>
+            </div>
+            <span class="bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">1 Data Center = 2,5 milhões L / dia</span>
+          </div>
+          <div class="flex-1 grid grid-cols-12 gap-5 min-h-0">
+            <div class="col-span-7 flex flex-col gap-3 min-h-0">
+              <div class="flex-1 rounded-xl overflow-hidden border border-slate-200 bg-white relative min-h-0 shadow-sm">
+                <video class="w-full h-full object-contain bg-white" autoplay loop muted playsinline>
+                  <source src="video_1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="grid grid-cols-3 gap-3 shrink-0">
+                <div class="bg-blue-50/70 p-3 rounded-xl border border-blue-200 text-center">
+                  <span class="text-2xl block">🏊</span>
+                  <strong class="text-blue-700 text-sm block">1 a 2 Piscinas</strong>
+                  <span class="text-[10px] text-slate-600">Olímpicas cheias por dia</span>
+                </div>
+                <div class="bg-cyan-50/70 p-3 rounded-xl border border-cyan-200 text-center">
+                  <span class="text-2xl block">🚰</span>
+                  <strong class="text-cyan-700 text-sm block">3.425 Anos</strong>
+                  <span class="text-[10px] text-slate-600">Água potável p/ 1 pessoa</span>
+                </div>
+                <div class="bg-indigo-50/70 p-3 rounded-xl border border-indigo-200 text-center">
+                  <span class="text-2xl block">🏠</span>
+                  <strong class="text-indigo-700 text-sm block">45 Anos</strong>
+                  <span class="text-[10px] text-slate-600">Uso doméstico (1 morador)</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-5 flex flex-col justify-between bg-slate-50 rounded-xl p-4 border border-slate-200 min-h-0">
+              <h3 class="text-sm font-bold text-slate-800 mb-2">Escala Logarítmica do Consumo</h3>
+              <div class="flex-1 relative min-h-0"><canvas id="chart-g1-escala"></canvas></div>
+              <p class="text-[11px] text-slate-600 mt-2">1 dia: 2,5M L → 30 dias: 75M L → 1 ano: 912,5M L → 12.000 DCs/ano: <strong class="text-blue-700">10,95 trilhões L</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO 1 - TELA 2 -->
+        <div id="data-g1-s2" class="data-screen hidden flex-col w-full h-full gap-4">
+          <div class="flex justify-between items-center border-b border-slate-200 pb-2 shrink-0">
+            <div>
+              <h2 class="text-2xl font-bold text-cyan-700">Impacto Global vs. Realidade Local</h2>
+              <p class="text-xs text-slate-500">Grupo: <strong class="text-cyan-700">Pedro, Isadora, Isabela e Manuella</strong> • Tela 2/2</p>
+            </div>
+            <span class="bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold px-3 py-1 rounded-full">Até 25% da água de cidades-sede</span>
+          </div>
+          <div class="flex-1 grid grid-cols-12 gap-5 min-h-0">
+            <div class="col-span-6 flex flex-col gap-3 min-h-0">
+              <div class="flex-1 rounded-xl overflow-hidden border border-slate-200 bg-white relative min-h-0 shadow-sm">
+                <video class="w-full h-full object-contain" autoplay loop muted playsinline>
+                  <source src="video_3.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="bg-rose-50 border border-rose-200 p-3 rounded-xl shrink-0">
+                <p class="text-xs text-rose-900 leading-relaxed"><strong>Conclusão do Grupo:</strong> Com a água gasta pelos 12.000 Data Centers do mundo em 1 ano, seria possível abastecer <strong>São João del-Rei por mais de 1.000 anos</strong>. Água economizada salva vidas!</p>
+              </div>
+            </div>
+            <div class="col-span-6 flex flex-col justify-between bg-slate-50 rounded-xl p-4 border border-slate-200 min-h-0">
+              <div>
+                <h3 class="text-sm font-bold text-blue-700">O que fazer com 560 bilhões de L/ano (1.000 Data Centers)?</h3>
+                <p class="text-[11px] text-slate-600 mb-2">Gasto de 560 bilhões de litros relativo a 1.000 Data Centers:</p>
+              </div>
+              <div class="flex-1 relative min-h-0"><canvas id="chart-g1-equiv"></canvas></div>
+              <div class="grid grid-cols-2 gap-2 mt-2 text-[11px]">
+                <div class="bg-white p-2 rounded border border-slate-200 text-slate-700"><strong class="text-blue-700">12 Milhões</strong> de pessoas abastecidas/ano</div>
+                <div class="bg-white p-2 rounded border border-slate-200 text-slate-700"><strong class="text-cyan-700">6 Bilhões</strong> de banhos de 10 min</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO 2 - TELA 1 -->
+        <div id="data-g2-s1" class="data-screen hidden flex-col w-full h-full gap-4">
+          <div class="flex justify-between items-center border-b border-slate-200 pb-2 shrink-0">
+            <div>
+              <h2 class="text-2xl font-bold text-purple-700">Espaço Físico da Nuvem & Escala 1:100</h2>
+              <p class="text-xs text-slate-500">Grupo: <strong class="text-cyan-700">Victor, Arthur, Brainer e Caio</strong> • Tela 1/2</p>
+            </div>
+            <span class="bg-purple-50 border border-purple-200 text-purple-700 text-xs font-bold px-3 py-1 rounded-full">Escala 1:100 • 1 cm = 1 metro</span>
+          </div>
+          <div class="flex-1 grid grid-cols-12 gap-5 min-h-0">
+            <div class="col-span-5 flex flex-col justify-between gap-3 min-h-0">
+              <div class="bg-purple-50/50 p-4 rounded-xl border border-purple-200">
+                <h3 class="text-sm font-bold text-purple-700 mb-2">📐 Dimensões de 1 Rack 42U</h3>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                  <div class="bg-white p-2 rounded border border-slate-200"><strong class="text-slate-900 block">60 cm</strong><span class="text-[10px] text-slate-500">Largura</span></div>
+                  <div class="bg-white p-2 rounded border border-slate-200"><strong class="text-slate-900 block">1 m</strong><span class="text-[10px] text-slate-500">Profund.</span></div>
+                  <div class="bg-white p-2 rounded border border-slate-200"><strong class="text-slate-900 block">2 m</strong><span class="text-[10px] text-slate-500">Altura</span></div>
+                </div>
+              </div>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex-1 flex flex-col justify-center">
+                <h3 class="text-sm font-bold text-cyan-700 mb-2">❄️ Fluxo de Ar (22 °C)</h3>
+                <div class="space-y-2 text-xs">
+                  <div class="flex items-center gap-2 bg-blue-50 p-2 rounded border-l-4 border-blue-500">
+                    <span>🔵</span><p class="text-slate-700"><strong>Corredor Frio:</strong> Ar gelado entra pela frente dos racks.</p>
+                  </div>
+                  <div class="flex items-center gap-2 bg-rose-50 p-2 rounded border-l-4 border-rose-500">
+                    <span>🔴</span><p class="text-slate-700"><strong>Corredor Quente:</strong> Ar quente sai por trás para os exaustores.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-7 flex flex-col justify-between bg-slate-50 rounded-xl p-4 border border-slate-200 min-h-0">
+              <div>
+                <h3 class="text-sm font-bold text-slate-900">Quantos servidores cabem em uma área de 48 m²?</h3>
+                <p class="text-[11px] text-slate-600">Em uma área de <strong>48 m²</strong>, cabem <strong>48 servidores</strong> na capacidade real (descontando 40% para corredores) contra 80 na capacidade máxima teórica.</p>
+              </div>
+              <div class="flex-1 relative min-h-0 my-2"><canvas id="chart-g2-racks"></canvas></div>
+              <div class="flex justify-between text-xs bg-white p-2.5 rounded-lg border border-slate-200 text-slate-700">
+                <span>Teórica (48 m²): <strong class="text-purple-700">80 servidores</strong></span>
+                <span>Real (48 m²): <strong class="text-cyan-700">48 servidores</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO 2 - TELA 2 -->
+        <div id="data-g2-s2" class="data-screen hidden flex-col w-full h-full gap-4">
+          <div class="flex justify-between items-center border-b border-slate-200 pb-2 shrink-0">
+            <div>
+              <h2 class="text-2xl font-bold text-purple-700">Matemática do Gráfico de Setores (Ângulos)</h2>
+              <p class="text-xs text-slate-500">Grupo: <strong class="text-cyan-700">Victor, Arthur, Brainer e Caio</strong> • Tela 2/2</p>
+            </div>
+            <span class="bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold px-3 py-1 rounded-full">Fórmula: Ângulo = Porcentagem × 3,6°</span>
+          </div>
+          <div class="flex-1 grid grid-cols-12 gap-5 min-h-0">
+            <div class="col-span-6 flex flex-col justify-center bg-slate-50 rounded-xl p-4 border border-slate-200 min-h-0">
+              <h3 class="text-sm font-bold text-center text-slate-800 mb-2">Matriz Energética dos Servidores (360° = 100%)</h3>
+              <div class="flex-1 relative min-h-0"><canvas id="chart-g2-angulos"></canvas></div>
+            </div>
+            <div class="col-span-6 flex flex-col justify-between gap-3 min-h-0">
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <h3 class="text-sm font-bold text-cyan-700 mb-3">Tabela de Cálculo com Transferidor</h3>
+                <table class="w-full text-xs text-left">
+                  <thead class="text-slate-500 border-b border-slate-300">
+                    <tr><th class="pb-2">Fonte</th><th class="pb-2">%</th><th class="pb-2">Cálculo</th><th class="pb-2">Ângulo</th></tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-200 text-slate-700">
+                    <tr><td class="py-2 font-bold text-blue-700">Fóssil</td><td>40%</td><td>40 × 3,6°</td><td class="font-bold text-slate-900">144°</td></tr>
+                    <tr><td class="py-2 font-bold text-emerald-700">Renovável</td><td>35%</td><td>35 × 3,6°</td><td class="font-bold text-slate-900">126°</td></tr>
+                    <tr><td class="py-2 font-bold text-sky-700">Outros</td><td>25%</td><td>25 × 3,6°</td><td class="font-bold text-slate-900">90°</td></tr>
+                    <tr class="bg-slate-100 font-bold"><td class="py-2">Total</td><td>100%</td><td>100 × 3,6°</td><td class="text-amber-700">360°</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="bg-purple-50 border border-purple-200 p-4 rounded-xl">
+                <h4 class="text-xs font-bold text-purple-800 mb-1">O que vive fisicamente na Nuvem?</h4>
+                <p class="text-xs text-slate-700">🎵 Músicas • 📸 Fotos • 📧 E-mails • 🎮 Jogos — Cada arquivo ocupa espaço físico em racks e consome energia 24h por dia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO 3 - TELA 1 -->
+        <div id="data-g3-s1" class="data-screen hidden flex-col w-full h-full gap-4">
+          <div class="flex justify-between items-center border-b border-slate-200 pb-2 shrink-0">
+            <div>
+              <h2 class="text-2xl font-bold text-emerald-700">Matrizes Energéticas: Brasil vs. Mundo</h2>
+              <p class="text-xs text-slate-500">Grupo: <strong class="text-cyan-700">Geovanna e Helena Lopes</strong> • Tela 1/2</p>
+            </div>
+            <span class="bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">Fontes: BEN (2025) e IEA (2023)</span>
+          </div>
+          <div class="flex-1 grid grid-cols-2 gap-6 min-h-0">
+            <div class="bg-slate-50 rounded-xl p-4 border border-emerald-200 flex flex-col min-h-0">
+              <h3 class="text-sm font-bold text-center text-emerald-700 mb-1">Matriz Elétrica Brasileira (2025)</h3>
+              <p class="text-[10px] text-center text-slate-500 mb-2">Predomínio de Hidrelétrica (51,2%), Eólica (14,9%) e Solar (11,4%)</p>
+              <div class="flex-1 relative min-h-0"><canvas id="chart-g3-br"></canvas></div>
+            </div>
+            <div class="bg-slate-50 rounded-xl p-4 border border-rose-200 flex flex-col min-h-0">
+              <h3 class="text-sm font-bold text-center text-rose-700 mb-1">Matriz Energética Mundial (2023)</h3>
+              <p class="text-[10px] text-center text-slate-500 mb-2">Predomínio de Petróleo (30,2%), Carvão (27,8%) e Gás (22,7%)</p>
+              <div class="flex-1 relative min-h-0"><canvas id="chart-g3-mundo"></canvas></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO 3 - TELA 2 -->
+        <div id="data-g3-s2" class="data-screen hidden flex-col w-full h-full gap-4">
+          <div class="flex justify-between items-center border-b border-slate-200 pb-2 shrink-0">
+            <div>
+              <h2 class="text-2xl font-bold text-emerald-700">Por Que o Brasil é o "Oásis Verde"?</h2>
+              <p class="text-xs text-slate-500">Grupo: <strong class="text-cyan-700">Geovanna e Helena Lopes</strong> • Tela 2/2</p>
+            </div>
+            <span class="bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">Brasil Elétrica: ~85,9% Renovável</span>
+          </div>
+          <div class="flex-1 grid grid-cols-12 gap-5 min-h-0">
+            <div class="col-span-7 bg-slate-50 rounded-xl p-4 border border-slate-200 flex flex-col min-h-0">
+              <h3 class="text-sm font-bold text-slate-800 mb-2">Renováveis vs. Não Renováveis (%)</h3>
+              <div class="flex-1 relative min-h-0"><canvas id="chart-g3-comp"></canvas></div>
+            </div>
+            <div class="col-span-5 flex flex-col justify-center gap-4">
+              <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-xl">
+                <h4 class="text-sm font-bold text-emerald-800 mb-1">Vantagem Brasileira</h4>
+                <p class="text-xs text-slate-700 leading-relaxed">Enquanto o mundo depende fortemente de combustíveis fósseis (mais de 80% na matriz energética global), o Brasil se destaca pelo uso massivo de água, vento, sol e biomassa (cana-de-açúcar).</p>
+              </div>
+              <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+                <h4 class="text-sm font-bold text-cyan-700 mb-1">Atração de Data Centers</h4>
+                <p class="text-xs text-slate-700 leading-relaxed">Empresas globais de tecnologia escolhem o Brasil para instalar seus servidores e reduzir sua pegada de carbono nos relatórios ambientais.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO 4 - TELA 1 -->
+        <div id="data-g4-s1" class="data-screen hidden flex-col w-full h-full gap-4">
+          <div class="flex justify-between items-center border-b border-slate-200 pb-2 shrink-0">
+            <div>
+              <h2 class="text-2xl font-bold text-amber-600">Consumo de Energia: Casa vs. Data Center (5 MW)</h2>
+              <p class="text-xs text-slate-500">Grupo: <strong class="text-cyan-700">Helena Imbroisi, Letícia, Grazi, Maria Júlia, Anita e Valentina</strong> • Tela 1/2</p>
+            </div>
+            <span class="bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold px-3 py-1 rounded-full">1 Data Center = ~20.380 Casas</span>
+          </div>
+          <div class="flex-1 grid grid-cols-12 gap-5 min-h-0">
+            <div class="col-span-7 flex flex-col gap-3 min-h-0">
+              <div class="flex-1 rounded-xl overflow-hidden border border-slate-200 bg-white relative min-h-0 shadow-sm">
+                <video class="w-full h-full object-contain" autoplay loop muted playsinline>
+                  <source src="video_2.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl shrink-0">
+                <p class="text-xs text-amber-900">Um único Data Center de porte médio (<strong>5 MW</strong>) consome em 1 ano a mesma energia que <strong>mais de 20 mil casas brasileiras juntas</strong> — o equivalente a uma cidade pequena inteira!</p>
+              </div>
+            </div>
+            <div class="col-span-5 flex flex-col justify-between bg-slate-50 rounded-xl p-4 border border-slate-200 min-h-0">
+              <h3 class="text-sm font-bold text-slate-800 mb-2">Passo a Passo do Cálculo Anual</h3>
+              <div class="space-y-3 text-xs flex-1 flex flex-col justify-center">
+                <div class="bg-white p-3 rounded-lg border border-slate-200 border-l-4 border-l-cyan-500">
+                  <span class="text-slate-500 block text-[10px]">1. Consumo de 1 casa em 1 ano</span>
+                  <strong class="text-slate-900">179,1 kWh/mês × 12 meses = <span class="text-cyan-700">2.149,2 kWh</span></strong>
+                </div>
+                <div class="bg-white p-3 rounded-lg border border-slate-200 border-l-4 border-l-amber-500">
+                  <span class="text-slate-500 block text-[10px]">2. Consumo de 1 Data Center (5 MW) em 1 ano</span>
+                  <strong class="text-slate-900">5.000 kW × 24h × 365d = <span class="text-amber-700">43.800.000 kWh</span></strong>
+                </div>
+                <div class="bg-white p-3 rounded-lg border border-slate-200 border-l-4 border-l-emerald-500">
+                  <span class="text-slate-500 block text-[10px]">3. Equivalência (Divisão)</span>
+                  <strong class="text-slate-900">43.800.000 ÷ 2.149,2 ≈ <span class="text-emerald-700 text-sm">20.380 casas</span></strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO 4 - TELA 2 -->
+        <div id="data-g4-s2" class="data-screen hidden flex-col w-full h-full gap-4">
+          <div class="flex justify-between items-center border-b border-slate-200 pb-2 shrink-0">
+            <div>
+              <h2 class="text-2xl font-bold text-amber-600">O Peso de 1 kWh & Energia Renovável</h2>
+              <p class="text-xs text-slate-500">Grupo: <strong class="text-cyan-700">Helena Imbroisi, Letícia, Grazi, Maria Júlia, Anita e Valentina</strong> • Tela 2/2</p>
+            </div>
+            <span class="bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold px-3 py-1 rounded-full">1 kWh ≈ 55 cargas de celular</span>
+          </div>
+          <div class="flex-1 grid grid-cols-12 gap-5 min-h-0">
+            <div class="col-span-7 bg-slate-50 rounded-xl p-4 border border-slate-200 flex flex-col min-h-0">
+              <h3 class="text-sm font-bold text-slate-800 mb-2">Quantas cargas de celular (15 Wh) cabem em...</h3>
+              <div class="flex-1 relative min-h-0"><canvas id="chart-g4-cargas"></canvas></div>
+            </div>
+            <div class="col-span-5 bg-slate-50 rounded-xl p-4 border border-slate-200 flex flex-col justify-between min-h-0">
+              <h3 class="text-sm font-bold text-center text-emerald-700">Eletricidade no Brasil (EPE 2024)</h3>
+              <div class="flex-1 relative min-h-0 my-2"><canvas id="chart-g4-renov"></canvas></div>
+              <div class="bg-white p-3 rounded-lg border border-slate-200 text-[11px] text-slate-700">
+                <strong class="text-amber-700 block mb-1">Como reduzir o consumo?</strong>
+                Equipamentos modernos, refrigeração líquida, virtualização de servidores e monitoramento constante.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FASE 1 -->
+    <div id="stage-1" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
+      <div class="text-center mb-6 shrink-0">
+        <h2 class="text-4xl font-bold text-slate-900 mb-2">A Nuvem Tem <span class="text-cyan-600">Endereço?</span></h2>
+        <p class="text-slate-600 text-sm">Pesquisa e desenvolvimento: <strong class="text-cyan-700">Grazi e Anita</strong></p>
+      </div>
+      <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 min-h-0">
+        <div class="flex flex-col gap-5 h-full overflow-y-auto pr-2 pb-4">
+          <div class="glass-panel rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">☁️ O que é a Nuvem?</h3>
+            <p class="text-sm text-slate-700 leading-relaxed">A nuvem não é um lugar no céu! Ela é uma tecnologia que permite guardar e acessar arquivos pela internet. Quando salvamos algo no Google Drive, iCloud ou OneDrive, nossos arquivos são gravados fisicamente em computadores potentes dentro de <strong>Data Centers</strong> espalhados pelo mundo.</p>
+          </div>
+          <div class="glass-panel rounded-2xl p-6 flex-1">
+            <h3 class="text-lg font-bold text-slate-900 mb-4">O que existe dentro de um Data Center?</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-4 bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-2xl mt-0.5">🖥️</span><div><strong class="text-cyan-700 text-sm block">Servidores</strong><p class="text-xs text-slate-600 mt-1">Computadores enormes que guardam e processam informações.</p></div></div>
+              <div class="flex items-start gap-4 bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-2xl mt-0.5">🔌</span><div><strong class="text-emerald-700 text-sm block">Cabos e Equipamentos de Rede</strong><p class="text-xs text-slate-600 mt-1">Conectam os servidores à internet global de forma ultra-rápida.</p></div></div>
+              <div class="flex items-start gap-4 bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-2xl mt-0.5">❄️</span><div><strong class="text-blue-700 text-sm block">Sistemas de Refrigeração</strong><p class="text-xs text-slate-600 mt-1">Evitam que os equipamentos esquentem demais e derretam.</p></div></div>
+              <div class="flex items-start gap-4 bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-2xl mt-0.5">🔋</span><div><strong class="text-amber-700 text-sm block">Geradores e Baterias</strong><p class="text-xs text-slate-600 mt-1">Ajudam a manter tudo funcionando caso acabe a energia do bairro.</p></div></div>
+              <div class="flex items-start gap-4 bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-2xl mt-0.5">🛡️</span><div><strong class="text-rose-700 text-sm block">Sistemas de Segurança</strong><p class="text-xs text-slate-600 mt-1">Protegem os equipamentos físicos e as informações de hackers.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="relative rounded-2xl overflow-hidden glass-glow h-full min-h-[300px] bg-slate-900">
+          <div class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur border border-cyan-500/40 rounded-full px-4 py-2 flex items-center gap-2 shadow-sm">
+            <div class="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div><span class="text-xs font-bold text-slate-800">Vídeo em Loop • Interior do Data Center</span>
+          </div>
+          <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+            <source src="video-datacenter.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-server-racks-in-a-data-center-loop-42930-large.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 2 -->
+    <div id="stage-2" class="hidden flex-col justify-center h-full p-8 max-w-7xl mx-auto w-full">
+      <div class="text-center mb-6 shrink-0">
+        <h2 class="text-4xl font-bold text-amber-600 mb-2">O Grande Dilema</h2>
+        <p class="text-slate-600 text-sm">Pesquisa e desenvolvimento: <strong class="text-cyan-700">Valentina e Maju</strong></p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 min-h-0">
+        <div class="glass-panel rounded-2xl p-6 flex flex-col justify-center h-full">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 border-b border-slate-200 pb-2">Por que o Brasil?</h3>
+          <p class="text-sm text-slate-700 mb-4">O país atrai investimentos porque possui um grande mercado de internet, muitas empresas de tecnologia e um gigantesco potencial de energia limpa.</p>
+          <h3 class="text-xl font-bold text-slate-900 mb-2 border-b border-slate-200 pb-2">A Base de Tudo</h3>
+          <p class="text-sm text-slate-700"><strong>Eletricidade:</strong> Essencial para manter tudo ligado 24h.<br><strong>Internet:</strong> Permite que dados sejam enviados e recebidos.</p>
+        </div>
+        <div class="col-span-2 grid grid-cols-2 gap-4">
+          <div class="glass-panel rounded-2xl p-5 flex flex-col gap-3">
+            <div class="text-center pb-3 border-b border-slate-200"><span class="text-4xl block mb-2">👍</span><h3 class="text-xl font-bold text-emerald-700">Prós para a Cidade</h3></div>
+            <ul class="space-y-3 text-xs mt-2 text-slate-700">
+              <li class="bg-emerald-50 p-2.5 rounded-lg border-l-4 border-emerald-500">Gera novos empregos.</li>
+              <li class="bg-emerald-50 p-2.5 rounded-lg border-l-4 border-emerald-500">Atrai investimentos e novas empresas.</li>
+              <li class="bg-emerald-50 p-2.5 rounded-lg border-l-4 border-emerald-500">Melhora a infraestrutura tecnológica local.</li>
+              <li class="bg-emerald-50 p-2.5 rounded-lg border-l-4 border-emerald-500">Movimenta o comércio e facilita o armazenamento.</li>
+            </ul>
+          </div>
+          <div class="glass-panel rounded-2xl p-5 flex flex-col gap-3">
+            <div class="text-center pb-3 border-b border-slate-200"><span class="text-4xl block mb-2">👎</span><h3 class="text-xl font-bold text-rose-700">Contras e Impactos</h3></div>
+            <ul class="space-y-3 text-xs mt-2 text-slate-700">
+              <li class="bg-rose-50 p-2.5 rounded-lg border-l-4 border-rose-500">Consome muita energia elétrica.</li>
+              <li class="bg-rose-50 p-2.5 rounded-lg border-l-4 border-rose-500">Aumenta drasticamente o consumo de água local.</li>
+              <li class="bg-rose-50 p-2.5 rounded-lg border-l-4 border-rose-500">Exige altos investimentos e isenções fiscais.</li>
+              <li class="bg-rose-50 p-2.5 rounded-lg border-l-4 border-rose-500">Gera ruídos (poluição sonora) que prejudicam vizinhos.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 bg-cyan-50 border border-cyan-200 rounded-xl p-4 text-center max-w-4xl mx-auto shrink-0">
+        <h4 class="text-sm font-bold text-cyan-800 mb-1">A Conclusão</h4><p class="text-xs text-slate-700">Data centers podem trazer desenvolvimento, mas os riscos ambientais exigem construção <strong>planejada e sustentável</strong>.</p>
+      </div>
+    </div>
+
+    <!-- FASE 3 -->
+    <div id="stage-3" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
+      <div class="text-center mb-6 shrink-0">
+        <h2 class="text-4xl font-bold text-emerald-700 mb-1">Fome Elétrica</h2>
+        <p class="text-slate-600 text-sm">Pesquisa e desenvolvimento: <strong class="text-cyan-700">Leticia e Helena Imbroisi</strong></p>
+      </div>
+      <div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6 items-start min-h-0">
+        <div class="glass-panel p-4 rounded-2xl flex flex-col h-full gap-3 overflow-y-auto">
+          <h3 class="text-lg font-bold text-slate-900 mb-2">O Que Consome Energia?</h3>
+          <div class="bg-slate-50 p-3 rounded-lg border-l-4 border-cyan-500"><strong class="text-cyan-700 text-sm block mb-1">🖥️ Servidores e Armazenamento</strong><p class="text-xs text-slate-600">Computadores hiperpotentes que processam e guardam informações.</p></div>
+          <div class="bg-slate-50 p-3 rounded-lg border-l-4 border-emerald-500"><strong class="text-emerald-700 text-sm block mb-1">❄️ Refrigeração</strong><p class="text-xs text-slate-600">Chillers industriais que impedem os servidores de derreterem.</p></div>
+          <div class="bg-slate-50 p-3 rounded-lg border-l-4 border-amber-500"><strong class="text-amber-700 text-sm block mb-1">🔋 Baterias e Rede</strong><p class="text-xs text-slate-600">Nobreaks e cabos de rede de alta capacidade.</p></div>
+        </div>
+        <div class="glass-panel p-4 rounded-2xl flex flex-col justify-center h-full relative">
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-bold text-amber-600 mb-2">O Consumo Global</h3><p class="text-sm text-slate-700">Os data centers consumiram cerca de <strong class="text-slate-900 text-lg">415 TWh</strong> em 2024!</p>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col gap-4">
+            <div class="flex items-center gap-3 border-b border-slate-200 pb-3"><span class="text-3xl">🏠</span><div><p class="text-xs text-slate-500 uppercase tracking-wide">Equivale a</p><p class="text-sm font-bold text-slate-900">194 MILHÕES de casas brasileiras</p></div></div>
+            <div class="flex items-center gap-3 border-b border-slate-200 pb-3"><span class="text-3xl">📱</span><div><p class="text-xs text-slate-500 uppercase tracking-wide">1 kWh equivale a</p><p class="text-sm font-bold text-slate-900">~55 cargas de celular completas</p></div></div>
+            <div class="flex items-center gap-3"><span class="text-3xl">🔋</span><div><p class="text-xs text-slate-500 uppercase tracking-wide">Uma casa comum usa</p><p class="text-sm font-bold text-slate-900">~178 kWh/mês (9.800 cargas)</p></div></div>
+          </div>
+        </div>
+        <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-full relative">
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Por que o Brasil?</h3><p class="text-[11px] text-slate-500 mb-4 text-center">Temos infraestrutura hidrelétrica e eólica massiva.</p>
+          <div class="relative w-full h-[180px] flex items-center justify-center mb-4"><canvas id="energyChartBR"></canvas></div>
+          <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200 w-full text-center"><p class="text-[11px] text-emerald-800">Mais de 51% da matriz elétrica do Brasil é Hidrelétrica (Água). Fonte limpa atrai big techs!</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 4 -->
+    <div id="stage-4" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
+      <div class="text-center mb-4 shrink-0">
+        <h2 class="text-4xl font-bold text-blue-700 mb-1">Custo Hídrico & Calculadora</h2>
+        <p class="text-slate-600 text-sm">Pesquisa e desenvolvimento: <strong class="text-cyan-700">Manuella e Isadora</strong></p>
+      </div>
+      <div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4 min-h-0">
+        <div class="glass-panel rounded-2xl p-4 flex flex-col justify-center gap-3">
+          <div class="flex items-center gap-2 mb-1"><span class="text-2xl">💧</span><h3 class="text-lg font-bold text-blue-700">Resfriamento e Água</h3></div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><h4 class="text-sm font-bold text-blue-700">Liquid Cooling</h4><p class="text-xs text-slate-600 mt-1">Placas frias transferem calor do chip para líquido. Essencial para IAs.</p></div>
+          <div class="bg-rose-50 p-3 rounded-lg border border-rose-200 mt-1"><h4 class="text-sm font-bold text-rose-700">Alerta: São João del-Rei</h4><p class="text-xs text-rose-800 mt-1">Se os 12.000 data centers usassem a água do Brasil, evaporariam 10,95 trilhões de Litros/ano — o bastante para abastecer São João del-Rei por mais de 1.000 anos!</p></div>
+        </div>
+        <div class="glass-panel rounded-2xl p-4 flex flex-col items-center justify-between text-center relative overflow-hidden">
+          <h3 class="text-sm font-bold text-amber-600 uppercase tracking-widest mb-2">Gasto Desnecessário</h3>
+          <div class="w-full h-36 md:h-44 rounded-xl overflow-hidden border border-slate-200 mb-2 bg-slate-900 flex items-center justify-center"><img src="img_cavalo.png" alt="IA Cavalo" class="w-full h-full object-contain"></div>
+          <div class="bg-slate-50 p-2 rounded-lg text-xs text-slate-700 w-full mb-2 border border-slate-200">Para gerar <strong>esta única imagem</strong> inútil, a IA evaporou aprox. <strong class="text-blue-700">3 Litros de Água</strong> no mundo físico.</div>
+          <div class="bg-indigo-50 p-2.5 rounded-lg border border-indigo-200 w-full text-left"><h4 class="text-[11px] font-bold text-indigo-800">Dependência Emocional em IAs</h4><p class="text-[9px] text-indigo-700 leading-tight mt-1">Pessoas conversando 24h com apps como Poly IA multiplicam o gasto hídrico desnecessariamente.</p></div>
+        </div>
+        <div class="glass-panel rounded-2xl p-5 flex flex-col justify-between">
+          <h3 class="text-lg font-bold text-slate-900 mb-4">Sua Pegada Diária</h3>
+          <div class="mb-4">
+            <label class="flex justify-between text-xs font-bold text-slate-700 mb-2">Perguntas p/ IA: <span id="val-ia" class="text-cyan-700">10 perguntas</span></label>
+            <input type="range" id="slider-ia" min="0" max="100" value="10" oninput="updateCalculator()">
+          </div>
+          <div class="mb-6">
+            <label class="flex justify-between text-xs font-bold text-slate-700 mb-2">Horas de Vídeo: <span id="val-vid" class="text-cyan-700">2 horas</span></label>
+            <input type="range" id="slider-vid" min="0" max="10" value="2" oninput="updateCalculator()">
+          </div>
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 flex-1 flex flex-col justify-center">
+            <p class="text-[10px] text-slate-500 mb-1 uppercase text-center">Isso custa ao Data Center:</p>
+            <div class="flex items-center gap-3 bg-blue-50 border border-blue-200 p-2 rounded mb-2"><span class="text-xl">💧</span><div><span id="res-water" class="block font-bold text-blue-700 text-lg">250 ml</span><span class="text-[10px] text-slate-600">de água evaporada</span></div></div>
+            <div class="flex items-center gap-3 bg-amber-50 border border-amber-200 p-2 rounded"><span class="text-xl">📱</span><div><span id="res-energy" class="block font-bold text-amber-700 text-lg">5 cargas</span><span class="text-[10px] text-slate-600">completas de celular</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 5 -->
+    <div id="stage-5" class="hidden flex-col h-full p-8 max-w-7xl mx-auto w-full">
+      <div class="text-center mb-4 shrink-0">
+        <h2 class="text-4xl font-bold text-slate-900 mb-1">O Zumbido Invisível: <span class="text-rose-600">Poluição Sonora</span></h2>
+        <p class="text-slate-600 text-sm">Pesquisa e desenvolvimento: <strong class="text-cyan-700">Isabela e Pedro</strong></p>
+      </div>
+      <div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6 min-h-0">
+        <div class="flex flex-col gap-4 min-h-0">
+          <div class="glass-panel rounded-2xl p-4 flex-1 flex flex-col justify-center">
+            <h3 class="text-lg font-semibold text-cyan-700 mb-2">A Origem do Barulho</h3>
+            <ul class="text-xs text-slate-600 space-y-2 font-medium"><li><span class="text-cyan-600">▹</span> Servidores operando 24h</li><li><span class="text-cyan-600">▹</span> Ventiladores e chillers industriais</li><li><span class="text-cyan-600">▹</span> Geradores a diesel de emergência</li></ul>
+          </div>
+          <div class="glass-panel rounded-2xl p-4 flex-1 flex flex-col justify-center">
+            <h3 class="text-sm font-semibold text-purple-700 mb-2">Ciência do Som</h3>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="bg-slate-50 p-2 rounded-lg border border-slate-200"><strong class="text-purple-700 block">Hz (Hertz):</strong> Mede a frequência (grave ou agudo).</div>
+              <div class="bg-slate-50 p-2 rounded-lg border border-slate-200"><strong class="text-purple-700 block">dB (Decibéis):</strong> Mede o volume daquele som.</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-rose-50 border border-rose-200 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-sm">
+          <span class="text-4xl animate-pulse mb-3">🤕</span><h3 class="text-xl font-bold text-rose-700 mb-3">Impacto na Saúde</h3>
+          <p class="text-slate-700 text-xs mb-4">O zumbido mecânico grave e constante atravessa tijolos e janelas causando nas casas vizinhas:</p>
+          <div class="flex flex-wrap justify-center gap-2">
+            <span class="bg-white border border-rose-200 text-rose-700 font-semibold text-xs px-2.5 py-1 rounded-lg">Irritação</span><span class="bg-white border border-rose-200 text-rose-700 font-semibold text-xs px-2.5 py-1 rounded-lg">Insônia</span><span class="bg-white border border-rose-200 text-rose-700 font-semibold text-xs px-2.5 py-1 rounded-lg">Dores de Cabeça e Ouvido</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-4 min-h-0">
+          <div class="glass-panel rounded-2xl p-4 flex-1 flex flex-col justify-center">
+            <h3 class="text-lg font-semibold text-emerald-700 mb-3">Soluções</h3>
+            <div class="space-y-2 text-xs text-slate-700">
+              <p class="bg-emerald-50 p-2 rounded border border-emerald-200"><strong class="text-emerald-700">Isolamento:</strong> Paredes acústicas.</p><p class="bg-emerald-50 p-2 rounded border border-emerald-200"><strong class="text-emerald-700">Manutenção:</strong> Limpeza dos chillers.</p><p class="bg-emerald-50 p-2 rounded border border-emerald-200"><strong class="text-emerald-700">Distância:</strong> Equipamentos barulhentos no meio da planta.</p>
+            </div>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex-1 flex flex-col justify-center items-center text-center">
+            <h3 class="text-sm font-semibold text-amber-800 mb-1">Teste o Simulador</h3><p class="text-[10px] text-slate-600 mb-3">Ouça o zumbido mecânico grave de 60 Hz (volume seguro).</p>
+            <button id="btn-sound" class="bg-amber-600 hover:bg-amber-500 text-white font-bold py-2 px-4 rounded-full text-sm transition-all flex items-center gap-2 shadow-sm"><span>🔊</span> Ligar Zumbido</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         FASE 6: 4 CARDS GRANDES EM CARROSSEL
+         ========================================== -->
+    <div id="stage-6" class="hidden flex-col h-full px-8 py-4 max-w-7xl mx-auto w-full">
+      <div class="flex items-center justify-between mb-3 shrink-0">
+        <div>
+          <h2 class="text-3xl font-bold text-purple-700 leading-tight">A Evolução e o Futuro</h2>
+          <p class="text-slate-600 text-xs">Pesquisa e desenvolvimento: <strong class="text-cyan-700">Caio, Arthur, Victor e Brainer</strong></p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="selectEvoCard(1)" id="evo-btn-1" class="px-3 py-2 rounded-lg text-xs font-bold border bg-purple-600 border-purple-500 text-white transition-all">1. Anos 1990-2000</button>
+          <button onclick="selectEvoCard(2)" id="evo-btn-2" class="px-3 py-2 rounded-lg text-xs font-bold border bg-white border-slate-300 text-slate-700 hover:bg-slate-100 transition-all">2. Cabos Submarinos</button>
+          <button onclick="selectEvoCard(3)" id="evo-btn-3" class="px-3 py-2 rounded-lg text-xs font-bold border bg-white border-slate-300 text-slate-700 hover:bg-slate-100 transition-all">3. Pandemia (2020)</button>
+          <button onclick="selectEvoCard(4)" id="evo-btn-4" class="px-3 py-2 rounded-lg text-xs font-bold border bg-white border-slate-300 text-slate-700 hover:bg-slate-100 transition-all">4. A Era da IA</button>
+        </div>
+      </div>
+
+      <div class="flex-1 glass-panel rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between min-h-0">
+
+        <!-- CARD 1: ANOS 1990 - 2000 -->
+        <div id="evo-card-1" class="evo-card flex-1 grid grid-cols-2 gap-8 items-center min-h-0">
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 h-full flex flex-col justify-center">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Década de 1990</span>
+            <h3 class="text-3xl font-bold text-slate-900 mb-4">🖥️ Salas de Servidores</h3>
+            <p class="text-base text-slate-700 leading-relaxed">Os servidores eram computadores grandes, muito caros e potentes, mas limitados em capacidade. Ficavam em salas especiais e eram usados principalmente por empresas grandes, com conexões bem lentas comparadas às de hoje.</p>
+          </div>
+          <div class="bg-purple-50/60 border border-purple-200 rounded-2xl p-8 h-full flex flex-col justify-center">
+            <span class="text-xs font-bold text-purple-700 uppercase tracking-widest mb-2">Década de 2000</span>
+            <h3 class="text-3xl font-bold text-slate-900 mb-4">🏢 Os Primeiros Data Centers</h3>
+            <p class="text-base text-slate-700 leading-relaxed">Os servidores ficaram menores, mais baratos e mais potentes. Começaram a surgir os primeiros data centers maiores, reunindo muitos servidores juntos em um mesmo lugar para atender à expansão rápida da internet.</p>
+          </div>
+        </div>
+
+        <!-- CARD 2: CABOS SUBMARINOS (MAPA GRANDE) -->
+        <div id="evo-card-2" class="evo-card hidden flex-1 grid grid-cols-12 gap-6 items-center min-h-0">
+          <div class="col-span-8 h-full rounded-xl overflow-hidden border-2 border-cyan-500/40 bg-white flex items-center justify-center shadow-sm">
+            <img src="cbos.jpeg" alt="Mapa de Cabos Submarinos" class="w-full h-full object-contain">
+          </div>
+          <div class="col-span-4 flex flex-col justify-center gap-4 h-full">
+            <div>
+              <span class="text-xs font-bold text-cyan-700 uppercase tracking-widest">A Conexão Global</span>
+              <h3 class="text-3xl font-bold text-slate-900 mt-1 mb-3">🌊 Cabos Submarinos</h3>
+              <p class="text-sm text-slate-700 leading-relaxed">São fios de fibra óptica instalados no fundo dos oceanos que ligam os continentes entre si, enviando dados na forma de sinais que viajam muito rápido.</p>
+            </div>
+            <div class="bg-cyan-50 border-l-4 border-cyan-500 p-4 rounded-xl">
+              <p class="text-sm text-slate-800 leading-relaxed">O Brasil é conectado ao mundo por vários cabos submarinos. Sem eles, não conseguiríamos conversar ou acessar serviços de outros países.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: PANDEMIA (2020) & STREAMING -->
+        <div id="evo-card-3" class="evo-card hidden flex-1 grid grid-cols-2 gap-8 items-center min-h-0">
+          <div class="bg-emerald-50/50 border border-emerald-200 rounded-2xl p-8 h-full flex flex-col justify-center">
+            <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest mb-2">O Boom do Entretenimento</span>
+            <h3 class="text-3xl font-bold text-slate-900 mb-4">🎬 Streaming 24h</h3>
+            <p class="text-base text-slate-700 leading-relaxed mb-6">Serviços como <strong>Netflix, YouTube e Spotify</strong> fazem com que milhões de pessoas assistam ou ouçam conteúdo ao mesmo tempo, exigindo transferências massivas de dados.</p>
+            <div class="flex gap-3">
+              <span class="bg-rose-100 border border-rose-300 text-rose-800 px-4 py-2 rounded-lg text-sm font-bold">Netflix</span>
+              <span class="bg-red-100 border border-red-300 text-red-800 px-4 py-2 rounded-lg text-sm font-bold">YouTube</span>
+              <span class="bg-emerald-100 border border-emerald-300 text-emerald-800 px-4 py-2 rounded-lg text-sm font-bold">Spotify</span>
+            </div>
+          </div>
+          <div class="bg-cyan-50/50 border border-cyan-200 rounded-2xl p-8 h-full flex flex-col justify-center">
+            <span class="text-xs font-bold text-cyan-700 uppercase tracking-widest mb-2">Pandemia (2020)</span>
+            <h3 class="text-3xl font-bold text-slate-900 mb-4">🏠 Isolamento & Expansão</h3>
+            <p class="text-base text-slate-700 leading-relaxed">Com as pessoas ficando em casa, aumentou muito o uso da internet: <strong>aulas online, trabalho remoto, reuniões, compras e entretenimento digital</strong>. Os data centers precisaram expandir rapidamente para dar conta de tudo.</p>
+          </div>
+        </div>
+
+        <!-- CARD 4: A ERA DA IA + CONCLUSÃO -->
+        <div id="evo-card-4" class="evo-card hidden flex-1 flex-col justify-between gap-4 min-h-0">
+          <div class="grid grid-cols-4 gap-4 flex-1 items-stretch">
+            <div class="bg-amber-50/60 border border-amber-200 rounded-xl p-5 flex flex-col justify-center">
+              <span class="text-3xl mb-2">🤖</span>
+              <h4 class="text-base font-bold text-amber-800 mb-2">Gerenciamento Automático</h4>
+              <p class="text-xs text-slate-700 leading-relaxed">Sistemas de IA monitoram e consertam problemas sozinhos, sem precisar de pessoas o tempo todo.</p>
+            </div>
+            <div class="bg-emerald-50/60 border border-emerald-200 rounded-xl p-5 flex flex-col justify-center">
+              <span class="text-3xl mb-2">🌡️</span>
+              <h4 class="text-base font-bold text-emerald-800 mb-2">Economia de Energia</h4>
+              <p class="text-xs text-slate-700 leading-relaxed">A IA controla a refrigeração de forma inteligente, gastando menos eletricidade.</p>
+            </div>
+            <div class="bg-cyan-50/60 border border-cyan-200 rounded-xl p-5 flex flex-col justify-center">
+              <span class="text-3xl mb-2">⚡</span>
+              <h4 class="text-base font-bold text-cyan-800 mb-2">Maior Velocidade</h4>
+              <p class="text-xs text-slate-700 leading-relaxed">Processadores especiais para IA permitem análises e respostas muito mais rápidas.</p>
+            </div>
+            <div class="bg-purple-50/60 border border-purple-200 rounded-xl p-5 flex flex-col justify-center">
+              <span class="text-3xl mb-2">📊</span>
+              <h4 class="text-base font-bold text-purple-800 mb-2">Mais Capacidade</h4>
+              <p class="text-xs text-slate-700 leading-relaxed">A IA precisa de muitos dados para funcionar, fazendo os data centers crescerem ainda mais.</p>
+            </div>
+          </div>
+          <div class="bg-purple-50 border border-purple-200 p-4 rounded-xl text-center shrink-0">
+            <h4 class="text-sm font-bold text-purple-800 mb-1">Conclusão do Grupo</h4>
+            <p class="text-sm text-slate-700">Os data centers evoluíram de salas com poucos computadores para verdadeiras <strong>"cidades digitais"</strong>. O futuro é digital, e os data centers são o coração que faz tudo isso funcionar!</p>
+          </div>
+        </div>
+
+        <!-- Barra Inferior de Navegação entre os 4 Cards -->
+        <div class="flex items-center justify-between pt-4 mt-4 border-t border-slate-200 shrink-0">
+          <button onclick="prevEvoCard()" id="evo-prev" class="bg-slate-100 hover:bg-slate-200 text-slate-800 px-4 py-2 rounded-lg text-xs font-bold border border-slate-300 disabled:opacity-40">← Card Anterior</button>
+          <span id="evo-counter" class="text-xs font-bold text-slate-500">Card 1 de 4</span>
+          <button onclick="nextEvoCard()" id="evo-next" class="bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-lg text-xs font-bold text-white disabled:opacity-40">Próximo Card →</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FASE 7 -->
+    <div id="stage-7" class="hidden flex-col h-full p-8 max-w-6xl mx-auto w-full">
+      <div class="text-center mb-4 shrink-0">
+        <h2 class="text-4xl font-bold text-teal-700 mb-1">O Paradoxo dos Empregos</h2>
+        <p class="text-slate-600 text-sm">Pesquisa e desenvolvimento: <strong class="text-cyan-700">Helena Lopes e Geovanna</strong></p>
+      </div>
+      <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-0">
+        <div class="glass-panel p-6 rounded-2xl flex flex-col justify-center h-full">
+          <h3 class="text-xl font-bold mb-3 text-slate-900">Análise do Grupo</h3>
+          <p class="text-slate-600 mb-4 text-xs leading-relaxed">Data centers movimentam a economia local, mas existe uma grande diferença entre empregos temporários e permanentes:</p>
+          <div class="space-y-3">
+            <div class="bg-amber-50 p-3 rounded-lg border-l-4 border-amber-500">
+              <strong class="text-amber-800 text-sm block mb-1">🏗️ Fase de Obras (Temporários)</strong><p class="text-[11px] text-slate-700 mb-2">Existem durante a construção e acabam no fim da obra.</p>
+              <div class="flex flex-wrap gap-1 text-[10px]"><span class="bg-white border border-amber-200 text-amber-800 px-2 py-1 rounded">Eletricistas</span><span class="bg-white border border-amber-200 text-amber-800 px-2 py-1 rounded">Engenheiros</span><span class="bg-white border border-amber-200 text-amber-800 px-2 py-1 rounded">Encanadores</span><span class="bg-white border border-amber-200 text-amber-800 px-2 py-1 rounded">Construção Civil</span></div>
+            </div>
+            <div class="bg-teal-50 p-3 rounded-lg border-l-4 border-teal-500">
+              <strong class="text-teal-800 text-sm block mb-1">🖥️ Operação Diária (Permanentes)</strong><p class="text-[11px] text-slate-700 mb-2">Garantem o funcionamento contínuo, porém em menor número.</p>
+              <div class="flex flex-wrap gap-1 text-[10px]"><span class="bg-white border border-teal-200 text-teal-800 px-2 py-1 rounded">Técnicos de Informática</span><span class="bg-white border border-teal-200 text-teal-800 px-2 py-1 rounded">Refrigeração</span><span class="bg-white border border-teal-200 text-teal-800 px-2 py-1 rounded">Segurança</span><span class="bg-white border border-teal-200 text-teal-800 px-2 py-1 rounded">Limpeza e Manutenção</span></div>
+            </div>
+            <div class="bg-rose-50 p-2.5 rounded-lg border-l-4 border-rose-500 mt-2">
+              <strong class="text-rose-700 text-xs block">O Limite Econômico</strong><p class="text-[10px] text-rose-900">Ajudam o comércio, mas exigem investimentos muito altos e oferecem menos empregos fixos após inaugurar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-center h-full relative min-h-[300px]">
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Vagas Geradas (Média)</h3><p class="text-xs text-slate-500 mb-6 text-center">Fase da Obra vs Operação Padrão</p>
+          <div class="relative w-full h-full max-h-[300px] flex items-center justify-center"><canvas id="jobsChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="h-16 bg-white/95 border-t border-slate-200 flex items-center justify-between px-8 shrink-0 z-50 absolute bottom-0 w-full">
+    <button onclick="prevStage()" id="btn-prev" class="hidden bg-slate-100 hover:bg-slate-200 text-slate-800 px-4 py-2 rounded-lg font-medium transition-colors text-sm border border-slate-300">← Voltar Fase</button>
+    <div class="flex items-center gap-2" id="progress-dots"></div>
+    <button onclick="nextStage()" id="btn-next" class="hidden bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-2 rounded-lg font-bold transition-colors text-sm shadow-sm">Próxima Fase →</button>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    const totalStages = 7;
+    let currentStage = 0;
+    let activeDataGroup = 1;
+    let activeDataScreen = 1;
+    let currentEvoCard = 1;
+
+    function selectEvoCard(n) {
+      currentEvoCard = n;
+      for (let i = 1; i <= 4; i++) {
+        const card = document.getElementById('evo-card-' + i);
+        const btn = document.getElementById('evo-btn-' + i);
+        if (i === n) {
+          card.classList.remove('hidden');
+          card.classList.add(i === 4 ? 'flex' : 'grid', 'active-stage');
+          btn.className = 'px-3 py-2 rounded-lg text-xs font-bold border bg-purple-600 border-purple-500 text-white transition-all';
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('flex', 'grid', 'active-stage');
+          btn.className = 'px-3 py-2 rounded-lg text-xs font-bold border bg-white border-slate-300 text-slate-700 hover:bg-slate-100 transition-all';
+        }
+      }
+      document.getElementById('evo-counter').textContent = `Card ${n} de 4`;
+      document.getElementById('evo-prev').disabled = (n === 1);
+      document.getElementById('evo-next').disabled = (n === 4);
+    }
+    function nextEvoCard() { if (currentEvoCard < 4) selectEvoCard(currentEvoCard + 1); }
+    function prevEvoCard() { if (currentEvoCard > 1) selectEvoCard(currentEvoCard - 1); }
+
+    let audioCtx, oscillator, gainNode, isPlaying = false;
+    const btnSound = document.getElementById('btn-sound');
+    btnSound.addEventListener('click', () => {
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      if(isPlaying) {
+        if(oscillator) { oscillator.stop(); oscillator.disconnect(); }
+        isPlaying = false;
+        btnSound.innerHTML = '<span>🔊</span> Ligar Zumbido';
+        btnSound.classList.replace('bg-rose-600', 'bg-amber-600');
+      } else {
+        oscillator = audioCtx.createOscillator();
+        gainNode = audioCtx.createGain();
+        oscillator.type = 'sawtooth';
+        oscillator.frequency.value = 60;
+        gainNode.gain.value = 0.15;
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.start();
+        isPlaying = true;
+        btnSound.innerHTML = '<span>🔇</span> Desligar Zumbido';
+        btnSound.classList.replace('bg-amber-600', 'bg-rose-600');
+      }
+    });
+    function stopSoundForcefully() {
+      if(isPlaying && oscillator) {
+        oscillator.stop(); oscillator.disconnect(); isPlaying = false;
+        btnSound.innerHTML = '<span>🔊</span> Ligar Zumbido';
+        btnSound.classList.replace('bg-rose-600', 'bg-amber-600');
+      }
+    }
+
+    let energyChartInstance = null, jobsChartInstance = null;
+    function initGeneralCharts() {
+      if(!energyChartInstance) {
+        const ctxE = document.getElementById('energyChartBR');
+        if(ctxE) {
+          energyChartInstance = new Chart(ctxE.getContext('2d'), {
+            type: 'doughnut',
+            data: { labels: ['Hidrelétrica', 'Eólica', 'Solar', 'Biomassa', 'Gás', 'Outros'], datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 6.6], backgroundColor: ['#0284c7', '#38bdf8', '#eab308', '#16a34a', '#64748b', '#334155'], borderWidth: 1, borderColor: '#ffffff' }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#334155', font: {size: 10} } } } }
+          });
+        }
+      }
+      if(!jobsChartInstance) {
+        const ctxJ = document.getElementById('jobsChart');
+        if(ctxJ) {
+          jobsChartInstance = new Chart(ctxJ.getContext('2d'), {
+            type: 'bar',
+            data: { labels: ['Fase de Obras', 'Operação Fixa'], datasets: [{ label: 'Profissionais', data: [1500, 40], backgroundColor: ['#f59e0b', '#0d9488'], borderRadius: 6 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#475569' }, grid: { color: '#e2e8f0' } }, x: { ticks: { color: '#0f172a' }, grid: { display: false } } } }
+          });
+        }
+      }
+    }
+
+    const dataCharts = {};
+    function initDataChartsFor(g, s) {
+      if (g === 1 && s === 1 && !dataCharts.g1s1) {
+        dataCharts.g1s1 = new Chart(document.getElementById('chart-g1-escala'), {
+          type: 'bar',
+          data: {
+            labels: ['1 Dia (1 DC)', '30 Dias (1 DC)', '1 Ano (1 DC)', 'Mundo (12k DCs)'],
+            datasets: [{ label: 'Litros', data: [2500000, 75000000, 912500000, 10950000000000], backgroundColor: ['#06b6d4', '#0284c7', '#2563eb', '#1e3a8a'], borderRadius: 6 }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { type: 'logarithmic', ticks: { color: '#475569' }, grid: { color: '#e2e8f0' } }, x: { ticks: { color: '#0f172a', font: {size: 10} }, grid: { display: false } } } }
+        });
+      }
+      if (g === 1 && s === 2 && !dataCharts.g1s2) {
+        dataCharts.g1s2 = new Chart(document.getElementById('chart-g1-equiv'), {
+          type: 'bar',
+          data: {
+            labels: ['Banhos (10m)', 'Arroz (kg)', 'Carne (kg)', 'Piscinas Olím.'],
+            datasets: [{ data: [6000000000, 200000000, 37000000, 224000], backgroundColor: ['#0284c7', '#16a34a', '#d97706', '#4f46e5'], borderRadius: 5 }]
+          },
+          options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { type: 'logarithmic', ticks: { color: '#475569' }, grid: { color: '#e2e8f0' } }, y: { ticks: { color: '#0f172a' }, grid: { display: false } } } }
+        });
+      }
+      if (g === 2 && s === 1 && !dataCharts.g2s1) {
+        dataCharts.g2s1 = new Chart(document.getElementById('chart-g2-racks'), {
+          type: 'bar',
+          data: {
+            labels: ['Capacidade Teórica (Sem corredores)', 'Capacidade Real (-40% circulação)'],
+            datasets: [{ label: 'Servidores em 48 m²', data: [80, 48], backgroundColor: ['#9333ea', '#0891b2'], borderRadius: 8 }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, ticks: { color: '#475569' }, grid: { color: '#e2e8f0' } }, x: { ticks: { color: '#0f172a' }, grid: { display: false } } } }
+        });
+      }
+      if (g === 2 && s === 2 && !dataCharts.g2s2) {
+        dataCharts.g2s2 = new Chart(document.getElementById('chart-g2-angulos'), {
+          type: 'pie',
+          data: {
+            labels: ['Fóssil (40% = 144°)', 'Renovável (35% = 126°)', 'Outros (25% = 90°)'],
+            datasets: [{ data: [40, 35, 25], backgroundColor: ['#1e3a8a', '#16a34a', '#0284c7'], borderWidth: 2, borderColor: '#ffffff' }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#334155' } } } }
+        });
+      }
+      if (g === 3 && s === 1 && !dataCharts.g3s1) {
+        dataCharts.g3s1 = new Chart(document.getElementById('chart-g3-br'), {
+          type: 'doughnut',
+          data: {
+            labels: ['Hidrelétrica', 'Eólica', 'Solar', 'Biomassa', 'Gás Nat.', 'Carvão', 'Nuclear', 'Petróleo', 'Imp.'],
+            datasets: [{ data: [51.2, 14.9, 11.4, 8.4, 7.5, 2.2, 2.0, 1.5, 0.9], backgroundColor: ['#0284c7', '#fdba74', '#eab308', '#ea580c', '#9333ea', '#334155', '#64748b', '#b91c1c', '#38bdf8'], borderWidth: 1, borderColor: '#ffffff' }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#334155', font: {size: 10} } } } }
+        });
+        dataCharts.g3s1b = new Chart(document.getElementById('chart-g3-mundo'), {
+          type: 'doughnut',
+          data: {
+            labels: ['Petróleo', 'Carvão', 'Gás Nat.', 'Biocomb.', 'Nuclear', 'Outras Ren.', 'Hidrelétrica'],
+            datasets: [{ data: [30.2, 27.8, 22.7, 8.8, 4.7, 3.3, 2.4], backgroundColor: ['#b91c1c', '#1e3a8a', '#9333ea', '#65a30d', '#78350f', '#eab308', '#0284c7'], borderWidth: 1, borderColor: '#ffffff' }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#334155', font: {size: 10} } } } }
+        });
+      }
+      if (g === 3 && s === 2 && !dataCharts.g3s2) {
+        dataCharts.g3s2 = new Chart(document.getElementById('chart-g3-comp'), {
+          type: 'bar',
+          data: {
+            labels: ['Brasil (Matriz Elétrica 2025)', 'Mundo (Matriz Energética 2023)'],
+            datasets: [
+              { label: 'Renováveis (%)', data: [85.9, 14.5], backgroundColor: '#10b981', borderRadius: 6 },
+              { label: 'Não Renováveis (%)', data: [14.1, 85.5], backgroundColor: '#ef4444', borderRadius: 6 }
+            ]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#334155' } } }, scales: { y: { max: 100, ticks: { color: '#475569' }, grid: { color: '#e2e8f0' } }, x: { ticks: { color: '#0f172a' }, grid: { display: false } } } }
+        });
+      }
+      if (g === 4 && s === 2 && !dataCharts.g4s2) {
+        dataCharts.g4s2 = new Chart(document.getElementById('chart-g4-cargas'), {
+          type: 'bar',
+          data: {
+            labels: ['1 kWh', '100 kWh', '178,4 kWh (Casa/Mês)'],
+            datasets: [{ label: 'Cargas completas de celular', data: [55, 5500, 9800], backgroundColor: ['#fbbf24', '#f59e0b', '#d97706'], borderRadius: 6 }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#475569' }, grid: { color: '#e2e8f0' } }, x: { ticks: { color: '#0f172a' }, grid: { display: false } } } }
+        });
+        dataCharts.g4s2b = new Chart(document.getElementById('chart-g4-renov'), {
+          type: 'doughnut',
+          data: {
+            labels: ['Renovável (88%)', 'Não Renovável (12%)'],
+            datasets: [{ data: [88, 12], backgroundColor: ['#10b981', '#6366f1'], borderWidth: 1, borderColor: '#ffffff' }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#334155', font: {size: 11} } } } }
+        });
+      }
+    }
+
+    function renderDataView() {
+      document.querySelectorAll('.data-screen').forEach(el => { el.classList.add('hidden'); el.classList.remove('flex', 'active-stage'); });
+      const target = document.getElementById(`data-g${activeDataGroup}-s${activeDataScreen}`);
+      if(target) { target.classList.remove('hidden'); target.classList.add('flex', 'active-stage'); }
+
+      const groupColors = { 1: ['bg-blue-600','border-blue-500'], 2: ['bg-purple-600','border-purple-500'], 3: ['bg-emerald-600','border-emerald-500'], 4: ['bg-amber-600','border-amber-500'] };
+      for(let i = 1; i <= 4; i++) {
+        const b = document.getElementById('btn-grp-' + i);
+        b.className = 'data-grp-btn font-bold py-2 px-3 rounded-lg border text-xs transition-all ' + (i === activeDataGroup ? `${groupColors[i][0]} ${groupColors[i][1]} text-white` : 'bg-white border-slate-300 hover:bg-slate-100 text-slate-700');
+      }
+      document.getElementById('btn-scr-1').className = 'px-3 py-1 rounded text-xs font-bold transition-all ' + (activeDataScreen === 1 ? 'bg-cyan-600 text-white' : 'text-slate-600 hover:text-slate-900');
+      document.getElementById('btn-scr-2').className = 'px-3 py-1 rounded text-xs font-bold transition-all ' + (activeDataScreen === 2 ? 'bg-cyan-600 text-white' : 'text-slate-600 hover:text-slate-900');
+
+      initDataChartsFor(activeDataGroup, activeDataScreen);
+    }
+
+    function selectDataGroup(g) { activeDataGroup = g; activeDataScreen = 1; renderDataView(); }
+    function selectDataScreen(s) { activeDataScreen = s; renderDataView(); }
+
+    function updateCalculator() {
+      const iaSlider = document.getElementById('slider-ia');
+      const vidSlider = document.getElementById('slider-vid');
+      if(!iaSlider || !vidSlider) return;
+      const iaQ = parseInt(iaSlider.value), vidH = parseInt(vidSlider.value);
+      document.getElementById('val-ia').textContent = iaQ + " pgtas";
+      document.getElementById('val-vid').textContent = vidH + " hrs";
+      let waterMl = (iaQ * 25) + (vidH * 10);
+      let energyCargas = ((iaQ / 20) * 1) + (vidH * 0.2);
+      document.getElementById('res-water').textContent = (waterMl > 1000) ? (waterMl/1000).toFixed(1) + " L" : waterMl + " ml";
+      document.getElementById('res-energy').textContent = energyCargas.toFixed(1) + " cargas";
+    }
+
+    function buildDots() {
+      const dotContainer = document.getElementById('progress-dots');
+      dotContainer.innerHTML = '';
+      if(currentStage === 0 || currentStage === 'dados') return;
+      for(let i = 1; i <= totalStages; i++) {
+        const dot = document.createElement('div');
+        dot.className = `w-2 h-2 rounded-full cursor-pointer transition-all ${i === currentStage ? 'bg-cyan-600 w-6' : 'bg-slate-300 hover:bg-slate-400'}`;
+        dot.onclick = () => goToStage(i);
+        dotContainer.appendChild(dot);
+      }
+    }
+
+    function updateNavButtons() {
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      if(currentStage === 0 || currentStage === 'dados') {
+        btnPrev.classList.add('hidden'); btnNext.classList.add('hidden');
+      } else {
+        btnPrev.classList.remove('hidden'); btnNext.classList.remove('hidden');
+        btnPrev.textContent = currentStage === 1 ? '← Voltar ao Menu' : '← Fase Anterior';
+        if(currentStage === totalStages) {
+          btnNext.textContent = '🏠 Menu Inicial';
+          btnNext.classList.replace('bg-cyan-600', 'bg-emerald-600');
+        } else {
+          btnNext.textContent = 'Próxima Fase →';
+          btnNext.classList.replace('bg-emerald-600', 'bg-cyan-600');
+        }
+      }
+      buildDots();
+    }
+
+    function goToMenuDados() {
+      if(currentStage === 5) stopSoundForcefully();
+      for(let i = 0; i <= totalStages; i++) {
+        const el = document.getElementById('stage-' + i);
+        if(el) { el.classList.add('hidden'); el.classList.remove('flex', 'active-stage'); }
+      }
+      const elDados = document.getElementById('stage-dados');
+      elDados.classList.remove('hidden'); elDados.classList.add('flex', 'active-stage');
+      currentStage = 'dados';
+      updateNavButtons();
+      renderDataView();
+    }
+
+    function goToStage(n) {
+      if(currentStage === 5 && n !== 5) stopSoundForcefully();
+      const elDados = document.getElementById('stage-dados');
+      if(elDados) { elDados.classList.add('hidden'); elDados.classList.remove('flex', 'active-stage'); }
+      for(let i = 0; i <= totalStages; i++) {
+        const el = document.getElementById('stage-' + i);
+        if(el) { el.classList.add('hidden'); el.classList.remove('flex', 'active-stage'); }
+      }
+      const target = document.getElementById('stage-' + n);
+      if(target) { target.classList.remove('hidden'); target.classList.add('flex', 'active-stage'); }
+      currentStage = n;
+      updateNavButtons();
+      if(n === 3 || n === 7) initGeneralCharts();
+      if(n === 6) selectEvoCard(1);
+    }
+
+    function nextStage() { if(currentStage === totalStages) goToStage(0); else goToStage(currentStage + 1); }
+    function prevStage() { if(currentStage === 1) goToStage(0); else goToStage(currentStage - 1); }
+    function goToMenu() { goToStage(0); }
+
+    document.addEventListener('keydown', (e) => {
+      if(currentStage !== 0 && currentStage !== 'dados') {
+        if(e.key === 'ArrowRight') nextStage();
+        if(e.key === 'ArrowLeft') prevStage();
+        if(e.key === 'Escape') goToMenu();
+      } else if (currentStage === 'dados') {
+        if(e.key === 'ArrowRight') selectDataScreen(activeDataScreen === 1 ? 2 : 1);
+        if(e.key === 'ArrowLeft') selectDataScreen(activeDataScreen === 2 ? 1 : 2);
+        if(e.key === 'Escape') goToMenu();
+      }
+    });
+
+    updateCalculator();
+  </script>
+</body>
+</html>
